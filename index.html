@@ -1,429 +1,860 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>M GEETA SUPER — Sample Collection</title>
+<title>GEETA SUPER — Online Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#FAF3E0;font-family:sans-serif;min-height:100vh;font-size:16px;font-weight:600;letter-spacing:.02em}
-.header{background:#1A1208;text-align:center;padding:28px 20px 22px}
-.header h1{font-size:clamp(1.8rem,7vw,3.5rem);font-weight:900;color:#fff;line-height:1}
-.header h1 span{color:#E8B84B}
-.header p{color:#F0E6C8;margin-top:6px;font-size:.85rem}
-.gst-badge{display:inline-block;background:rgba(200,147,42,.15);border:1px solid rgba(200,147,42,.4);padding:4px 16px;border-radius:40px;color:#E8B84B;font-size:.7rem;letter-spacing:.1em;margin-top:10px}
-.addr{color:#F0E6C8;font-size:.78rem;margin-top:8px}
-.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6fcf97;margin-right:4px;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.nav{background:#2E1F0A;display:flex;justify-content:center;gap:4px;padding:10px 14px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
-.nav-btn{padding:8px 14px;border-radius:30px;border:none;cursor:pointer;font-size:.75rem;font-weight:600;transition:all .2s}
-.nav-btn.active{background:#C8932A;color:#1A1208}
-.nav-btn:not(.active){background:rgba(255,255,255,.08);color:#F0E6C8}
-.cart-badge{background:#eb5757;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;margin-left:4px}
-.main{max-width:1100px;margin:0 auto;padding:24px 14px}
-.page{display:none}.page.active{display:block}
-.section-title{text-align:center;margin-bottom:24px}
-.section-title .sub{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#C8932A;font-weight:600;margin-bottom:5px}
-.section-title h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#1A1208}
-.divider{width:50px;height:3px;background:#C8932A;margin:8px auto 0;border-radius:2px}
-.add-form{background:#2E1F0A;border-radius:10px;padding:18px 16px;margin-bottom:22px}
-.add-form h3{color:#E8B84B;font-weight:700;font-size:.9rem;margin-bottom:12px}
-.grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:10px}
-.field label{display:block;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:#C8932A;font-weight:600;margin-bottom:4px}
-.field input,.field select{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(200,147,42,.3);border-radius:4px;padding:7px 10px;font-size:.82rem;color:#FAF3E0;outline:none;font-family:sans-serif}
-.field select option{background:#2E1F0A}
-.upload-area{border:2px dashed rgba(200,147,42,.5);border-radius:8px;padding:14px;text-align:center;cursor:pointer;background:rgba(200,147,42,.06);margin-bottom:10px;display:block}
+body{background:#FAF3E0;font-family:'Hind Siliguri',sans-serif;min-height:100vh;color:#1A1208}
+body[data-lang="hi"]{font-family:'Noto Sans Devanagari',sans-serif}
+body[data-lang="en"]{font-family:'Inter','Hind Siliguri',sans-serif}
+body[data-lang="ur"]{font-family:'Noto Nastaliq Urdu','Hind Siliguri',sans-serif;direction:rtl}
+body[data-lang="ta"]{font-family:'Noto Sans Tamil',sans-serif}
+body[data-lang="te"]{font-family:'Noto Sans Telugu',sans-serif}
+body[data-lang="ur"] .header-actions,body[data-lang="ur"] .filter-bar,body[data-lang="ur"] .cart-summary-row,body[data-lang="ur"] .specs-row{flex-direction:row-reverse}
+.header{background:#1A1208;padding:18px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff}
+.logo span{color:#E8B84B}
+.header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.cart-btn,.admin-btn,.lang-btn{background:rgba(200,147,42,.15);border:1px solid rgba(200,147,42,.4);color:#E8B84B;padding:7px 12px;border-radius:30px;font-weight:600;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit}
+.cart-count{background:#E8B84B;color:#1A1208;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700}
+.lang-dropdown{position:relative}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.2);min-width:160px;display:none;z-index:200;overflow:hidden}
+body[data-lang="ur"] .lang-menu{right:auto;left:0}
+.lang-menu.open{display:block}
+.lang-option{padding:10px 14px;cursor:pointer;color:#1A1208;font-size:.9rem;border-bottom:1px solid #f0e6c8;font-family:inherit}
+.lang-option:last-child{border-bottom:none}
+.lang-option:hover{background:#FFF7E0}
+.lang-option.active{background:#C8932A;color:#1A1208;font-weight:700}
+.hero{background:linear-gradient(135deg,#1A1208 0%,#3A2A10 100%);padding:36px 16px;text-align:center;border-bottom:3px solid #C8932A}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.6rem);color:#fff;line-height:1.2;margin-bottom:8px}
+.hero h1 em{color:#E8B84B;font-style:normal}
+.hero p{color:#F0E6C8;font-size:.9rem;max-width:600px;margin:0 auto 14px}
+.gst-badge{display:inline-block;background:rgba(200,147,42,.15);border:1px solid rgba(200,147,42,.4);padding:5px 18px;border-radius:40px;color:#E8B84B;font-size:.72rem}
+.contact-strip{margin-top:14px;color:#F0E6C8;font-size:.8rem}
+.search-wrap{max-width:1200px;margin:0 auto;padding:20px 14px 0}
+.search-box{position:relative;max-width:600px;margin:0 auto}
+.search-box input{width:100%;background:#fff;border:2px solid #d0c4a8;border-radius:30px;padding:12px 18px 12px 44px;font-size:.95rem;color:#1A1208;outline:none;font-family:inherit}
+body[data-lang="ur"] .search-box input{padding:12px 44px 12px 18px;text-align:right}
+.search-box input:focus{border-color:#C8932A}
+.search-box::before{content:"🔍";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none}
+body[data-lang="ur"] .search-box::before{left:auto;right:16px}
+.main{max-width:1200px;margin:0 auto;padding:20px 14px}
+.loading-banner{background:#FFF7E0;border:1px solid #C8932A;border-radius:8px;padding:14px;text-align:center;margin-bottom:20px;color:#3A2A10;font-size:.9rem}
+.error-banner{background:#FFEBEE;border:1px solid #c62828;border-radius:8px;padding:14px;margin-bottom:20px;color:#c62828;font-size:.85rem}
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center}
+.filter-btn{padding:8px 18px;border-radius:30px;border:1px solid #ccc;background:#fff;color:#3A2A10;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:500}
+.filter-btn.active{border-color:#C8932A;background:#C8932A;color:#1A1208;font-weight:700}
+.count{margin-left:auto;color:#7A6040;font-size:.78rem}
+body[data-lang="ur"] .count{margin-left:0;margin-right:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(58,42,16,.08);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card-img{height:220px;background:linear-gradient(135deg,#F0E6C8,#e0d4b8);position:relative;overflow:hidden;cursor:pointer}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-img .emoji{font-size:3.5rem;display:flex;align-items:center;justify-content:center;height:100%}
+.tag{position:absolute;top:8px;left:8px;background:#C8932A;color:#1A1208;font-size:.62rem;font-weight:700;padding:4px 10px;border-radius:20px}
+body[data-lang="ur"] .tag{left:auto;right:8px}
+.photo-count{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.65);color:#fff;font-size:.7rem;padding:3px 8px;border-radius:12px}
+.stock-badge{position:absolute;top:8px;right:8px;font-size:.6rem;font-weight:700;padding:4px 8px;border-radius:12px}
+body[data-lang="ur"] .stock-badge{right:auto;left:8px}
+.stock-in{background:#6fcf97;color:#0a3a1f}
+.stock-low{background:#f2c94c;color:#5a4500}
+.stock-out{background:#eb5757;color:#fff}
+.card-body{padding:14px}
+.card-title{font-weight:700;font-size:.95rem;color:#1A1208;margin-bottom:6px}
+.rating-row{display:flex;align-items:center;gap:4px;margin-bottom:6px;font-size:.78rem;color:#7A6040;cursor:pointer}
+.rating-row .stars{color:#E8B84B;font-size:.85rem}
+.specs-row{display:flex;justify-content:space-between;font-size:.78rem;color:#7A6040;margin-bottom:8px}
+.price{font-size:1.15rem;font-weight:700;color:#C8932A;margin-bottom:10px}
+.add-cart-btn{width:100%;background:#1A1208;color:#E8B84B;border:none;padding:10px;border-radius:6px;font-family:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
+.add-cart-btn.in-cart{background:#C8932A;color:#1A1208}
+.add-cart-btn:disabled{background:#ccc;color:#666;cursor:not-allowed}
+.empty{text-align:center;padding:60px 20px;color:#7A6040}
+.empty .emoji{font-size:3.5rem;margin-bottom:12px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:300;display:none;align-items:flex-end;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#FAF3E0;width:100%;max-width:600px;max-height:92vh;border-radius:16px 16px 0 0;overflow-y:auto}
+.modal-header{background:#1A1208;color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+body[data-lang="ur"] .modal-header{flex-direction:row-reverse}
+.modal-header h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:#E8B84B}
+.modal-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}
+.modal-body{padding:20px}
+.detail-gallery{position:relative;background:#F0E6C8;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.detail-main-img{width:100%;height:300px;object-fit:cover;display:block}
+.detail-main-img.placeholder{display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,#F0E6C8,#e0d4b8)}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+.gallery-nav.prev{left:10px}
+.gallery-nav.next{right:10px}
+.gallery-thumbs{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#fff}
+.gallery-thumbs img{width:60px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent;flex-shrink:0}
+.gallery-thumbs img.active{border-color:#C8932A}
+.detail-title{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px}
+.detail-price{font-size:1.4rem;font-weight:700;color:#C8932A;margin-bottom:12px}
+.detail-specs{background:#fff;border-radius:8px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.detail-spec{font-size:.82rem}
+.detail-spec strong{display:block;color:#7A6040;font-size:.7rem;text-transform:uppercase;margin-bottom:3px}
+.reviews-section{background:#fff;border-radius:8px;padding:14px;margin-bottom:14px}
+.reviews-section h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:10px}
+.review-item{border-bottom:1px solid #eee;padding:8px 0;font-size:.85rem}
+.review-item:last-child{border-bottom:none}
+.review-name{font-weight:700}
+.review-stars{color:#E8B84B}
+.add-review-btn{background:#F0E6C8;border:1px dashed #C8932A;padding:10px;width:100%;border-radius:6px;cursor:pointer;color:#3A2A10;font-family:inherit;font-weight:600;margin-top:8px}
+.review-form{margin-top:10px}
+.review-form input,.review-form textarea{width:100%;padding:8px;margin-bottom:8px;border:1px solid #d0c4a8;border-radius:6px;font-family:inherit;outline:none}
+.star-picker{display:flex;gap:6px;margin-bottom:10px;font-size:1.5rem}
+.star-picker span{cursor:pointer;color:#ccc}
+.star-picker span.on{color:#E8B84B}
+.cart-item{background:#fff;border-radius:8px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:center}
+body[data-lang="ur"] .cart-item{flex-direction:row-reverse}
+.cart-item-img{width:60px;height:60px;border-radius:6px;background:#F0E6C8;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-weight:700;font-size:.88rem;margin-bottom:3px}
+.cart-item-meta{font-size:.72rem;color:#7A6040}
+.cart-item-price{font-weight:700;color:#C8932A;font-size:.92rem;margin-top:3px}
+.qty-controls{display:flex;align-items:center;gap:6px}
+.qty-btn{background:#1A1208;color:#E8B84B;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-weight:700}
+.qty-num{font-weight:700;min-width:20px;text-align:center;font-size:.9rem}
+.cart-summary{background:#1A1208;color:#E8B84B;padding:16px;border-radius:8px;margin-top:14px}
+.cart-summary-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.88rem}
+.cart-summary-row.total{font-size:1.15rem;font-weight:700;border-top:1px solid rgba(200,147,42,.3);padding-top:8px;margin-top:8px}
+.form-section{margin-top:20px}
+.form-section h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:12px;color:#1A1208}
+.form-field{margin-bottom:12px}
+.form-field label{display:block;font-size:.72rem;text-transform:uppercase;color:#7A6040;font-weight:600;margin-bottom:5px}
+.form-field input,.form-field textarea,.form-field select{width:100%;background:#fff;border:1px solid #d0c4a8;border-radius:6px;padding:10px 12px;font-size:.92rem;color:#1A1208;outline:none;font-family:inherit}
+.form-field textarea{resize:vertical;min-height:70px}
+.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.pay-opt{padding:12px;background:#fff;border:2px solid #d0c4a8;border-radius:8px;cursor:pointer;text-align:center;font-size:.85rem;font-weight:600}
+.pay-opt.active{border-color:#C8932A;background:#FFF7E0;color:#C8932A}
+.upi-info{background:#FFF7E0;border:1px solid #C8932A;border-radius:8px;padding:14px;margin-top:10px;text-align:center}
+.upi-info .upi-id{font-size:1.05rem;font-weight:700;color:#1A1208;margin:6px 0}
+.whatsapp-btn{width:100%;background:#25D366;color:#fff;border:none;padding:15px;font-size:1rem;font-weight:700;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:inherit}
+.whatsapp-btn:disabled{background:#999;cursor:not-allowed}
+.admin-section{background:#2E1F0A;border-radius:10px;padding:20px;margin-bottom:18px}
+.admin-section h3{color:#E8B84B;font-weight:700;font-size:1rem;margin-bottom:14px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:12px}
+.field label{display:block;font-size:.6rem;text-transform:uppercase;color:#C8932A;font-weight:600;margin-bottom:5px}
+.field input,.field select{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(200,147,42,.3);border-radius:5px;padding:9px 10px;font-size:.88rem;color:#FAF3E0;outline:none;font-family:inherit}
+.field select option{background:#2E1F0A;color:#FAF3E0}
+.upload-area{border:2px dashed rgba(200,147,42,.5);border-radius:8px;padding:18px;text-align:center;cursor:pointer;background:rgba(200,147,42,.06);margin-bottom:12px}
 .upload-area input{display:none}
-.upload-icon{font-size:2rem}
-.upload-area p{color:#F0E6C8;font-size:.8rem;margin-top:3px}
-.upload-area small{color:rgba(240,230,200,.5);font-size:.68rem;display:block}
-.upload-area img{max-height:90px;max-width:100%;border-radius:6px;border:2px solid #C8932A}
-.preview-ok{color:#6fcf97;font-size:.72rem;margin-top:4px}
-.progress-wrap{margin-bottom:10px;display:none}
-.progress-label{display:flex;justify-content:space-between;margin-bottom:3px}
-.progress-label span{color:#E8B84B;font-size:.72rem}
-.progress-bar-bg{background:rgba(200,147,42,.2);border-radius:4px;height:5px}
-.progress-bar{background:#C8932A;height:5px;border-radius:4px;width:0%;transition:width .3s}
-.notice{padding:8px 12px;border-radius:5px;margin-bottom:8px;font-size:.78rem;display:none}
+.upload-area .icon{font-size:2.2rem}
+.upload-area p{color:#F0E6C8;font-size:.85rem;margin-top:4px}
+.upload-area small{color:rgba(240,230,200,.5);font-size:.72rem;margin-top:2px;display:block}
+.preview-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;margin-bottom:10px}
+.preview-item{position:relative;width:80px;height:80px;border-radius:6px;overflow:hidden;border:2px solid #C8932A}
+.preview-item img{width:100%;height:100%;object-fit:cover}
+.preview-item .rm{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.7);color:#fff;border:none;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:.7rem}
+.progress-wrap{margin-bottom:12px}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.progress-label span{color:#E8B84B;font-size:.78rem}
+.progress-bar-bg{background:rgba(200,147,42,.2);border-radius:4px;height:6px}
+.progress-bar{background:#C8932A;height:6px;border-radius:4px;width:0%;transition:width .3s}
+.btn-primary{width:100%;background:#C8932A;color:#1A1208;border:none;padding:13px;font-size:.85rem;font-weight:700;text-transform:uppercase;border-radius:6px;cursor:pointer;font-family:inherit}
+.btn-primary:disabled{background:rgba(200,147,42,.4);cursor:not-allowed}
+.notice{padding:9px 12px;border-radius:6px;margin-bottom:10px;font-size:.85rem}
 .notice.ok{background:rgba(111,207,151,.15);color:#6fcf97;border:1px solid rgba(111,207,151,.3)}
 .notice.err{background:rgba(235,87,87,.15);color:#eb5757;border:1px solid rgba(235,87,87,.3)}
-.btn-add{width:100%;background:#C8932A;color:#1A1208;border:none;padding:12px;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:5px;cursor:pointer}
-.btn-add:disabled{background:rgba(200,147,42,.4);cursor:not-allowed}
-.filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;align-items:center}
-.filter-btn{padding:5px 14px;border-radius:30px;border:1px solid #ccc;background:#fff;color:#3A2A10;cursor:pointer;font-size:.75rem}
-.filter-btn.active{border-color:#C8932A;background:#C8932A;color:#1A1208;font-weight:700}
-.count{margin-left:auto;color:#7A6040;font-size:.73rem}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(58,42,16,.1)}
-.card-img{height:200px;background:linear-gradient(135deg,#F0E6C8,#e0d4b8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover}
-.card-img .emoji{font-size:3rem}
-.tag{position:absolute;top:7px;left:7px;background:#C8932A;color:#1A1208;font-size:.56rem;font-weight:700;padding:3px 8px;border-radius:20px}
-.del-btn{position:absolute;top:5px;right:5px;background:rgba(0,0,0,.55);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:.65rem}
-.card-body{padding:12px}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px}
-.spec{background:#F0E6C8;border-radius:4px;padding:6px 8px}
-.spec.dark{background:#1A1208;grid-column:span 2}
-.spec .sl{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:#7A6040;font-weight:600;margin-bottom:2px}
-.spec.dark .sl{color:#C8932A}
-.spec .sv{font-size:.82rem;font-weight:700;color:#3A2A10}
-.spec.dark .sv{color:#E8B84B;font-size:.9rem}
-.cart-ctrl{display:flex;align-items:center;gap:6px;margin-top:8px}
-.qty-btn{width:30px;height:30px;border-radius:50%;border:2px solid #C8932A;background:#fff;color:#C8932A;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.qty-btn:hover{background:#C8932A;color:#1A1208}
-.qty-display{flex:1;text-align:center;font-size:.78rem;font-weight:700;color:#1A1208;background:#F0E6C8;border-radius:4px;padding:4px}
-.add-cart-btn{width:100%;background:#1A1208;color:#E8B84B;border:none;padding:8px;border-radius:5px;font-size:.75rem;font-weight:700;cursor:pointer;margin-top:6px}
-.add-cart-btn:hover{background:#C8932A;color:#1A1208}
-.edit-btn{width:100%;background:#F0E6C8;border:none;padding:6px;border-radius:4px;font-size:.72rem;cursor:pointer;color:#3A2A10;font-weight:600;margin-top:4px}
-.edit-form input{width:100%;background:#F0E6C8;border:1px solid #C8932A;border-radius:4px;padding:6px 10px;font-size:.8rem;color:#1A1208;outline:none;font-family:sans-serif;display:block;margin-bottom:5px}
-.save-btn{background:#C8932A;color:#1A1208;border:none;padding:7px 0;width:100%;border-radius:4px;font-weight:700;cursor:pointer;font-size:.75rem}
-.empty{text-align:center;padding:50px;color:#7A6040;display:none}
-.empty .emoji{font-size:3rem;margin-bottom:8px}
-.loading{text-align:center;padding:40px;color:#7A6040}
-.loading .spin{font-size:2rem;animation:spin 1s linear infinite;display:inline-block;margin-bottom:8px}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.cart-empty{text-align:center;padding:60px 20px;color:#7A6040}
-.cart-item{background:#fff;border-radius:8px;padding:14px;margin-bottom:12px;box-shadow:0 3px 10px rgba(58,42,16,.08);display:flex;gap:12px;align-items:center}
-.cart-item-img{width:70px;height:70px;border-radius:6px;object-fit:cover;flex-shrink:0;background:#F0E6C8;display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden}
-.cart-item-img img{width:100%;height:100%;border-radius:6px;object-fit:cover}
-.cart-item-info{flex:1}
-.cart-item-info .ci-type{font-size:.6rem;color:#C8932A;font-weight:700;text-transform:uppercase}
-.cart-item-info .ci-design{font-size:.88rem;font-weight:700;color:#1A1208}
-.cart-item-info .ci-size{font-size:.72rem;color:#7A6040}
-.cart-item-info .ci-price{font-size:.82rem;color:#E8B84B;font-weight:700;margin-top:2px}
-.cart-qty{display:flex;align-items:center;gap:6px;margin-top:6px}
-.cqb{width:26px;height:26px;border-radius:50%;border:1.5px solid #C8932A;background:#fff;color:#C8932A;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.cqb:hover{background:#C8932A;color:#1A1208}
-.cqd{font-size:.82rem;font-weight:700;color:#1A1208;min-width:50px;text-align:center}
-.cart-remove{background:none;border:none;color:#eb5757;cursor:pointer;font-size:.8rem;margin-left:auto;align-self:flex-start;padding:2px 6px}
-.cart-summary{background:#2E1F0A;border-radius:10px;padding:16px;margin-bottom:16px}
-.cart-summary .row{display:flex;justify-content:space-between;margin-bottom:8px}
-.cart-summary .row span{color:#F0E6C8;font-size:.82rem}
-.cart-summary .row .val{color:#E8B84B;font-weight:700}
-.cart-summary .total-row{border-top:1px solid rgba(200,147,42,.3);padding-top:10px;margin-top:4px}
-.cart-summary .total-row span{color:#E8B84B;font-size:.95rem;font-weight:700}
-.cart-summary .total-row .val{color:#fff;font-size:1.1rem;font-weight:900}
-.checkout-form{background:#fff;border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:0 3px 10px rgba(58,42,16,.08)}
-.checkout-form h3{color:#1A1208;font-weight:700;font-size:.9rem;margin-bottom:14px;border-bottom:2px solid #F0E6C8;padding-bottom:8px}
-.cf-field{margin-bottom:12px}
-.cf-field label{display:block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#7A6040;font-weight:600;margin-bottom:4px}
-.cf-field input,.cf-field textarea{width:100%;border:1px solid #e0d4b8;border-radius:5px;padding:9px 12px;font-size:.85rem;color:#1A1208;outline:none;font-family:sans-serif;background:#FAF3E0}
-.cf-field input:focus,.cf-field textarea:focus{border-color:#C8932A}
-.cf-field textarea{resize:vertical;min-height:70px}
-.order-btn{width:100%;background:#C8932A;color:#1A1208;border:none;padding:14px;font-size:.88rem;font-weight:700;border-radius:8px;cursor:pointer;margin-top:4px;letter-spacing:.1em;text-transform:uppercase}
-.order-btn:disabled{background:rgba(200,147,42,.4);cursor:not-allowed}
-.success-page{text-align:center;padding:40px 20px}
-.success-icon{font-size:5rem;margin-bottom:16px;animation:bounce .6s ease}
-@keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-.success-page h2{color:#1A1208;font-size:1.5rem;font-weight:800;margin-bottom:8px}
-.success-page p{color:#7A6040;font-size:.85rem;margin-bottom:20px}
-.order-id-box{background:#1A1208;border-radius:8px;padding:14px;margin-bottom:20px;text-align:center}
-.order-id-box .label{color:#C8932A;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase}
-.order-id-box .oid{color:#E8B84B;font-size:1.2rem;font-weight:900;margin-top:4px}
-.success-btns{display:flex;flex-direction:column;gap:10px}
-.wa-share-btn{background:#25D366;color:#fff;border:none;padding:13px;font-size:.85rem;font-weight:700;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-.back-shop-btn{background:#F0E6C8;color:#1A1208;border:none;padding:13px;font-size:.85rem;font-weight:700;border-radius:8px;cursor:pointer}
-footer{background:#1A1208;text-align:center;padding:22px 20px;color:#7A6040;font-size:.73rem;border-top:1px solid rgba(200,147,42,.2);margin-top:20px}
-footer .ft{font-size:1.2rem;color:#E8B84B;font-weight:700;margin-bottom:4px}
+.admin-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.admin-tab{padding:8px 14px;background:rgba(200,147,42,.1);color:#E8B84B;border:1px solid rgba(200,147,42,.3);border-radius:30px;cursor:pointer;font-family:inherit;font-size:.82rem}
+.admin-tab.active{background:#C8932A;color:#1A1208;font-weight:700}
+.admin-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.admin-card{background:#fff;border-radius:8px;overflow:hidden;position:relative}
+.admin-card img,.admin-card .ph-emoji{width:100%;height:140px;object-fit:cover;display:block}
+.admin-card .ph-emoji{background:#F0E6C8;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.admin-card-body{padding:8px 10px;font-size:.78rem}
+.admin-card-body strong{display:block;color:#1A1208}
+.admin-card-body small{color:#7A6040;display:block}
+.del-btn{position:absolute;top:6px;right:6px;background:rgba(235,87,87,.9);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.7rem;z-index:5}
+.edit-btn-card{position:absolute;top:6px;right:38px;background:rgba(40,40,40,.9);color:#fff;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.7rem;z-index:5}
+.order-card{background:rgba(255,255,255,.05);padding:12px;border-radius:6px;margin-bottom:8px;color:#F0E6C8;font-size:.85rem}
+.order-card strong{color:#E8B84B}
+.order-card .order-actions{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.order-card .order-actions button{background:rgba(200,147,42,.2);color:#E8B84B;border:1px solid rgba(200,147,42,.3);padding:5px 10px;border-radius:4px;cursor:pointer;font-size:.75rem;font-family:inherit}
+.auth-box{background:#fff;border-radius:10px;padding:24px;text-align:center;max-width:340px;margin:30px auto}
+.auth-box h3{font-family:'Playfair Display',serif;color:#1A1208;margin-bottom:14px}
+.auth-box input{width:100%;background:#F0E6C8;border:1px solid #C8932A;border-radius:6px;padding:10px;font-size:1rem;text-align:center;font-family:inherit;outline:none;margin-bottom:10px}
+footer{background:#1A1208;text-align:center;padding:30px 20px;color:#7A6040;font-size:.78rem;border-top:1px solid rgba(200,147,42,.2);margin-top:30px}
+footer .ft{font-family:'Playfair Display',serif;font-size:1.4rem;color:#E8B84B;font-weight:700;margin-bottom:6px}
+footer a{color:#E8B84B;text-decoration:none}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(232,184,75,.3);border-top:2px solid #E8B84B;border-radius:50%;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:480px){
+.cards{grid-template-columns:repeat(2,1fr);gap:10px}
+.card-img{height:160px}
+.card-body{padding:10px}
+.card-title{font-size:.82rem}
+.price{font-size:1rem}
+.add-cart-btn{padding:8px;font-size:.78rem}
+.detail-main-img{height:240px}
+.logo{font-size:1.3rem}
+}
 </style>
 </head>
-<body>
+<body data-lang="bn">
 <div class="header">
-  <h1>M GEETA <span>SUPER</span></h1>
-  <p>👕 Kids Fashion · Wholesale Readymade Garments · Kolkata</p>
-  <div class="gst-badge">GST: 19AKKPK2513L1ZY</div>
-  <div style="margin-top:6px;font-size:.7rem;color:#6fcf97"><span class="live-dot"></span>Live — Everyone can see</div>
-  <div class="addr">📍 U 111 Karbala Road, Kolkata-700018 &nbsp;|&nbsp; 📞 9830127586</div>
-  <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-    <button onclick="copyLink()" id="copyBtn"
-      style="display:inline-flex;align-items:center;gap:6px;background:#C8932A;color:#1A1208;padding:10px 20px;border-radius:30px;font-size:.8rem;font-weight:700;border:none;cursor:pointer">
-🔗 Copy Link
-    </button>
-    <a href="https://wa.me/?text=👕%20*M%20GEETA%20SUPER*%20-%20Kids%20Fashion%20Wholesale%0A%0A🛍️%20Browse%20our%20latest%20collection%3A%0A👉%20https%3A%2F%2Fgeeta-super-web.netlify.app%0A%0A📍%20U%20111%20Karbala%20Road%2C%20Kolkata-700018%0A📞%209830127586%0AGST%3A%2019AKKPK2513L1ZY" target="_blank"
-      style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:10px 20px;border-radius:30px;font-size:.8rem;font-weight:700;text-decoration:none">
-📲 Share
-    </a>
-  </div>
-  <div style="margin-top:14px">
-    <div style="font-size:.7rem;color:#C8932A;margin-bottom:8px;letter-spacing:.1em">📱 SCAN TO VISIT</div>
-    <div id="qrcode" style="display:inline-block;background:#fff;padding:10px;border-radius:8px;border:2px solid #C8932A"></div>
-    <div style="color:#F0E6C8;font-size:.68rem;margin-top:6px">geeta-super-web.netlify.app</div>
+  <div class="header-inner">
+    <div class="logo">GEETA <span>SUPER</span></div>
+    <div class="header-actions">
+      <div class="lang-dropdown">
+        <button class="lang-btn" onclick="toggleLangMenu(event)">🌐 <span id="currentLangLabel">বাংলা</span></button>
+        <div class="lang-menu" id="langMenu">
+          <div class="lang-option active" onclick="setLang('bn')">🇧🇩 বাংলা</div>
+          <div class="lang-option" onclick="setLang('en')">🇬🇧 English</div>
+          <div class="lang-option" onclick="setLang('hi')">🇮🇳 हिन्दी</div>
+          <div class="lang-option" onclick="setLang('ur')">🇵🇰 اردو</div>
+          <div class="lang-option" onclick="setLang('ta')">🇮🇳 தமிழ்</div>
+          <div class="lang-option" onclick="setLang('te')">🇮🇳 తెలుగు</div>
+        </div>
+      </div>
+      <button class="cart-btn" onclick="openCart()">🛒 <span data-t="cart">কার্ট</span> <span class="cart-count" id="cartCount">0</span></button>
+      <button class="admin-btn" onclick="openAdmin()">⚙️</button>
+    </div>
   </div>
 </div>
-<div class="nav">
-  <button class="nav-btn active" onclick="showPage('gallery')">🏠 Gallery</button>
-  <button class="nav-btn" onclick="showPage('cart')" id="cartNavBtn">🛒 Cart <span class="cart-badge" id="cartCount">0</span></button>
-  <button class="nav-btn" onclick="showPage('customers')">👥 Customers</button>
-  <button class="nav-btn" onclick="showPage('sent')">📤 Sent</button>
-  <button class="nav-btn" onclick="showPage('calc')">🧮 Calc</button>
+<div class="hero">
+  <h1 data-t="heroTitle"></h1>
+  <p data-t="heroSub"></p>
+  <div class="gst-badge">GST: 19AKKPK2513L1ZY</div>
+  <div class="contact-strip">📍 U 111 Karbala Road, Kolkata-700018 · 📞 9830127586</div>
+</div>
+<div class="search-wrap">
+  <div class="search-box">
+    <input id="searchInput" type="text" data-tp="searchPh" oninput="renderCards()"/>
+  </div>
 </div>
 <div class="main">
-  <!-- GALLERY PAGE -->
-  <div class="page active" id="page-gallery">
-    <div class="section-title">
-      <div class="sub">Sample Collection</div>
-      <h2>Sample Gallery</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="add-form">
-      <h3>➕ Add New Sample</h3>
-      <div class="grid-4">
-        <div class="field"><label>Type</label>
-          <select id="type">
-          <option>HALF SHIRT</option>
-          <option>FULL SHIRT</option>
-          <option>SLEEVELESS</option>
-          <option>HALF SUIT</option>
-          <option>FULL SUIT</option>
-          <option>CORD SETS</option>
-          <option>SL</option>
-          <option>OTHER</option>
-        </select>
+  <div class="loading-banner" id="loadingBanner"><span class="spinner"></span><span data-t="loading">প্রোডাক্ট লোড হচ্ছে...</span></div>
+  <div class="filter-bar" id="filterBar" style="display:none">
+    <button class="filter-btn active" onclick="setFilter('all',this)" data-t="all">সব</button>
+    <button class="filter-btn" onclick="setFilter('শার্ট',this)" data-t="shirt">শার্ট</button>
+    <button class="filter-btn" onclick="setFilter('বাবা স্যুট',this)" data-t="babaSuit">বাবা স্যুট</button>
+    <button class="filter-btn" onclick="setFilter('অন্যান্য',this)" data-t="other">অন্যান্য</button>
+    <span class="count" id="countLabel"></span>
+  </div>
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="empty" style="display:none">
+    <div class="emoji">👗</div>
+    <div data-t="noProducts">কোনো প্রোডাক্ট পাওয়া যায়নি</div>
+  </div>
+</div>
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <div class="modal-header"><h2 data-t="productDetail">প্রোডাক্ট বিবরণ</h2><button class="modal-close" onclick="closeModal('detailModal')">✕</button></div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <div class="modal-header"><h2 data-t="yourCart">🛒 আপনার কার্ট</h2><button class="modal-close" onclick="closeModal('cartModal')">✕</button></div>
+    <div class="modal-body" id="cartBody"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header"><h2 data-t="completeOrder">📦 অর্ডার সম্পূর্ণ করুন</h2><button class="modal-close" onclick="closeModal('checkoutModal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-section">
+        <h3 data-t="yourInfo">👤 আপনার তথ্য</h3>
+        <div class="form-field"><label data-t="fullName">পুরো নাম *</label><input id="cust_name" data-tp="namePh"/></div>
+        <div class="form-field"><label data-t="mobileNum">মোবাইল নম্বর *</label><input id="cust_phone" type="tel" placeholder="9876543210" maxlength="10"/></div>
+        <div class="form-field"><label data-t="fullAddress">সম্পূর্ণ ঠিকানা *</label><textarea id="cust_address" data-tp="addressPh"></textarea></div>
+        <div class="form-field"><label data-t="extraNote">অতিরিক্ত নোট (ঐচ্ছিক)</label><textarea id="cust_note" data-tp="notePh"></textarea></div>
+      </div>
+      <div class="form-section">
+        <h3 data-t="paymentMethod">💳 পেমেন্ট পদ্ধতি</h3>
+        <div class="payment-options">
+          <div class="pay-opt active" onclick="selectPay(this,'COD')">💵 <span data-t="cod">ক্যাশ অন ডেলিভারি</span></div>
+          <div class="pay-opt" onclick="selectPay(this,'UPI')">📱 <span data-t="upiAdvance">UPI / অগ্রিম</span></div>
         </div>
-        <div class="field"><label>Design No</label><input id="design" placeholder="GS-101"/></div>
-        <div class="field"><label>Size</label><input id="size" placeholder="S/M/L/XL"/></div>
-        <div class="field"><label>Price (1 pc)</label><input id="price" placeholder="450" type="number"/></div>
-        <div class="field"><label>Stock (pcs)</label><input id="stock" placeholder="144" type="number"/></div>
-      </div>
-      <label class="upload-area">
-        <input type="file" id="photoInput" accept="image/*"/>
-        <div id="uploadContent">
-          <div class="upload-icon">📸</div>
-          <p>Take photo or choose from gallery</p>
-          <small>JPG, PNG · Max 10MB</small>
-        </div>
-      </label>
-      <div class="progress-wrap" id="progressWrap">
-        <div class="progress-label"><span id="progressMsg">Uploading...</span><span id="progressText">0%</span></div>
-        <div class="progress-bar-bg"><div class="progress-bar" id="progressBar"></div></div>
-      </div>
-      <div id="notice" class="notice"></div>
-      <button class="btn-add" id="addBtn" onclick="addSample()">✦ Add Sample</button>
-    </div>
-    <div class="filter-bar">
-      <button class="filter-btn active" onclick="setFilter('all',this)">ALL</button>
-      <button class="filter-btn" onclick="setFilter('HALF SHIRT',this)">HALF SHIRT</button>
-      <button class="filter-btn" onclick="setFilter('FULL SHIRT',this)">FULL SHIRT</button>
-      <button class="filter-btn" onclick="setFilter('SLEEVELESS',this)">SLEEVELESS</button>
-      <button class="filter-btn" onclick="setFilter('HALF SUIT',this)">HALF SUIT</button>
-      <button class="filter-btn" onclick="setFilter('FULL SUIT',this)">FULL SUIT</button>
-      <button class="filter-btn" onclick="setFilter('CORD SETS',this)">CORD SETS</button>
-      <button class="filter-btn" onclick="setFilter('SL',this)">SL</button>
-      <button class="filter-btn" onclick="setFilter('OTHER',this)">OTHER</button>
-      <span class="count" id="countLabel">Loading...</span>
-    </div>
-    <div class="loading" id="loading"><div class="spin">⏳</div><div>Loading...</div></div>
-    <div class="cards" id="cards"></div>
-    <div class="empty" id="empty"><div class="emoji">👗</div><div>No samples found.</div></div>
-  </div>
-  <!-- CART PAGE -->
-  <div class="page" id="page-cart">
-    <div class="section-title">
-      <div class="sub">Your Order</div>
-      <h2>🛒 Your Cart</h2>
-      <div class="divider"></div>
-    </div>
-    <div id="cartEmpty" class="cart-empty">
-      <div style="font-size:3rem">🛒</div>
-      <div style="margin-top:10px;font-weight:700">Your cart is empty.</div>
-      <div style="margin-top:6px;font-size:.8rem;color:#aaa">Add products from gallery</div>
-      <button onclick="showPage('gallery')" style="margin-top:14px;background:#C8932A;color:#1A1208;border:none;padding:10px 24px;border-radius:20px;cursor:pointer;font-weight:700;font-size:.82rem">← Go to Gallery</button>
-    </div>
-    <div id="cartContent" style="display:none">
-      <div id="cartItems"></div>
-      <div class="cart-summary" id="cartSummary"></div>
-      <div class="checkout-form">
-        <h3>📋 Customer Details</h3>
-        <div class="cf-field"><label>Full Name *</label><input id="cusName" placeholder="Your full name"/></div>
-        <div class="cf-field"><label>WhatsApp / Phone *</label><input id="cusPhone" placeholder="9XXXXXXXXX" type="tel"/></div>
-        <div class="cf-field"><label>Full Address *</label><textarea id="cusAddress" placeholder="Complete delivery address"></textarea></div>
-        <div class="cf-field"><label>Special Note (Optional)</label><textarea id="cusNote" placeholder="Any special requirements..."></textarea></div>
-        <button class="order-btn" id="orderBtn" onclick="completeOrder()">✅ Complete Order</button>
-      </div>
-    </div>
-  </div>
-  <!-- SUCCESS PAGE -->
-  <div class="page" id="page-success">
-    <div class="success-page">
-      <div class="success-icon">🎉</div>
-      <h2>Order Placed!</h2>
-      <p>Your order has been successfully placed.<br/>We will contact you soon.</p>
-      <div class="order-id-box">
-        <div class="label">Order ID</div>
-        <div class="oid" id="successOrderId">#000000</div>
-      </div>
-      <div id="successSummary" style="background:#fff;border-radius:8px;padding:14px;margin-bottom:16px;text-align:left;box-shadow:0 3px 10px rgba(58,42,16,.08)"></div>
-      <div class="success-btns">
-        <button class="wa-share-btn" id="waShareBtn">
-📱 Share on WhatsApp
-        </button>
-        <button class="back-shop-btn" onclick="resetAndShop()">🛍️ Continue Shopping</button>
-        <button onclick="resetAndShop()" style="background:#eb5757;color:#fff;border:none;padding:13px;font-size:.85rem;font-weight:700;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
-✕ Close & Go Home
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- CUSTOMERS PAGE -->
-  <div class="page" id="page-customers">
-    <div class="section-title">
-      <div class="sub">Customer Management</div>
-      <h2>👥 Customer List</h2>
-      <div class="divider"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.58rem;font-weight:700;letter-spacing:.1em">TOTAL</div>
-        <div style="color:#E8B84B;font-size:1.5rem;font-weight:900" id="custTotal">0</div>
-      </div>
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.58rem;font-weight:700;letter-spacing:.1em">ORDERS</div>
-        <div style="color:#E8B84B;font-size:1.5rem;font-weight:900" id="custOrders">0</div>
-      </div>
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.58rem;font-weight:700;letter-spacing:.1em">REVENUE</div>
-        <div style="color:#E8B84B;font-size:1.1rem;font-weight:900" id="custRevenue">₹0</div>
-      </div>
-    </div>
-    <input id="custSearch" oninput="searchCustomers()" placeholder="🔍 Search customer..."
-      style="width:100%;border:2px solid #e0d4b8;border-radius:30px;padding:10px 18px;font-size:.9rem;color:#1A1208;outline:none;background:#fff;font-weight:600;margin-bottom:16px"/>
-    <div id="custList"></div>
-    <div id="custEmpty" style="text-align:center;padding:40px;color:#7A6040;display:none">
-      <div style="font-size:3rem">👥</div>
-      <div style="margin-top:8px;font-weight:700">No customers yet.</div>
-    </div>
-  </div>
-  <!-- SENT PAGE -->
-  <div class="page" id="page-sent">
-    <div class="section-title">
-      <div class="sub">Sent History</div>
-      <h2>📤 Sent List</h2>
-      <div class="divider"></div>
-    </div>
-    <div style="background:#2E1F0A;border-radius:10px;padding:18px;margin-bottom:20px">
-      <div style="color:#E8B84B;font-weight:700;font-size:.9rem;margin-bottom:12px">📲 Send Link to Customer</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-        <div class="field"><label>Customer Name</label><input id="sentName" placeholder="Rahul Kumar"/></div>
-        <div class="field"><label>Phone Number</label><input id="sentPhone" placeholder="9XXXXXXXXX" type="tel"/></div>
-      </div>
-      <div class="field" style="margin-bottom:10px"><label>City / Area</label><input id="sentCity" placeholder="Delhi, Mumbai..."/></div>
-      <button onclick="sendToCustomer()" style="width:100%;background:#25D366;color:#fff;border:none;padding:12px;border-radius:8px;font-size:.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
-📲 Copy Link & Save
-      </button>
-    </div>
-    <div style="position:relative;margin-bottom:16px">
-      <input id="sentSearch" oninput="searchSent()" placeholder="🔍 Search by name or phone..."
-        style="width:100%;border:2px solid #e0d4b8;border-radius:30px;padding:10px 18px;font-size:.9rem;color:#1A1208;outline:none;background:#fff;font-weight:600"/>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px" id="sentStats">
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.6rem;font-weight:700;letter-spacing:.1em">TOTAL SENT</div>
-        <div style="color:#E8B84B;font-size:1.5rem;font-weight:900" id="statTotal">0</div>
-      </div>
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.6rem;font-weight:700;letter-spacing:.1em">TODAY</div>
-        <div style="color:#E8B84B;font-size:1.5rem;font-weight:900" id="statToday">0</div>
-      </div>
-      <div style="background:#1A1208;border-radius:8px;padding:12px;text-align:center">
-        <div style="color:#C8932A;font-size:.6rem;font-weight:700;letter-spacing:.1em">THIS WEEK</div>
-        <div style="color:#E8B84B;font-size:1.5rem;font-weight:900" id="statWeek">0</div>
-      </div>
-    </div>
-    <div id="sentList"></div>
-    <div id="sentEmpty" style="text-align:center;padding:40px;color:#7A6040;display:none">
-      <div style="font-size:3rem">📤</div>
-      <div style="margin-top:8px;font-weight:700">No sent history yet.</div>
-    </div>
-  </div>
-  <div class="page" id="page-calc">
-    <div class="section-title">
-      <div class="sub">Calculator</div>
-      <h2>🧮 Calculator</h2>
-      <div class="divider"></div>
-    </div>
-    <div style="max-width:360px;margin:0 auto">
-      <div style="background:#1A1208;border-radius:12px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.2)">
-        <div style="background:#0A0A0A;border-radius:8px;padding:16px 14px;margin-bottom:16px;text-align:right">
-          <div style="color:#7A6040;font-size:.75rem;min-height:20px;word-break:break-all" id="calcExpr"></div>
-          <div style="color:#E8B84B;font-size:2rem;font-weight:700;min-height:48px;word-break:break-all" id="calcDisplay">0</div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
-          <button onclick="calcBtn('C')" style="grid-column:span 2;background:#eb5757;color:#fff;border:none;padding:16px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer">C</button>
-          <button onclick="calcBtn('⌫')" style="background:#3A2A10;color:#E8B84B;border:none;padding:16px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer">⌫</button>
-          <button onclick="calcBtn('÷')" style="background:#C8932A;color:#1A1208;border:none;padding:16px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer">÷</button>
-          <button onclick="calcBtn('7')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">7</button>
-          <button onclick="calcBtn('8')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">8</button>
-          <button onclick="calcBtn('9')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">9</button>
-          <button onclick="calcBtn('×')" style="background:#C8932A;color:#1A1208;border:none;padding:16px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer">×</button>
-          <button onclick="calcBtn('4')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">4</button>
-          <button onclick="calcBtn('5')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">5</button>
-          <button onclick="calcBtn('6')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">6</button>
-          <button onclick="calcBtn('−')" style="background:#C8932A;color:#1A1208;border:none;padding:16px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer">−</button>
-          <button onclick="calcBtn('1')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">1</button>
-          <button onclick="calcBtn('2')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">2</button>
-          <button onclick="calcBtn('3')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">3</button>
-          <button onclick="calcBtn('+')" style="background:#C8932A;color:#1A1208;border:none;padding:16px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer">+</button>
-          <button onclick="calcBtn('00')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">00</button>
-          <button onclick="calcBtn('0')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">0</button>
-          <button onclick="calcBtn('.')" style="background:#2E1F0A;color:#FAF3E0;border:none;padding:16px;border-radius:8px;font-size:1rem;cursor:pointer">.</button>
-          <button onclick="calcBtn('=')" style="background:#6fcf97;color:#1A1208;border:none;padding:16px;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer">=</button>
-        </div>
-        <div id="calcResult" style="display:none;margin-top:14px;background:#0A0A0A;border-radius:8px;padding:12px;text-align:center">
-          <div style="color:#7A6040;font-size:.72rem">Result</div>
-          <div style="color:#6fcf97;font-size:1.5rem;font-weight:700" id="calcResultVal"></div>
+        <div class="upi-info" id="upiBox" style="display:none">
+          <div data-t="payUpiBelow">নিচের UPI ID-তে পেমেন্ট করুন:</div>
+          <div class="upi-id" id="upiIdDisplay">—</div>
+          <div style="font-size:.78rem;color:#7A6040" data-t="sendScreenshot">পেমেন্ট হলে স্ক্রিনশট WhatsApp-এ পাঠাবেন</div>
         </div>
       </div>
+      <button class="whatsapp-btn" id="orderBtn" onclick="sendOrder()">💬 <span data-t="sendOrderBtn">WhatsApp-এ অর্ডার পাঠান</span></button>
+      <p style="text-align:center;font-size:.75rem;color:#7A6040;margin-top:10px" data-t="confirmCall">অর্ডার confirmation এর জন্য আমরা ফোন করব</p>
     </div>
+  </div>
+</div>
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <div class="modal-header"><h2 data-t="adminPanel">⚙️ অ্যাডমিন প্যানেল</h2><button class="modal-close" onclick="closeModal('adminModal')">✕</button></div>
+    <div class="modal-body" id="adminBody"></div>
   </div>
 </div>
 <footer>
-  <div class="ft">M GEETA SUPER</div>
-  <div>U 111 Karbala Road, Kolkata-700018 · 📞 9830127586</div>
-  <div style="margin-top:3px">GST: 19AKKPK2513L1ZY · © 2026</div>
+  <div class="ft">GEETA SUPER</div>
+  <div>U 111 Karbala Road, Kolkata-700018</div>
+  <div style="margin-top:3px">📞 <a href="tel:9830127586">9830127586</a> · GST: 19AKKPK2513L1ZY</div>
+  <div style="margin-top:8px" data-t="copyright">© ২০২৬ · সর্বস্বত্ব সংরক্ষিত</div>
 </footer>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, deleteDoc, doc, updateDoc, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, doc, addDoc, setDoc, getDocs, getDoc, deleteDoc, updateDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDzSKwMtJLwJLX22Hlp0ZmkPJ-2PEUPY_4",
-  authDomain: "geeta-super-a73f2.firebaseapp.com",
-  databaseURL: "https://geeta-super-a73f2-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "geeta-super-a73f2",
-  storageBucket: "geeta-super-a73f2.firebasestorage.app",
-  messagingSenderId: "103240801380",
-  appId: "1:103240801380:web:ef4a292df28ede38241371"
+  apiKey: "AIzaSyD7TPpEu_fQJQPN91EDyAxpxKT9fzqBFqE",
+  authDomain: "geeta-super-f8d47.firebaseapp.com",
+  projectId: "geeta-super-f8d47",
+  storageBucket: "geeta-super-f8d47.firebasestorage.app",
+  messagingSenderId: "167099783550",
+  appId: "1:167099783550:web:4cb72719929ef792b9fb2f"
 };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+
+try {
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window.FB = { db, collection, doc, addDoc, setDoc, getDocs, getDoc, deleteDoc, updateDoc, onSnapshot, query, orderBy, serverTimestamp };
+  window.dispatchEvent(new Event('fb-ready'));
+} catch (e) {
+  console.error("Firebase init error:", e);
+  document.getElementById("loadingBanner").innerHTML = '<span style="color:#c62828">⚠️ Firebase সংযোগ ব্যর্থ। Console check করুন।</span>';
+}
+</script>
+
+<script>
+// ===== TRANSLATIONS =====
+const T={bn:{langName:"বাংলা",cart:"কার্ট",heroTitle:'রেডিমেড <em>গার্মেন্টস</em><br/>হোলসেল কালেকশন',heroSub:"সরাসরি কোম্পানি থেকে অর্ডার করুন · ঘরে বসে ডেলিভারি পান",searchPh:"Design no, ধরন বা সাইজ দিয়ে খুঁজুন...",all:"সব",shirt:"শার্ট",babaSuit:"বাবা স্যুট",other:"অন্যান্য",totalCount:"মোট: {n}টি",noProducts:"কোনো প্রোডাক্ট পাওয়া যায়নি",productDetail:"প্রোডাক্ট বিবরণ",yourCart:"🛒 আপনার কার্ট",cartEmpty:"আপনার কার্ট খালি",completeOrder:"📦 অর্ডার সম্পূর্ণ করুন",yourInfo:"👤 আপনার তথ্য",fullName:"পুরো নাম *",namePh:"যেমন: রহিম শেখ",mobileNum:"মোবাইল নম্বর *",fullAddress:"সম্পূর্ণ ঠিকানা *",addressPh:"বাড়ি/দোকান নং, রাস্তা, এলাকা, শহর, পিন কোড",extraNote:"অতিরিক্ত নোট (ঐচ্ছিক)",notePh:"যেমন: রঙ পছন্দ, ডেলিভারি সময়",paymentMethod:"💳 পেমেন্ট পদ্ধতি",cod:"ক্যাশ অন ডেলিভারি",upiAdvance:"UPI / অগ্রিম",payUpiBelow:"নিচের UPI ID-তে পেমেন্ট করুন:",sendScreenshot:"পেমেন্ট হলে স্ক্রিনশট WhatsApp-এ পাঠাবেন",sendOrderBtn:"WhatsApp-এ অর্ডার পাঠান",confirmCall:"অর্ডার confirmation এর জন্য আমরা ফোন করব",adminPanel:"⚙️ অ্যাডমিন প্যানেল",copyright:"© ২০২৬ · সর্বস্বত্ব সংরক্ষিত",inCart:"✓ কার্টে আছে",outOfStock:"❌ স্টক শেষ",addToCart:"🛒 কার্টে যোগ করুন",askPrice:"দাম জিজ্ঞেস করুন",sizeLabel:"সাইজ",stockLabel:"স্টক",pieces:"পিস",inStock:"স্টকে",lowStock:"মাত্র {n}টি",stockOut:"স্টক শেষ",reviewsTitle:"⭐ গ্রাহকদের রিভিউ",noReviews:"এখনো কোনো রিভিউ নেই।",addReview:"✏️ রিভিউ দিন",yourNamePh:"আপনার নাম",yourReviewPh:"আপনার মতামত লিখুন...",submitReview:"পাঠান",needNamePhone:"নাম, মোবাইল ও ঠিকানা পূরণ করুন",invalidPhone:"সঠিক ১০ ডিজিটের মোবাইল নম্বর দিন",cartEmptyAlert:"কার্ট খালি",orderSent:"✅ অর্ডার WhatsApp-এ পাঠানো হয়েছে!",onlyInStock:"শুধু {n}টি স্টকে আছে",nameAndReview:"নাম ও মতামত দিন",totalItems:"মোট আইটেম:",grandTotal:"সর্বমোট:",checkout:"চেকআউট করুন",addMore:"✓ কার্টে আছে ({n})",confirmDelete:"মুছে ফেলবেন?",loading:"প্রোডাক্ট লোড হচ্ছে...",waNewOrder:"🛍️ *নতুন অর্ডার*",waOrderId:"📋 *অর্ডার ID:*",waDate:"📅 *তারিখ:*",waCustInfo:"👤 *গ্রাহক:*",waName:"নাম:",waPhone:"ফোন:",waAddress:"ঠিকানা:",waNote:"নোট:",waProducts:"📦 *পণ্য:*",waSize:"সাইজ:",waPrice:"দাম:",waTotalItems:"🧮 *মোট:*",waTotal:"💰 *সর্বমোট:*",waPayment:"💳 *পেমেন্ট:*"},
+en:{langName:"English",cart:"Cart",heroTitle:'Readymade <em>Garments</em><br/>Wholesale Collection',heroSub:"Order directly · Home delivery",searchPh:"Search by design, type or size...",all:"All",shirt:"Shirt",babaSuit:"Baba Suit",other:"Other",totalCount:"Total: {n}",noProducts:"No products found",productDetail:"Product Details",yourCart:"🛒 Your Cart",cartEmpty:"Your cart is empty",completeOrder:"📦 Complete Order",yourInfo:"👤 Your Info",fullName:"Full Name *",namePh:"e.g., Rahim Sheikh",mobileNum:"Mobile *",fullAddress:"Full Address *",addressPh:"House, Street, Area, City, PIN",extraNote:"Extra Note",notePh:"e.g., color, delivery time",paymentMethod:"💳 Payment",cod:"Cash on Delivery",upiAdvance:"UPI / Advance",payUpiBelow:"Pay to UPI:",sendScreenshot:"Send screenshot on WhatsApp",sendOrderBtn:"Send Order via WhatsApp",confirmCall:"We'll call to confirm",adminPanel:"⚙️ Admin Panel",copyright:"© 2026",inCart:"✓ In cart",outOfStock:"❌ Out of stock",addToCart:"🛒 Add to Cart",askPrice:"Ask for price",sizeLabel:"Size",stockLabel:"Stock",pieces:"pcs",inStock:"in stock",lowStock:"Only {n}",stockOut:"Out of stock",reviewsTitle:"⭐ Reviews",noReviews:"No reviews yet.",addReview:"✏️ Write Review",yourNamePh:"Your name",yourReviewPh:"Write review...",submitReview:"Submit",needNamePhone:"Fill name, mobile, address",invalidPhone:"Enter valid 10-digit mobile",cartEmptyAlert:"Cart empty",orderSent:"✅ Order sent!",onlyInStock:"Only {n} in stock",nameAndReview:"Enter name and review",totalItems:"Items:",grandTotal:"Total:",checkout:"Checkout",addMore:"✓ In cart ({n})",confirmDelete:"Delete?",loading:"Loading products...",waNewOrder:"🛍️ *NEW ORDER*",waOrderId:"📋 *ID:*",waDate:"📅 *Date:*",waCustInfo:"👤 *Customer:*",waName:"Name:",waPhone:"Phone:",waAddress:"Address:",waNote:"Note:",waProducts:"📦 *Products:*",waSize:"Size:",waPrice:"Price:",waTotalItems:"🧮 *Items:*",waTotal:"💰 *Total:*",waPayment:"💳 *Pay:*"},
+hi:{langName:"हिन्दी",cart:"कार्ट",heroTitle:'रेडीमेड <em>गारमेंट्स</em><br/>होलसेल कलेक्शन',heroSub:"सीधे कंपनी से ऑर्डर करें",searchPh:"डिज़ाइन, प्रकार या साइज़ खोजें...",all:"सभी",shirt:"शर्ट",babaSuit:"बाबा सूट",other:"अन्य",totalCount:"कुल: {n}",noProducts:"कोई प्रोडक्ट नहीं",productDetail:"प्रोडक्ट विवरण",yourCart:"🛒 कार्ट",cartEmpty:"कार्ट खाली है",completeOrder:"📦 ऑर्डर पूरा करें",yourInfo:"👤 जानकारी",fullName:"पूरा नाम *",namePh:"जैसे: रहीम शेख",mobileNum:"मोबाइल *",fullAddress:"पूरा पता *",addressPh:"घर, सड़क, क्षेत्र, शहर, पिन",extraNote:"नोट",notePh:"जैसे: रंग, डिलीवरी समय",paymentMethod:"💳 भुगतान",cod:"कैश ऑन डिलीवरी",upiAdvance:"UPI / अग्रिम",payUpiBelow:"नीचे UPI पर भुगतान करें:",sendScreenshot:"WhatsApp पर स्क्रीनशॉट भेजें",sendOrderBtn:"WhatsApp पर ऑर्डर भेजें",confirmCall:"हम कॉल करेंगे",adminPanel:"⚙️ एडमिन",copyright:"© 2026",inCart:"✓ कार्ट में",outOfStock:"❌ स्टॉक खत्म",addToCart:"🛒 कार्ट में जोड़ें",askPrice:"कीमत पूछें",sizeLabel:"साइज़",stockLabel:"स्टॉक",pieces:"पीस",inStock:"स्टॉक में",lowStock:"केवल {n}",stockOut:"स्टॉक खत्म",reviewsTitle:"⭐ समीक्षा",noReviews:"समीक्षा नहीं।",addReview:"✏️ समीक्षा लिखें",yourNamePh:"नाम",yourReviewPh:"समीक्षा लिखें...",submitReview:"भेजें",needNamePhone:"नाम, मोबाइल, पता भरें",invalidPhone:"सही 10 अंक का नंबर दें",cartEmptyAlert:"कार्ट खाली",orderSent:"✅ ऑर्डर भेजा गया!",onlyInStock:"केवल {n} स्टॉक में",nameAndReview:"नाम और समीक्षा दें",totalItems:"आइटम:",grandTotal:"कुल:",checkout:"चेकआउट",addMore:"✓ कार्ट में ({n})",confirmDelete:"हटाएं?",loading:"लोड हो रहा है...",waNewOrder:"🛍️ *नया ऑर्डर*",waOrderId:"📋 *ID:*",waDate:"📅 *तारीख:*",waCustInfo:"👤 *ग्राहक:*",waName:"नाम:",waPhone:"फोन:",waAddress:"पता:",waNote:"नोट:",waProducts:"📦 *प्रोडक्ट:*",waSize:"साइज़:",waPrice:"कीमत:",waTotalItems:"🧮 *आइटम:*",waTotal:"💰 *कुल:*",waPayment:"💳 *भुगतान:*"},
+ur:{langName:"اردو",cart:"کارٹ",heroTitle:'ریڈی میڈ <em>گارمنٹس</em><br/>ہول سیل',heroSub:"براہ راست آرڈر کریں",searchPh:"ڈیزائن، قسم یا سائز تلاش کریں...",all:"سب",shirt:"شرٹ",babaSuit:"بابا سوٹ",other:"دیگر",totalCount:"کل: {n}",noProducts:"کوئی پروڈکٹ نہیں",productDetail:"تفصیلات",yourCart:"🛒 کارٹ",cartEmpty:"کارٹ خالی ہے",completeOrder:"📦 آرڈر مکمل کریں",yourInfo:"👤 معلومات",fullName:"پورا نام *",namePh:"مثلاً: رحیم شیخ",mobileNum:"موبائل *",fullAddress:"پتہ *",addressPh:"گھر، گلی، علاقہ، شہر، پن",extraNote:"نوٹ",notePh:"مثلاً: رنگ، وقت",paymentMethod:"💳 ادائیگی",cod:"کیش آن ڈیلیوری",upiAdvance:"UPI / پیشگی",payUpiBelow:"UPI پر ادائیگی:",sendScreenshot:"اسکرین شاٹ بھیجیں",sendOrderBtn:"WhatsApp پر بھیجیں",confirmCall:"ہم کال کریں گے",adminPanel:"⚙️ ایڈمن",copyright:"© 2026",inCart:"✓ کارٹ میں",outOfStock:"❌ اسٹاک ختم",addToCart:"🛒 کارٹ میں شامل کریں",askPrice:"قیمت پوچھیں",sizeLabel:"سائز",stockLabel:"اسٹاک",pieces:"پیس",inStock:"اسٹاک میں",lowStock:"صرف {n}",stockOut:"ختم",reviewsTitle:"⭐ رائے",noReviews:"کوئی رائے نہیں۔",addReview:"✏️ رائے لکھیں",yourNamePh:"نام",yourReviewPh:"رائے لکھیں...",submitReview:"بھیجیں",needNamePhone:"نام، موبائل، پتہ بھریں",invalidPhone:"درست 10 ہندسوں کا نمبر",cartEmptyAlert:"کارٹ خالی",orderSent:"✅ آرڈر بھیج دیا!",onlyInStock:"صرف {n} اسٹاک",nameAndReview:"نام اور رائے",totalItems:"اشیاء:",grandTotal:"کل:",checkout:"چیک آؤٹ",addMore:"✓ کارٹ میں ({n})",confirmDelete:"حذف کریں؟",loading:"لوڈ ہو رہا ہے...",waNewOrder:"🛍️ *نیا آرڈر*",waOrderId:"📋 *ID:*",waDate:"📅 *تاریخ:*",waCustInfo:"👤 *گاہک:*",waName:"نام:",waPhone:"فون:",waAddress:"پتہ:",waNote:"نوٹ:",waProducts:"📦 *پروڈکٹس:*",waSize:"سائز:",waPrice:"قیمت:",waTotalItems:"🧮 *اشیاء:*",waTotal:"💰 *کل:*",waPayment:"💳 *ادائیگی:*"},
+ta:{langName:"தமிழ்",cart:"கார்ட்",heroTitle:'ரெடிமேட் <em>ஆடைகள்</em><br/>மொத்த விற்பனை',heroSub:"நேரடி ஆர்டர்",searchPh:"டிசைன், வகை, சைஸ் தேடுங்கள்...",all:"அனைத்தும்",shirt:"சட்டை",babaSuit:"பாபா சூட்",other:"மற்றவை",totalCount:"மொத்தம்: {n}",noProducts:"பொருட்கள் இல்லை",productDetail:"விவரங்கள்",yourCart:"🛒 கார்ட்",cartEmpty:"கார்ட் காலியாக",completeOrder:"📦 ஆர்டர் முடிக்க",yourInfo:"👤 தகவல்",fullName:"முழு பெயர் *",namePh:"உதா: ரஹீம்",mobileNum:"மொபைல் *",fullAddress:"முகவரி *",addressPh:"வீடு, தெரு, பகுதி, நகரம், பின்",extraNote:"குறிப்பு",notePh:"உதா: நிறம், நேரம்",paymentMethod:"💳 கட்டணம்",cod:"டெலிவரியில் பணம்",upiAdvance:"UPI / முன்பணம்",payUpiBelow:"UPI-க்கு பணம்:",sendScreenshot:"ஸ்கிரீன்ஷாட் அனுப்பு",sendOrderBtn:"WhatsApp அனுப்பு",confirmCall:"நாங்கள் கால் செய்வோம்",adminPanel:"⚙️ நிர்வாகம்",copyright:"© 2026",inCart:"✓ கார்ட்டில்",outOfStock:"❌ ஸ்டாக் இல்லை",addToCart:"🛒 கார்ட்டில் சேர்",askPrice:"விலை கேள்",sizeLabel:"சைஸ்",stockLabel:"ஸ்டாக்",pieces:"துண்டு",inStock:"உள்ளது",lowStock:"மீதம் {n}",stockOut:"இல்லை",reviewsTitle:"⭐ மதிப்புரை",noReviews:"மதிப்புரை இல்லை.",addReview:"✏️ எழுது",yourNamePh:"பெயர்",yourReviewPh:"எழுதுங்கள்...",submitReview:"அனுப்பு",needNamePhone:"பெயர், மொபைல், முகவரி",invalidPhone:"சரியான 10 இலக்க எண்",cartEmptyAlert:"கார்ட் காலி",orderSent:"✅ அனுப்பப்பட்டது!",onlyInStock:"மீதம் {n}",nameAndReview:"பெயர் மற்றும் மதிப்புரை",totalItems:"பொருட்கள்:",grandTotal:"மொத்தம்:",checkout:"செக்அவுட்",addMore:"✓ கார்ட்டில் ({n})",confirmDelete:"நீக்கு?",loading:"ஏற்றுகிறது...",waNewOrder:"🛍️ *புதிய ஆர்டர்*",waOrderId:"📋 *ID:*",waDate:"📅 *தேதி:*",waCustInfo:"👤 *வாடிக்கையாளர்:*",waName:"பெயர்:",waPhone:"ஃபோன்:",waAddress:"முகவரி:",waNote:"குறிப்பு:",waProducts:"📦 *பொருட்கள்:*",waSize:"சைஸ்:",waPrice:"விலை:",waTotalItems:"🧮 *பொருட்கள்:*",waTotal:"💰 *மொத்தம்:*",waPayment:"💳 *கட்டணம்:*"},
+te:{langName:"తెలుగు",cart:"కార్ట్",heroTitle:'రెడీమేడ్ <em>గార్మెంట్స్</em><br/>హోల్‌సేల్',heroSub:"నేరుగా ఆర్డర్",searchPh:"డిజైన్, రకం, సైజ్ వెతకండి...",all:"అన్నీ",shirt:"షర్ట్",babaSuit:"బాబా సూట్",other:"ఇతరులు",totalCount:"మొత్తం: {n}",noProducts:"ఉత్పత్తులు లేవు",productDetail:"వివరాలు",yourCart:"🛒 కార్ట్",cartEmpty:"కార్ట్ ఖాళీగా",completeOrder:"📦 ఆర్డర్ పూర్తి",yourInfo:"👤 సమాచారం",fullName:"పూర్తి పేరు *",namePh:"ఉదా: రహీం",mobileNum:"మొబైల్ *",fullAddress:"చిరునామా *",addressPh:"ఇల్లు, వీధి, నగరం, పిన్",extraNote:"గమనిక",notePh:"ఉదా: రంగు, సమయం",paymentMethod:"💳 చెల్లింపు",cod:"డెలివరీలో నగదు",upiAdvance:"UPI / అడ్వాన్స్",payUpiBelow:"UPIకి చెల్లించండి:",sendScreenshot:"స్క్రీన్‌షాట్ పంపండి",sendOrderBtn:"WhatsApp పంపండి",confirmCall:"మేము కాల్ చేస్తాము",adminPanel:"⚙️ అడ్మిన్",copyright:"© 2026",inCart:"✓ కార్ట్‌లో",outOfStock:"❌ స్టాక్ లేదు",addToCart:"🛒 కార్ట్‌కి జోడించు",askPrice:"ధర అడగండి",sizeLabel:"సైజ్",stockLabel:"స్టాక్",pieces:"ముక్కలు",inStock:"స్టాక్‌లో",lowStock:"కేవలం {n}",stockOut:"లేదు",reviewsTitle:"⭐ సమీక్షలు",noReviews:"సమీక్షలు లేవు.",addReview:"✏️ రాయండి",yourNamePh:"పేరు",yourReviewPh:"రాయండి...",submitReview:"పంపండి",needNamePhone:"పేరు, మొబైల్, చిరునామా",invalidPhone:"సరైన 10 అంకెల నంబర్",cartEmptyAlert:"కార్ట్ ఖాళీ",orderSent:"✅ పంపబడింది!",onlyInStock:"కేవలం {n}",nameAndReview:"పేరు మరియు సమీక్ష",totalItems:"వస్తువులు:",grandTotal:"మొత్తం:",checkout:"చెక్‌అవుట్",addMore:"✓ కార్ట్‌లో ({n})",confirmDelete:"తొలగించు?",loading:"లోడ్ అవుతోంది...",waNewOrder:"🛍️ *కొత్త ఆర్డర్*",waOrderId:"📋 *ID:*",waDate:"📅 *తేదీ:*",waCustInfo:"👤 *కస్టమర్:*",waName:"పేరు:",waPhone:"ఫోన్:",waAddress:"చిరునామా:",waNote:"గమనిక:",waProducts:"📦 *ఉత్పత్తులు:*",waSize:"సైజ్:",waPrice:"ధర:",waTotalItems:"🧮 *వస్తువులు:*",waTotal:"💰 *మొత్తం:*",waPayment:"💳 *చెల్లింపు:*"}};
+
+// ===== CONFIG =====
 const CLOUD = "dzteaiyod";
 const PRESET = "Aarick";
-const WA_NUMBER = "919830127586";
+const SHOP_PHONE = "919830127586";
+const ADMIN_PASS = "geeta@2026";
+const SHOP_NAME = "GEETA SUPER";
+const SHOP_ADDR = "U 111 Karbala Road, Kolkata-700018";
+const SHOP_GST = "19AKKPK2513L1ZY";
+
+// ===== STATE =====
 let samples = [];
-let cart = JSON.parse(sessionStorage.getItem("gs_cart") || "{}");
+let cart = JSON.parse(localStorage.getItem("gs_cart") || "[]");
+let SHOP_UPI = "";
+let currentLang = localStorage.getItem("gs_lang") || "bn";
 let currentFilter = "all";
-let selectedFile = null;
-window.showPage = function(p) {
-  document.querySelectorAll(".page").forEach(x => x.classList.remove("active"));
-  document.getElementById("page-" + p).classList.add("active");
-  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-  const pages = ["gallery","cart","customers","sent","calc","success"];
-  const idx = pages.indexOf(p);
-  if(idx >= 0 && idx < 5) document.querySelectorAll(".nav-btn")[idx].classList.add("active");
-  window.scrollTo(0,0);
-  if(p === "cart") renderCart();
-};
-document.getElementById("photoInput").addEventListener("change", function(e) {
-  const f = e.target.files[0];
-  if(!f) return;
-  if(f.size > 10*1024*1024){ showNotice("❗ Image must be under 10MB","err"); return; }
-  selectedFile = f;
-  const r = new FileReader();
-  r.onload = ev => {
-    document.getElementById("uploadContent").innerHTML =
-      `<img src="${ev.target.result}"/><div class="preview-ok">✓ Image selected</div>`;
-  };
-  r.readAsDataURL(f);
-});
+let selectedFiles = [];
+let payMethod = "COD";
+let isAdminAuth = false;
+let currentDetailId = null;
+let currentGalleryIndex = 0;
+let editingId = null;
+let adminTab = "products";
+let reviewRating = 5;
+let dataLoaded = false;
+
+function t(key, vars) {
+  let s = (T[currentLang] && T[currentLang][key]) || T.bn[key] || key;
+  if (vars) for (const k in vars) s = s.replace(`{${k}}`, vars[k]);
+  return s;
+}
+
+function applyTranslations() {
+  document.body.setAttribute("data-lang", currentLang);
+  document.documentElement.setAttribute("dir", currentLang === "ur" ? "rtl" : "ltr");
+  document.querySelectorAll("[data-t]").forEach(el => {
+    el.innerHTML = t(el.getAttribute("data-t"));
+  });
+  document.querySelectorAll("[data-tp]").forEach(el => {
+    el.setAttribute("placeholder", t(el.getAttribute("data-tp")));
+  });
+  document.getElementById("currentLangLabel").textContent = T[currentLang].langName;
+  document.querySelectorAll(".lang-option").forEach(el => el.classList.remove("active"));
+  const langs = ["bn","en","hi","ur","ta","te"];
+  const idx = langs.indexOf(currentLang);
+  if (idx >= 0) document.querySelectorAll(".lang-option")[idx].classList.add("active");
+}
+
+function toggleLangMenu(e) { e.stopPropagation(); document.getElementById("langMenu").classList.toggle("open"); }
+document.addEventListener("click", () => document.getElementById("langMenu").classList.remove("open"));
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem("gs_lang", lang);
+  applyTranslations();
+  renderCards();
+  document.getElementById("langMenu").classList.remove("open");
+}
+
+function getEmoji(t) { return t === "বাবা স্যুট" ? "👘" : t === "শার্ট" ? "👔" : "🧵"; }
+function getMainPhoto(s) { return s.photos && s.photos.length > 0 ? s.photos[0] : null; }
+function getTypeLabel(typeKey) {
+  if (typeKey === "শার্ট") return t("shirt");
+  if (typeKey === "বাবা স্যুট") return t("babaSuit");
+  return t("other");
+}
+function getStockBadge(stock) {
+  if (stock === 0) return `<span class="stock-badge stock-out">${t("stockOut")}</span>`;
+  if (stock <= 3) return `<span class="stock-badge stock-low">${t("lowStock", {n: stock})}</span>`;
+  return `<span class="stock-badge stock-in">${stock} ${t("inStock")}</span>`;
+}
+function getAvgRating(s) {
+  const list = s.reviews || [];
+  if (list.length === 0) return null;
+  return list.reduce((sum, r) => sum + r.rating, 0) / list.length;
+}
+function renderStars(rating) { const full = Math.round(rating); return "★".repeat(full) + "☆".repeat(5 - full); }
+
+function startFirebaseListeners() {
+  if (!window.FB) return;
+  const { db, collection, doc, query, orderBy, onSnapshot } = window.FB;
+  
+  const productsRef = collection(db, "products");
+  const q = query(productsRef, orderBy("createdAt", "desc"));
+  
+  onSnapshot(q, (snapshot) => {
+    samples = [];
+    snapshot.forEach(d => samples.push({ id: d.id, ...d.data() }));
+    dataLoaded = true;
+    document.getElementById("loadingBanner").style.display = "none";
+    document.getElementById("filterBar").style.display = "flex";
+    renderCards();
+    if (isAdminAuth && adminTab === "products") renderAdminList();
+  }, (err) => {
+    console.error("FB listen error:", err);
+    document.getElementById("loadingBanner").innerHTML = `<span style="color:#c62828">⚠️ Database error: ${err.message}</span>`;
+  });
+
+  onSnapshot(doc(db, "settings", "main"), (d) => {
+    if (d.exists()) SHOP_UPI = d.data().upi || "";
+  });
+}
+
+function renderCards() {
+  if (!dataLoaded) return;
+  const search = document.getElementById("searchInput")?.value.toLowerCase().trim() || "";
+  let list = currentFilter === "all" ? samples : samples.filter(s => s.type === currentFilter);
+  if (search) {
+    list = list.filter(s =>
+      (s.design || "").toLowerCase().includes(search) ||
+      (s.type || "").toLowerCase().includes(search) ||
+      (s.size || "").toLowerCase().includes(search)
+    );
+  }
+  document.getElementById("countLabel").textContent = t("totalCount", {n: list.length});
+  const c = document.getElementById("cards");
+  const em = document.getElementById("empty");
+  if (list.length === 0) { c.innerHTML = ""; em.style.display = "block"; return; }
+  em.style.display = "none";
+  c.innerHTML = list.map(s => {
+    const inCart = cart.find(c => c.id === s.id);
+    const mainPhoto = getMainPhoto(s);
+    const photoCount = s.photos ? s.photos.length : 0;
+    const avgRating = getAvgRating(s);
+    const reviewCount = (s.reviews || []).length;
+    const stock = s.stock || 0;
+    return `<div class="card">
+      <div class="card-img" onclick="openDetail('${s.id}')">
+        ${mainPhoto ? `<img src="${mainPhoto}"/>` : `<span class="emoji">${getEmoji(s.type)}</span>`}
+        <span class="tag">${getTypeLabel(s.type)}</span>
+        ${getStockBadge(stock)}
+        ${photoCount > 1 ? `<span class="photo-count">📷 ${photoCount}</span>` : ""}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${s.design || ""} ${getTypeLabel(s.type)}</div>
+        ${avgRating ? `<div class="rating-row" onclick="openDetail('${s.id}')"><span class="stars">${renderStars(avgRating)}</span><span>(${reviewCount})</span></div>` : ""}
+        <div class="specs-row"><span>📐 ${t("sizeLabel")}: ${s.size || "—"}</span></div>
+        <div class="price">${s.price ? "৳ " + s.price : t("askPrice")}</div>
+        <button class="add-cart-btn ${inCart ? "in-cart" : ""}" onclick="addToCart('${s.id}')" ${stock === 0 ? "disabled" : ""}>
+          ${stock === 0 ? t("outOfStock") : (inCart ? `${t("inCart")} (${inCart.qty})` : t("addToCart"))}
+        </button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll(".filter-bar .filter-btn").forEach(b => b.classList.remove("active"));
+  el.classList.add("active");
+  renderCards();
+}
+
+function openDetail(id) {
+  const s = samples.find(x => x.id === id);
+  if (!s) return;
+  currentDetailId = id;
+  currentGalleryIndex = 0;
+  renderDetail();
+  document.getElementById("detailModal").classList.add("active");
+}
+
+function renderDetail() {
+  const s = samples.find(x => x.id === currentDetailId);
+  if (!s) return;
+  const photos = s.photos || [];
+  const inCart = cart.find(c => c.id === s.id);
+  const mainPhoto = photos[currentGalleryIndex];
+  const reviewList = s.reviews || [];
+  const avgRating = getAvgRating(s);
+  const stock = s.stock || 0;
+  document.getElementById("detailBody").innerHTML = `
+    <div class="detail-gallery">
+      ${mainPhoto ? `<img class="detail-main-img" src="${mainPhoto}"/>${photos.length > 1 ? `<button class="gallery-nav prev" onclick="changeGallery(-1)">‹</button><button class="gallery-nav next" onclick="changeGallery(1)">›</button>` : ""}` : `<div class="detail-main-img placeholder">${getEmoji(s.type)}</div>`}
+    </div>
+    ${photos.length > 1 ? `<div class="gallery-thumbs">${photos.map((p, i) => `<img src="${p}" class="${i === currentGalleryIndex ? 'active' : ''}" onclick="setGallery(${i})"/>`).join("")}</div>` : ""}
+    <h2 class="detail-title">${s.design || ""} ${getTypeLabel(s.type)}</h2>
+    ${avgRating ? `<div style="margin-bottom:8px"><span style="color:#E8B84B">${renderStars(avgRating)}</span> <span style="color:#7A6040;font-size:.85rem">(${reviewList.length})</span></div>` : ""}
+    <div class="detail-price">${s.price ? "৳ " + s.price : t("askPrice")}</div>
+    <div class="detail-specs">
+      <div class="detail-spec"><strong>Type</strong>${getTypeLabel(s.type)}</div>
+      <div class="detail-spec"><strong>Design</strong>${s.design || "—"}</div>
+      <div class="detail-spec"><strong>${t("sizeLabel")}</strong>${s.size || "—"}</div>
+      <div class="detail-spec"><strong>${t("stockLabel")}</strong>${stock > 0 ? stock + " " + t("pieces") : t("stockOut")}</div>
+    </div>
+    <button class="whatsapp-btn" onclick="addToCart('${s.id}');closeModal('detailModal')" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? t("outOfStock") : (inCart ? t("addMore",{n:inCart.qty}) : t("addToCart"))}</button>
+    <div class="reviews-section">
+      <h4>${t("reviewsTitle")} (${reviewList.length})</h4>
+      ${reviewList.length === 0 ? `<p style="font-size:.85rem;color:#7A6040">${t("noReviews")}</p>` : reviewList.map(r => `<div class="review-item"><div><span class="review-name">${r.name}</span> <span class="review-stars">${renderStars(r.rating)}</span></div><div style="color:#5A4A30;margin-top:3px">${r.text}</div></div>`).join("")}
+      <button class="add-review-btn" onclick="showReviewForm('${s.id}')">${t("addReview")}</button>
+      <div id="reviewFormBox"></div>
+    </div>`;
+}
+
+function changeGallery(delta) {
+  const s = samples.find(x => x.id === currentDetailId);
+  if (!s) return;
+  currentGalleryIndex = (currentGalleryIndex + delta + s.photos.length) % s.photos.length;
+  renderDetail();
+}
+function setGallery(i) { currentGalleryIndex = i; renderDetail(); }
+
+function showReviewForm(id) {
+  reviewRating = 5;
+  document.getElementById("reviewFormBox").innerHTML = `<div class="review-form">
+    <input id="rev_name" placeholder="${t('yourNamePh')}"/>
+    <div class="star-picker" id="starPicker">${[1,2,3,4,5].map(n => `<span class="${n <= reviewRating ? 'on' : ''}" onclick="setRating(${n})">★</span>`).join("")}</div>
+    <textarea id="rev_text" placeholder="${t('yourReviewPh')}" rows="3"></textarea>
+    <button class="btn-primary" onclick="submitReview('${id}')">${t('submitReview')}</button>
+  </div>`;
+}
+function setRating(n) {
+  reviewRating = n;
+  document.querySelectorAll("#starPicker span").forEach((s, i) => { s.className = i < n ? "on" : ""; });
+}
+async function submitReview(id) {
+  const name = document.getElementById("rev_name").value.trim();
+  const text = document.getElementById("rev_text").value.trim();
+  if (!name || !text) { alert(t("nameAndReview")); return; }
+  try {
+    const s = samples.find(x => x.id === id);
+    const reviews = (s.reviews || []).slice();
+    reviews.unshift({ name, text, rating: reviewRating, date: Date.now() });
+    await window.FB.updateDoc(window.FB.doc(window.FB.db, "products", id), { reviews });
+  } catch (err) { alert("Error: " + err.message); }
+}
+
+function saveCart() { localStorage.setItem("gs_cart", JSON.stringify(cart)); updateCartCount(); }
+
+function addToCart(id) {
+  const s = samples.find(x => x.id === id);
+  if (!s || (s.stock || 0) === 0) return;
+  const existing = cart.find(c => c.id === id);
+  if (existing) {
+    if (existing.qty >= s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
+    existing.qty += 1;
+  } else {
+    cart.push({ id, qty: 1, snapshot: { type: s.type, design: s.design, size: s.size, price: s.price, photo: getMainPhoto(s) } });
+  }
+  saveCart();
+  renderCards();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  if (delta > 0) {
+    const s = samples.find(x => x.id === id);
+    if (s && item.qty >= s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
+  }
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  saveCart();
+  renderCart();
+  renderCards();
+}
+
+function updateCartCount() { document.getElementById("cartCount").textContent = cart.reduce((s, c) => s + c.qty, 0); }
+
+function openCart() { renderCart(); document.getElementById("cartModal").classList.add("active"); }
+
+function renderCart() {
+  const body = document.getElementById("cartBody");
+  if (cart.length === 0) { body.innerHTML = `<div class="empty"><div class="emoji">🛒</div><div>${t("cartEmpty")}</div></div>`; return; }
+  let total = 0, totalItems = 0;
+  const html = cart.map(c => {
+    const s = c.snapshot;
+    const lt = (parseFloat(s.price) || 0) * c.qty;
+    total += lt; totalItems += c.qty;
+    return `<div class="cart-item"><div class="cart-item-img">${s.photo ? `<img src="${s.photo}"/>` : getEmoji(s.type)}</div><div class="cart-item-info"><div class="cart-item-name">${s.design || ""} ${getTypeLabel(s.type)}</div><div class="cart-item-meta">${t("sizeLabel")}: ${s.size || "—"}</div><div class="cart-item-price">৳ ${s.price || "—"} × ${c.qty}</div></div><div class="qty-controls"><button class="qty-btn" onclick="changeQty('${c.id}',-1)">−</button><span class="qty-num">${c.qty}</span><button class="qty-btn" onclick="changeQty('${c.id}',1)">+</button></div></div>`;
+  }).join("");
+  body.innerHTML = html + `<div class="cart-summary"><div class="cart-summary-row"><span>${t("totalItems")}</span><span>${totalItems}</span></div><div class="cart-summary-row total"><span>${t("grandTotal")}</span><span>৳ ${total.toFixed(2)}</span></div></div><button class="whatsapp-btn" onclick="goCheckout()">📦 ${t("checkout")}</button>`;
+}
+
+function goCheckout() {
+  if (cart.length === 0) return;
+  closeModal("cartModal");
+  document.getElementById("upiIdDisplay").textContent = SHOP_UPI || "—";
+  document.getElementById("checkoutModal").classList.add("active");
+}
+
+function selectPay(el, method) {
+  payMethod = method;
+  document.querySelectorAll(".pay-opt").forEach(p => p.classList.remove("active"));
+  el.classList.add("active");
+  document.getElementById("upiBox").style.display = method === "UPI" ? "block" : "none";
+}
+
+async function sendOrder() {
+  const name = document.getElementById("cust_name").value.trim();
+  const phone = document.getElementById("cust_phone").value.trim();
+  const address = document.getElementById("cust_address").value.trim();
+  const note = document.getElementById("cust_note").value.trim();
+  if (!name || !phone || !address) { alert(t("needNamePhone")); return; }
+  if (!/^[0-9]{10}$/.test(phone)) { alert(t("invalidPhone")); return; }
+  if (cart.length === 0) { alert(t("cartEmptyAlert")); return; }
+  const btn = document.getElementById("orderBtn");
+  btn.disabled = true;
+  let total = 0, totalItems = 0;
+  const lines = cart.map((c, i) => {
+    const s = c.snapshot;
+    const lt = (parseFloat(s.price) || 0) * c.qty;
+    total += lt; totalItems += c.qty;
+    return `${i+1}. ${s.design || ""} (${getTypeLabel(s.type)})\n   ${t("waSize")} ${s.size || "—"} | ${t("waPrice")} ৳${s.price || "—"} × ${c.qty} = ৳${lt.toFixed(2)}`;
+  }).join("\n\n");
+  const orderId = "GS" + Date.now().toString().slice(-6);
+  const orderDate = new Date().toLocaleString("en-IN");
+  const message = `${t("waNewOrder")} - ${SHOP_NAME}\n━━━━━━━━━━━━━━━━━━\n${t("waOrderId")} ${orderId}\n${t("waDate")} ${orderDate}\n\n${t("waCustInfo")}\n${t("waName")} ${name}\n${t("waPhone")} ${phone}\n${t("waAddress")} ${address}\n${note ? t("waNote") + " " + note + "\n" : ""}━━━━━━━━━━━━━━━━━━\n${t("waProducts")}\n\n${lines}\n━━━━━━━━━━━━━━━━━━\n${t("waTotalItems")} ${totalItems}\n${t("waTotal")} ৳ ${total.toFixed(2)}\n${t("waPayment")} ${payMethod === "COD" ? t("cod") : t("upiAdvance")}\n━━━━━━━━━━━━━━━━━━\nGST: ${SHOP_GST}\n${SHOP_ADDR}`;
+  
+  try {
+    const { db, collection, doc, addDoc, updateDoc, serverTimestamp } = window.FB;
+    await addDoc(collection(db, "orders"), {
+      orderId, name, phone, address, note,
+      items: cart, total, payMethod, status: "নতুন",
+      createdAt: serverTimestamp()
+    });
+    for (const c of cart) {
+      const s = samples.find(x => x.id === c.id);
+      if (s) {
+        const newStock = Math.max(0, (s.stock || 0) - c.qty);
+        await updateDoc(doc(db, "products", c.id), { stock: newStock });
+      }
+    }
+    window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(message)}`, "_blank");
+    setTimeout(() => {
+      cart = [];
+      saveCart();
+      closeModal("checkoutModal");
+      alert(t("orderSent"));
+      renderCards();
+      btn.disabled = false;
+    }, 800);
+  } catch (err) {
+    alert("Error: " + err.message);
+    btn.disabled = false;
+  }
+}
+
+function openAdmin() {
+  if (!isAdminAuth) renderAdminAuth();
+  else renderAdminPanel();
+  document.getElementById("adminModal").classList.add("active");
+}
+
+function renderAdminAuth() {
+  document.getElementById("adminBody").innerHTML = `<div class="auth-box">
+    <h3>🔒 অ্যাডমিন লগইন</h3>
+    <input type="password" id="admin_pass" placeholder="পাসওয়ার্ড" onkeypress="if(event.key==='Enter')checkAuth()"/>
+    <button class="btn-primary" onclick="checkAuth()">লগইন</button>
+  </div>`;
+  setTimeout(() => document.getElementById("admin_pass")?.focus(), 100);
+}
+
+function checkAuth() {
+  if (document.getElementById("admin_pass").value === ADMIN_PASS) { isAdminAuth = true; renderAdminPanel(); }
+  else alert("ভুল পাসওয়ার্ড");
+}
+
+function renderAdminPanel() {
+  document.getElementById("adminBody").innerHTML = `<div class="admin-tabs">
+    <button class="admin-tab ${adminTab === 'products' ? 'active' : ''}" onclick="switchAdminTab('products')">📦 প্রোডাক্ট</button>
+    <button class="admin-tab ${adminTab === 'orders' ? 'active' : ''}" onclick="switchAdminTab('orders')">🛒 অর্ডার</button>
+    <button class="admin-tab ${adminTab === 'settings' ? 'active' : ''}" onclick="switchAdminTab('settings')">⚙️ সেটিংস</button>
+  </div><div id="adminTabContent"></div>`;
+  renderAdminTab();
+}
+
+function switchAdminTab(tab) { adminTab = tab; renderAdminPanel(); }
+
+function renderAdminTab() {
+  const content = document.getElementById("adminTabContent");
+  if (adminTab === "products") renderProductsTab(content);
+  else if (adminTab === "orders") renderOrdersTab(content);
+  else if (adminTab === "settings") renderSettingsTab(content);
+}
+
+function renderProductsTab(content) {
+  const isEditing = editingId !== null;
+  const editing = isEditing ? samples.find(s => s.id === editingId) : null;
+  content.innerHTML = `<div class="admin-section">
+    <h3>${isEditing ? "✏️ প্রোডাক্ট সম্পাদনা" : "➕ নতুন প্রোডাক্ট"}</h3>
+    <div class="grid-4">
+      <div class="field"><label>ধরন</label><select id="ad_type">
+        <option ${editing?.type === 'শার্ট' ? 'selected' : ''}>শার্ট</option>
+        <option ${editing?.type === 'বাবা স্যুট' ? 'selected' : ''}>বাবা স্যুট</option>
+        <option ${editing?.type === 'অন্যান্য' ? 'selected' : ''}>অন্যান্য</option>
+      </select></div>
+      <div class="field"><label>Design No</label><input id="ad_design" placeholder="GS-101" value="${editing?.design || ''}"/></div>
+      <div class="field"><label>Size</label><input id="ad_size" placeholder="S/M/L/XL" value="${editing?.size || ''}"/></div>
+      <div class="field"><label>RS মূল্য</label><input id="ad_price" type="number" value="${editing?.price || ''}"/></div>
+      <div class="field"><label>স্টক (পিস)</label><input id="ad_stock" type="number" value="${editing?.stock !== undefined ? editing.stock : 10}"/></div>
+    </div>
+    <label class="upload-area">
+      <input type="file" id="photoInput" accept="image/*" multiple/>
+      <div class="icon">📸</div>
+      <p>একাধিক ছবি যোগ করুন</p>
+      <small>JPG, PNG · ১০MB</small>
+    </label>
+    <div class="preview-grid" id="previewGrid"></div>
+    <div class="progress-wrap" id="progressWrap" style="display:none">
+      <div class="progress-label"><span>আপলোড...</span><span id="progressText">0%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+    <div id="notice" style="display:none"></div>
+    <button class="btn-primary" id="addBtn" onclick="addSample()">${isEditing ? "✓ আপডেট" : "✦ যোগ করুন"}</button>
+    ${isEditing ? '<button class="btn-primary" style="background:#7A6040;margin-top:8px" onclick="cancelEdit()">বাতিল</button>' : ''}
+  </div>
+  <div class="admin-section">
+    <h3>📋 প্রোডাক্ট (${samples.length}টি)</h3>
+    <div class="admin-list" id="adminList"></div>
+  </div>`;
+  if (isEditing && editing.photos) selectedFiles = editing.photos.map(url => ({ existing: true, url }));
+  else selectedFiles = [];
+  renderPreviewGrid();
+  setupPhotoInput();
+  renderAdminList();
+}
+
+async function renderOrdersTab(content) {
+  content.innerHTML = `<div class="admin-section"><h3>লোড হচ্ছে...</h3></div>`;
+  try {
+    const { db, collection, query, orderBy, getDocs } = window.FB;
+    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+    const snap = await getDocs(q);
+    const orders = [];
+    snap.forEach(d => orders.push({ id: d.id, ...d.data() }));
+    content.innerHTML = `<div class="admin-section">
+      <h3>📦 অর্ডার (${orders.length}টি)</h3>
+      ${orders.length === 0 ? '<p style="color:#F0E6C8">কোনো অর্ডার নেই</p>' : orders.map(o => `
+        <div class="order-card">
+          <strong>${o.orderId || o.id}</strong> · ${o.createdAt?.toDate?.().toLocaleString("en-IN") || ""}<br/>
+          👤 ${o.name} · 📞 ${o.phone}<br/>
+          📍 ${o.address}<br/>
+          <span style="color:#C8932A;font-weight:700">৳${(o.total || 0).toFixed(2)} · ${o.payMethod}</span>
+          <span style="background:rgba(200,147,42,.2);padding:2px 8px;border-radius:10px;font-size:.7rem;margin-left:6px">${o.status || "নতুন"}</span>
+          <div class="order-actions">
+            <button onclick="callCustomer('${o.phone}')">📞</button>
+            <button onclick="whatsappCustomer('${o.phone}','${o.orderId || o.id}')">💬</button>
+            <button onclick="updateOrderStatus('${o.id}','প্রসেসিং')">প্রসেসিং</button>
+            <button onclick="updateOrderStatus('${o.id}','ডেলিভারড')">ডেলিভারড</button>
+            <button onclick="deleteOrder('${o.id}')" style="background:rgba(235,87,87,.2);color:#eb5757">🗑️</button>
+          </div>
+        </div>`).join("")}
+    </div>`;
+  } catch (err) { content.innerHTML = `<div class="admin-section"><h3 style="color:#eb5757">Error: ${err.message}</h3></div>`; }
+}
+
+function renderSettingsTab(content) {
+  let totalReviews = 0;
+  samples.forEach(s => { totalReviews += (s.reviews || []).length; });
+  content.innerHTML = `<div class="admin-section">
+    <h3>💳 UPI ID</h3>
+    <div class="field"><label>UPI ID</label><input id="set_upi" placeholder="yourname@bank" value="${SHOP_UPI || ''}"/></div>
+    <button class="btn-primary" onclick="saveUpi()">সেভ</button>
+  </div>
+  <div class="admin-section">
+    <h3>📊 পরিসংখ্যান</h3>
+    <div style="color:#F0E6C8;line-height:1.8">
+      📦 প্রোডাক্ট: <strong style="color:#E8B84B">${samples.length}টি</strong><br/>
+      ⭐ রিভিউ: <strong style="color:#E8B84B">${totalReviews}টি</strong><br/>
+      ❌ স্টক শেষ: <strong style="color:#eb5757">${samples.filter(s => (s.stock || 0) === 0).length}টি</strong><br/>
+      ⚠️ কম স্টক: <strong style="color:#f2c94c">${samples.filter(s => (s.stock || 0) > 0 && (s.stock || 0) <= 3).length}টি</strong>
+    </div>
+  </div>
+  <div class="admin-section">
+    <h3>✅ Database Status</h3>
+    <div style="color:#F0E6C8;font-size:.85rem">
+      ✓ Firebase connected<br/>
+      ✓ Real-time sync active<br/>
+      ✓ সব customer একই data দেখবে
+    </div>
+  </div>`;
+}
+
+async function saveUpi() {
+  const v = document.getElementById("set_upi").value.trim();
+  try {
+    await window.FB.setDoc(window.FB.doc(window.FB.db, "settings", "main"), { upi: v }, { merge: true });
+    SHOP_UPI = v;
+    alert("✅ UPI সেভ হয়েছে: " + v);
+  } catch (err) { alert("Error: " + err.message); }
+}
+
+function callCustomer(phone) { window.location.href = "tel:" + phone; }
+function whatsappCustomer(phone, oid) {
+  window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(`নমস্কার, GEETA SUPER থেকে। অর্ডার ${oid} সম্পর্কে।`)}`, "_blank");
+}
+async function updateOrderStatus(id, status) {
+  try {
+    await window.FB.updateDoc(window.FB.doc(window.FB.db, "orders", id), { status });
+    renderOrdersTab(document.getElementById("adminTabContent"));
+  } catch (err) { alert("Error: " + err.message); }
+}
+async function deleteOrder(id) {
+  if (!confirm("মুছে ফেলবেন?")) return;
+  try {
+    await window.FB.deleteDoc(window.FB.doc(window.FB.db, "orders", id));
+    renderOrdersTab(document.getElementById("adminTabContent"));
+  } catch (err) { alert("Error: " + err.message); }
+}
+
+function setupPhotoInput() {
+  const input = document.getElementById("photoInput");
+  if (!input) return;
+  input.addEventListener("change", function(e) {
+    const files = Array.from(e.target.files);
+    for (const f of files) {
+      if (f.size > 10 * 1024 * 1024) { showNotice("❗ ১০MB এর বেশি: " + f.name, "err"); continue; }
+      selectedFiles.push({ file: f });
+    }
+    renderPreviewGrid();
+    input.value = "";
+  });
+}
+
+function renderPreviewGrid() {
+  const grid = document.getElementById("previewGrid");
+  if (!grid) return;
+  grid.innerHTML = selectedFiles.map((sf, i) => {
+    if (sf.existing) return `<div class="preview-item"><img src="${sf.url}"/><button class="rm" onclick="removePreview(${i})">✕</button></div>`;
+    return `<div class="preview-item"><img src="${URL.createObjectURL(sf.file)}"/><button class="rm" onclick="removePreview(${i})">✕</button></div>`;
+  }).join("");
+}
+
+function removePreview(i) { selectedFiles.splice(i, 1); renderPreviewGrid(); }
+
 function uploadToCloudinary(file) {
   return new Promise((resolve, reject) => {
     const fd = new FormData();
@@ -433,484 +864,125 @@ function uploadToCloudinary(file) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `https://api.cloudinary.com/v1_1/${CLOUD}/image/upload`);
     xhr.upload.onprogress = e => {
-      if(e.lengthComputable) {
-        const p = Math.round((e.loaded/e.total)*100);
-        document.getElementById("progressBar").style.width = p+"%";
-        document.getElementById("progressText").textContent = p+"%";
+      if (e.lengthComputable) {
+        const pct = Math.round((e.loaded / e.total) * 100);
+        const pb = document.getElementById("progressBar");
+        const pt = document.getElementById("progressText");
+        if (pb) pb.style.width = pct + "%";
+        if (pt) pt.textContent = pct + "%";
       }
     };
-    xhr.onload = () => xhr.status===200 ? resolve(JSON.parse(xhr.responseText)) : reject();
-    xhr.onerror = () => reject();
+    xhr.onload = () => xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject(new Error("Upload failed"));
+    xhr.onerror = () => reject(new Error("Network error"));
     xhr.send(fd);
   });
 }
-window.addSample = async function() {
-  const design = document.getElementById("design").value.trim();
-  const size = document.getElementById("size").value.trim();
-  const price = document.getElementById("price").value.trim();
-  const type = document.getElementById("type").value;
-  if(!design && !size && !price && !selectedFile){ showNotice("❗ Add at least one detail or photo","err"); return; }
+
+async function addSample() {
+  const design = document.getElementById("ad_design").value.trim();
+  const size = document.getElementById("ad_size").value.trim();
+  const price = document.getElementById("ad_price").value.trim();
+  const type = document.getElementById("ad_type").value;
+  const stock = parseInt(document.getElementById("ad_stock").value) || 0;
+  if (!design && !size && !price && selectedFiles.length === 0) { showNotice("❗ কিছু তথ্য দিন", "err"); return; }
   const btn = document.getElementById("addBtn");
   btn.disabled = true;
   document.getElementById("progressWrap").style.display = "block";
   try {
-    let photoUrl = "";
-    if(selectedFile) {
-      document.getElementById("progressMsg").textContent = "Uploading photo...";
-      const res = await uploadToCloudinary(selectedFile);
-      photoUrl = res.secure_url;
+    const photos = [];
+    for (const sf of selectedFiles) {
+      if (sf.existing) photos.push(sf.url);
+      else { const res = await uploadToCloudinary(sf.file); photos.push(res.secure_url); }
     }
-    document.getElementById("progressMsg").textContent = "Saving...";
-    document.getElementById("progressBar").style.width = "95%";
-    await addDoc(collection(db,"samples"), { type, design, size, price, stock: document.getElementById("stock").value.trim(), photo: photoUrl, createdAt: Date.now() });
-    document.getElementById("design").value = "";
-    document.getElementById("size").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("stock").value = "";
-    document.getElementById("photoInput").value = "";
-    document.getElementById("uploadContent").innerHTML =
-      `<div class="upload-icon">📸</div><p>Take photo or choose from gallery</p><small>JPG, PNG · Max 10MB</small>`;
-    selectedFile = null;
-    showNotice("✅ Sample added successfully!","ok");
-  } catch(e) {
-    showNotice("❌ Error. Please try again.","err");
+    const { db, collection, doc, addDoc, updateDoc, serverTimestamp } = window.FB;
+    if (editingId !== null) {
+      await updateDoc(doc(db, "products", editingId), { type, design, size, price, stock, photos });
+      editingId = null;
+    } else {
+      await addDoc(collection(db, "products"), { type, design, size, price, stock, photos, reviews: [], createdAt: serverTimestamp() });
+    }
+    selectedFiles = [];
+    showNotice("✅ সফলভাবে সেভ হয়েছে! সব customer দেখতে পাবে।", "ok");
+    setTimeout(() => renderProductsTab(document.getElementById("adminTabContent")), 1200);
+  } catch (err) {
+    showNotice("❌ Error: " + err.message, "err");
   } finally {
     btn.disabled = false;
-    setTimeout(() => { document.getElementById("progressWrap").style.display="none"; document.getElementById("progressBar").style.width="0%"; }, 800);
+    const pw = document.getElementById("progressWrap"); if (pw) pw.style.display = "none";
+    const pb = document.getElementById("progressBar"); if (pb) pb.style.width = "0%";
   }
-};
-window.setFilter = function(f, el) {
-  currentFilter = f;
-  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-  el.classList.add("active");
-  renderCards();
-};
-window.changeQty = function(id, delta) {
-  const cur = parseInt(document.getElementById("qty_"+id).textContent) || 6;
-  const next = Math.max(6, cur + delta * 6);
-  document.getElementById("qty_"+id).textContent = next + " pcs";
-};
-window.addToCart = function(id) {
-  const qty = parseInt(document.getElementById("qty_"+id).textContent) || 6;
-  cart[id] = qty;
-  updateCartBadge();
-  document.getElementById("qty_"+id).textContent = "6 pcs";
-  showNotice("✅ Added to cart! ("+qty+" pcs)","ok");
-};
-function updateCartBadge() {
-  const total = Object.values(cart).reduce((a,b)=>a+b,0);
-  document.getElementById("cartCount").textContent = total;
-  sessionStorage.setItem("gs_cart", JSON.stringify(cart));
 }
-function renderCards() {
-  const list = currentFilter==="all" ? samples : samples.filter(s=>s.type===currentFilter);
-  document.getElementById("countLabel").textContent = "Total: "+list.length;
-  const c = document.getElementById("cards");
-  const em = document.getElementById("empty");
-  if(list.length===0){ c.innerHTML=""; em.style.display="block"; return; }
-  em.style.display="none";
-  const emo = t => t==="Baba Suit"?"👘":t==="Shirt"?"👔":"🧵";
-  c.innerHTML = list.map(s=>`
-<div class="card">
-<div class="card-img">
-        ${s.photo?`<img src="${s.photo}" alt="${s.type}" loading="lazy"/>`:`<span class="emoji">${emo(s.type)}</span>`}
-<span class="tag">${s.type}</span>
-<button class="del-btn" onclick="removeSample('${s.id}')">✕</button>
-</div>
-<div class="card-body" id="body_${s.id}">
-<div class="specs">
-<div class="spec"><div class="sl">Design No</div><div class="sv" style="font-weight:900;font-size:.95rem;color:#1A1208">${s.design||"—"}</div></div>
-<div class="spec"><div class="sl">Size</div><div class="sv">${s.size||"—"}</div></div>
-          ${s.stock ? `
-<div class="spec" style="grid-column:span 2;background:${parseInt(s.stock)===0?"#ffebee":parseInt(s.stock)<=6?"#fff3e0":"#e8f5e9"}">
-<div class="sl" style="color:${parseInt(s.stock)===0?"#c62828":parseInt(s.stock)<=6?"#e65100":"#2e7d32"}">Stock</div>
-<div class="sv" style="color:${parseInt(s.stock)===0?"#c62828":parseInt(s.stock)<=6?"#e65100":"#2e7d32"}">
-              ${parseInt(s.stock)===0?"❌ Out of Stock":`${s.stock} pcs available · ${Math.floor(parseInt(s.stock)/6)} sets of 6`}
-              ${parseInt(s.stock)%6>0&&parseInt(s.stock)>0?`<span style="font-size:.65rem;display:block;margin-top:2px">+${parseInt(s.stock)%6} pcs extra</span>`:""}
-</div>
-</div>` : ""}
-<div class="spec dark" style="grid-column:span 2">
-<div class="sl">Price (1 pc) — Incl. GST</div>
-<div class="sv" style="font-size:1.1rem">${s.price?`<span style="font-size:.8rem;color:#C8932A">₹</span> ${s.price}`:"—"}</div>
-</div>
-</div>
-<div class="cart-ctrl">
-<button class="qty-btn" onclick="changeQty('${s.id}',-1)">−</button>
-<div class="qty-display" id="qty_${s.id}">6 pcs</div>
-<button class="qty-btn" onclick="changeQty('${s.id}',1)">+</button>
-</div>
-<button class="add-cart-btn" onclick="addToCart('${s.id}')" ${parseInt(s.stock)===0?"disabled style='background:#ccc;cursor:not-allowed'":""}>
-          ${parseInt(s.stock)===0?"❌ Out of Stock":"🛒 Add to Cart"}
-</button>
-<button onclick="quickEnquiry('${s.design||""}','${s.type}','${s.size||""}')"
-style="width:100%;background:#25D366;color:#fff;border:none;padding:7px;border-radius:5px;font-size:.75rem;font-weight:700;cursor:pointer;margin-top:5px">
-💬 Quick Enquiry
-</button>
-<button class="edit-btn" onclick="startEdit('${s.id}','${s.design||""}','${s.size||""}','${s.price||""}')">✏️ Edit</button>
-</div>
-</div>
-`).join("");
+
+function startEdit(id) {
+  editingId = id;
+  selectedFiles = [];
+  renderProductsTab(document.getElementById("adminTabContent"));
+  document.querySelector("#adminModal .modal").scrollTop = 0;
 }
-window.renderCart = function() {
-  const cartIds = Object.keys(cart).filter(id=>cart[id]>0);
-  if(cartIds.length===0) {
-    document.getElementById("cartEmpty").style.display="block";
-    document.getElementById("cartContent").style.display="none";
-    return;
-  }
-  document.getElementById("cartEmpty").style.display="none";
-  document.getElementById("cartContent").style.display="block";
-  const emo = t => t==="Baba Suit"?"👘":t==="Shirt"?"👔":"🧵";
-  let totalPcs=0, totalAmt=0;
-  const itemsHTML = cartIds.map(id=>{
-    const s = samples.find(x=>x.id===id);
-    if(!s) return "";
-    const qty = cart[id];
-    const unitPrice = parseFloat(s.price)||0;
-    const lineTotal = unitPrice*qty;
-    totalPcs += qty; totalAmt += lineTotal;
-    return `
-<div class="cart-item">
-<div class="cart-item-img">${s.photo?`<img src="${s.photo}" alt="${s.type}"/>`:emo(s.type)}</div>
-<div class="cart-item-info">
-<div class="ci-type">${s.type}</div>
-<div class="ci-design">${s.design||"Design N/A"}</div>
-<div class="ci-size">Size: ${s.size||"—"}</div>
-<div class="ci-price">${unitPrice?"₹"+unitPrice+" × "+qty+" pcs = ₹"+lineTotal.toLocaleString():qty+" pcs"}</div>
-<div class="cart-qty">
-<button class="cqb" onclick="cartQtyChange('${id}',-6)">−</button>
-<div class="cqd">${qty} pcs</div>
-<button class="cqb" onclick="cartQtyChange('${id}',6)">+</button>
-</div>
-</div>
-<button class="cart-remove" onclick="removeFromCart('${id}')">🗑️</button>
-</div>`;
+
+function cancelEdit() { editingId = null; selectedFiles = []; renderProductsTab(document.getElementById("adminTabContent")); }
+
+function renderAdminList() {
+  const list = document.getElementById("adminList");
+  if (!list) return;
+  if (samples.length === 0) { list.innerHTML = `<p style="color:#F0E6C8;grid-column:1/-1">কোনো প্রোডাক্ট নেই</p>`; return; }
+  list.innerHTML = samples.map(s => {
+    const main = getMainPhoto(s);
+    return `<div class="admin-card">
+      ${main ? `<img src="${main}"/>` : `<div class="ph-emoji">${getEmoji(s.type)}</div>`}
+      <button class="del-btn" onclick="removeSample('${s.id}')">✕</button>
+      <button class="edit-btn-card" onclick="startEdit('${s.id}')">✏️</button>
+      <div class="admin-card-body">
+        <strong>${s.design || "—"} (${s.type})</strong>
+        <small>সাইজ: ${s.size || "—"} · ৳${s.price || "—"}</small>
+        <small>স্টক: ${s.stock || 0}টি ${s.photos?.length > 1 ? `· 📷${s.photos.length}` : ''}</small>
+      </div>
+    </div>`;
   }).join("");
-  document.getElementById("cartItems").innerHTML = itemsHTML;
-  document.getElementById("cartSummary").innerHTML = `
-<div class="row"><span>Total Pieces</span><span class="val">${totalPcs} pcs</span></div>
-<div class="row"><span>Total Items</span><span class="val">${cartIds.length} designs</span></div>
-    ${totalAmt>0?`<div class="row total-row"><span>Total Amount</span><span class="val">₹ ${totalAmt.toLocaleString()}</span></div>`:""}
-`;
-};
-window.cartQtyChange = function(id, delta) {
-  cart[id] = Math.max(0,(cart[id]||0)+delta);
-  if(cart[id]===0) delete cart[id];
-  sessionStorage.setItem("gs_cart", JSON.stringify(cart));
-  updateCartBadge(); renderCart();
-};
-window.removeFromCart = function(id) {
-  delete cart[id];
-  sessionStorage.setItem("gs_cart", JSON.stringify(cart));
-  updateCartBadge(); renderCart();
-};
-window.completeOrder = async function() {
-  const name = document.getElementById("cusName").value.trim();
-  const phone = document.getElementById("cusPhone").value.trim();
-  const address = document.getElementById("cusAddress").value.trim();
-  const note = document.getElementById("cusNote").value.trim();
-  if(!name){ alert("Please enter your name"); return; }
-  if(!phone){ alert("Please enter phone number"); return; }
-  if(!address){ alert("Please enter address"); return; }
-  const cartIds = Object.keys(cart).filter(id=>cart[id]>0);
-  if(cartIds.length===0){ alert("Cart is empty!"); return; }
-  const btn = document.getElementById("orderBtn");
-  btn.disabled = true;
-  btn.textContent = "⏳ Processing...";
-  let totalPcs=0, totalAmt=0;
-  const orderItems = [];
-  cartIds.forEach(id=>{
-    const s = samples.find(x=>x.id===id);
-    if(!s) return;
-    const qty = cart[id];
-    const unitPrice = parseFloat(s.price)||0;
-    const lineTotal = unitPrice*qty;
-    totalPcs += qty; totalAmt += lineTotal;
-    orderItems.push({ type:s.type, design:s.design, size:s.size, price:unitPrice, qty, lineTotal, photo:s.photo||"" });
-  });
-  const orderId = "MGS" + Date.now().toString().slice(-6);
-  const now = new Date().toLocaleString("en-IN");
+}
+
+async function removeSample(id) {
+  if (!confirm("মুছে ফেলবেন?")) return;
   try {
-    await addDoc(collection(db,"orders"), {
-orderId, name, phone, address, note,
-      items: orderItems,
-totalPcs, totalAmt,
-      status: "New",
-      createdAt: Date.now(),
-      createdAtStr: now
-    });
-    let itemLines = "";
-    orderItems.forEach(item=>{
-      itemLines += `\n • ${item.type} | ${item.design||"N/A"} | Size: ${item.size||"—"} | ${item.qty} pcs${item.price?" | ₹"+item.lineTotal.toLocaleString():""}`;
-    });
-    let msg = `🛍️ *M GEETA SUPER — New Order*\n`;
-    msg += `━━━━━━━━━━━━━━━━━\n`;
-    msg += `🔖 *Order ID:* ${orderId}\n`;
-    msg += `👤 *Name:* ${name}\n`;
-    msg += `📱 *Phone:* ${phone}\n`;
-    msg += `📍 *Address:* ${address}\n`;
-    if(note) msg += `📝 *Note:* ${note}\n`;
-    msg += `━━━━━━━━━━━━━━━━━\n`;
-    msg += `📦 *Order Items:*${itemLines}\n`;
-    msg += `━━━━━━━━━━━━━━━━━\n`;
-    msg += `📊 *Total Pieces:* ${totalPcs} pcs\n`;
-    if(totalAmt>0) msg += `💰 *Total Amount:* ₹${totalAmt.toLocaleString()} (Incl. GST)\n`;
-    msg += `━━━━━━━━━━━━━━━━━\n`;
-    msg += `🕐 ${now}`;
-    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-    cart = {};
-    sessionStorage.removeItem("gs_cart");
-    updateCartBadge();
-    document.getElementById("successOrderId").textContent = "#"+orderId;
-    document.getElementById("successSummary").innerHTML = `
-<div style="margin-bottom:8px;font-size:.78rem;font-weight:700;color:#1A1208">Order Summary</div>
-      ${orderItems.map(item=>`
-<div style="display:flex;justify-content:space-between;font-size:.78rem;padding:5px 0;border-bottom:1px solid #F0E6C8">
-<span style="color:#3A2A10">${item.type} | ${item.design||"N/A"} | ${item.qty} pcs</span>
-<span style="color:#C8932A;font-weight:700">${item.price?"₹"+item.lineTotal.toLocaleString():""}</span>
-</div>
-`).join("")}
-<div style="display:flex;justify-content:space-between;margin-top:8px;font-weight:700">
-<span>Total (Incl. GST)</span>
-<span style="color:#C8932A">${totalAmt>0?"₹"+totalAmt.toLocaleString():totalPcs+" pcs"}</span>
-</div>
-`;
-    document.getElementById("waShareBtn").onclick = () => window.open(waUrl,"_blank");
-    showPage("success");
-    setTimeout(()=>sendOrderAlert(orderId, name, phone, totalAmt, totalPcs), 500);
-  } catch(e) {
-    showNotice("❌ Error. Please try again.","err");
-    btn.disabled = false;
-    btn.textContent = "✅ Complete Order";
-  }
-};
-window.resetAndShop = function() {
-  document.getElementById("cusName").value = "";
-  document.getElementById("cusPhone").value = "";
-  document.getElementById("cusAddress").value = "";
-  document.getElementById("cusNote").value = "";
-  showPage("gallery");
-};
-window.startEdit = function(id,d,s,p) {
-  document.getElementById("body_"+id).innerHTML = `
-<div class="edit-form">
-<input id="ed_d_${id}" value="${d}" placeholder="Design No"/>
-<input id="ed_s_${id}" value="${s}" placeholder="Size"/>
-<input id="ed_p_${id}" value="${p}" placeholder="Price" type="number"/>
-<button class="save-btn" onclick="saveEdit('${id}')">✓ Save</button>
-</div>`;
-};
-window.saveEdit = async function(id) {
-  const design = document.getElementById("ed_d_"+id).value;
-  const size = document.getElementById("ed_s_"+id).value;
-  const price = document.getElementById("ed_p_"+id).value;
-  try { await updateDoc(doc(db,"samples",id),{design,size,price}); showNotice("✅ Updated!","ok"); }
-  catch(e){ showNotice("❌ Update failed","err"); }
-};
-window.removeSample = async function(id) {
-  if(!confirm("Delete this sample?")) return;
-  try { await deleteDoc(doc(db,"samples",id)); showNotice("🗑️ Deleted","ok"); }
-  catch(e){ showNotice("❌ Could not delete","err"); }
-};
-function showNotice(msg,type) {
+    await window.FB.deleteDoc(window.FB.doc(window.FB.db, "products", id));
+    cart = cart.filter(c => c.id !== id);
+    saveCart();
+  } catch (err) { alert("Error: " + err.message); }
+}
+
+function showNotice(msg, type) {
   const n = document.getElementById("notice");
-  n.className="notice "+type; n.textContent=msg; n.style.display="block";
-  setTimeout(()=>n.style.display="none",3000);
+  if (!n) return;
+  n.className = "notice " + type;
+  n.textContent = msg;
+  n.style.display = "block";
+  setTimeout(() => n.style.display = "none", 4000);
 }
-window.quickEnquiry = function(design, type, size) {
-  const msg = `Hello M GEETA SUPER 👋\n\nI am interested in:\n📦 *${type}* | Design: *${design}* | Size: *${size}*\n\nPlease share price & availability.\n\n🌐 Seen on: https://geeta-super-web.netlify.app`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
-};
-async function sendOrderAlert(orderId, name, phone, totalAmt, totalPcs) {
-  const msg = `🔔 *NEW ORDER ALERT!*\n━━━━━━━━━━━━━━━\n🔖 Order ID: ${orderId}\n👤 Customer: ${name}\n📱 Phone: ${phone}\n💰 Amount: ₹${totalAmt.toLocaleString()}\n📦 Pieces: ${totalPcs} pcs\n━━━━━━━━━━━━━━━\n✅ Login to see full details.`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
-}
-let allOrders = [];
-window.searchCustomers = function() {
-  const q = document.getElementById("custSearch").value.toLowerCase();
-  renderCustomers(q);
-};
-function renderCustomers(searchQ="") {
-  const custMap = {};
-  allOrders.forEach(o => {
-    const key = o.phone || o.name;
-    if(!custMap[key]) custMap[key] = { name:o.name, phone:o.phone, orders:0, total:0, lastOrder:0 };
-    custMap[key].orders++;
-    custMap[key].total += parseFloat(o.totalAmt)||0;
-    if(o.createdAt > custMap[key].lastOrder) custMap[key].lastOrder = o.createdAt;
-  });
-  let custs = Object.values(custMap).sort((a,b)=>b.orders-a.orders);
-  if(searchQ) custs = custs.filter(c=>(c.name||"").toLowerCase().includes(searchQ)||(c.phone||"").includes(searchQ));
-  const el = document.getElementById("custList");
-  const em = document.getElementById("custEmpty");
-  const totalRevenue = custs.reduce((a,c)=>a+c.total,0);
-  document.getElementById("custTotal").textContent = custs.length;
-  document.getElementById("custOrders").textContent = allOrders.length;
-  document.getElementById("custRevenue").textContent = "₹"+totalRevenue.toLocaleString();
-  if(custs.length===0){ el.innerHTML=""; em.style.display="block"; return; }
-  em.style.display="none";
-  el.innerHTML = custs.map(c=>`
-<div style="background:#fff;border-radius:8px;padding:14px;margin-bottom:10px;box-shadow:0 3px 10px rgba(58,42,16,.08)">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
-<div style="width:44px;height:44px;border-radius:50%;background:#C8932A;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:#1A1208;flex-shrink:0">
-          ${(c.name||"?")[0].toUpperCase()}
-</div>
-<div style="flex:1">
-<div style="font-size:.92rem;font-weight:800;color:#1A1208">${c.name||"Unknown"}</div>
-<div style="font-size:.78rem;color:#7A6040;font-weight:600">📱 ${c.phone||"—"}</div>
-</div>
-<a href="https://wa.me/91${c.phone||""}" target="_blank"
-style="background:#25D366;color:#fff;padding:7px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-decoration:none">
-📱
-</a>
-</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-<div style="background:#F0E6C8;border-radius:6px;padding:7px;text-align:center">
-<div style="font-size:.55rem;color:#7A6040;font-weight:700;text-transform:uppercase">Orders</div>
-<div style="font-size:.95rem;font-weight:900;color:#1A1208">${c.orders}</div>
-</div>
-<div style="background:#F0E6C8;border-radius:6px;padding:7px;text-align:center">
-<div style="font-size:.55rem;color:#7A6040;font-weight:700;text-transform:uppercase">Total</div>
-<div style="font-size:.85rem;font-weight:900;color:#C8932A">₹${c.total.toLocaleString()}</div>
-</div>
-<div style="background:#F0E6C8;border-radius:6px;padding:7px;text-align:center">
-<div style="font-size:.55rem;color:#7A6040;font-weight:700;text-transform:uppercase">Last</div>
-<div style="font-size:.7rem;font-weight:700;color:#1A1208">${c.lastOrder?new Date(c.lastOrder).toLocaleDateString("en-IN"):"—"}</div>
-</div>
-</div>
-</div>
-`).join("");
-}
-const ordersQ = query(collection(db,"orders"), orderBy("createdAt","desc"));
-onSnapshot(ordersQ, (snap)=>{
-  allOrders = snap.docs.map(d=>({id:d.id,...d.data()}));
-  if(document.getElementById("page-customers").classList.contains("active")) renderCustomers();
+
+function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+document.querySelectorAll(".modal-overlay").forEach(m => {
+  m.addEventListener("click", function(e) { if (e.target === this) this.classList.remove("active"); });
 });
-let sentList = [];
-window.sendToCustomer = async function() {
-  const name = document.getElementById("sentName").value.trim();
-  const phone = document.getElementById("sentPhone").value.trim();
-  const city = document.getElementById("sentCity").value.trim();
-  if(!name && !phone){ alert("Please enter name or phone"); return; }
-  const siteUrl = "https://geeta-super-web.netlify.app";
-  navigator.clipboard.writeText(siteUrl).catch(()=>{});
-  try {
-    await addDoc(collection(db,"sent_history"), {
-name, phone, city,
-      sentAt: Date.now(),
-      sentAtStr: new Date().toLocaleString("en-IN")
-    });
-    document.getElementById("sentName").value = "";
-    document.getElementById("sentPhone").value = "";
-    document.getElementById("sentCity").value = "";
-    alert("✅ Link copied! Now paste in WhatsApp to " + (name||phone));
-  } catch(e) {
-    alert("✅ Link copied! (Could not save to history)");
+
+// Expose to window
+Object.assign(window, {toggleLangMenu, setLang, setFilter, openDetail, changeGallery, setGallery, showReviewForm, setRating, submitReview, addToCart, changeQty, openCart, goCheckout, selectPay, sendOrder, openAdmin, checkAuth, switchAdminTab, saveUpi, callCustomer, whatsappCustomer, updateOrderStatus, deleteOrder, removePreview, addSample, startEdit, cancelEdit, removeSample, closeModal, renderCards});
+
+// INIT
+applyTranslations();
+updateCartCount();
+
+if (window.FB) {
+  startFirebaseListeners();
+} else {
+  window.addEventListener("fb-ready", startFirebaseListeners);
+}
+
+// Fallback: if Firebase doesn't load in 10 seconds, show error
+setTimeout(() => {
+  if (!dataLoaded && !window.FB) {
+    document.getElementById("loadingBanner").innerHTML = '<span style="color:#c62828">⚠️ Firebase লোড হচ্ছে না। ইন্টারনেট চেক করুন বা page refresh করুন।</span>';
   }
-};
-window.searchSent = function() {
-  const q = document.getElementById("sentSearch").value.toLowerCase();
-  const filtered = q ? sentList.filter(s =>
-    (s.name||"").toLowerCase().includes(q) ||
-    (s.phone||"").includes(q) ||
-    (s.city||"").toLowerCase().includes(q)
-  ) : sentList;
-  renderSentList(filtered);
-};
-function renderSentList(list) {
-  const el = document.getElementById("sentList");
-  const em = document.getElementById("sentEmpty");
-  if(list.length===0){ el.innerHTML=""; em.style.display="block"; return; }
-  em.style.display="none";
-  const today = new Date(); today.setHours(0,0,0,0);
-  const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate()-7);
-  document.getElementById("statTotal").textContent = sentList.length;
-  document.getElementById("statToday").textContent = sentList.filter(s=>s.sentAt>=today.getTime()).length;
-  document.getElementById("statWeek").textContent = sentList.filter(s=>s.sentAt>=weekAgo.getTime()).length;
-  el.innerHTML = list.map(s=>`
-<div style="background:#fff;border-radius:8px;padding:14px;margin-bottom:10px;box-shadow:0 3px 10px rgba(58,42,16,.08);display:flex;align-items:center;gap:12px">
-<div style="width:42px;height:42px;border-radius:50%;background:#F0E6C8;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">👤</div>
-<div style="flex:1">
-<div style="font-size:.9rem;font-weight:800;color:#1A1208">${s.name||"Unknown"}</div>
-<div style="font-size:.78rem;color:#7A6040;font-weight:600">${s.phone||""} ${s.city?"· "+s.city:""}</div>
-<div style="font-size:.68rem;color:#C8932A;margin-top:2px">📅 ${s.sentAtStr||""}</div>
-</div>
-<a href="https://wa.me/${s.phone?'91'+s.phone:''}" target="_blank"
-style="background:#25D366;color:#fff;border:none;padding:8px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-decoration:none;white-space:nowrap">
-📱 WhatsApp
-</a>
-</div>
-`).join("");
-}
-const sentQ = query(collection(db,"sent_history"), orderBy("sentAt","desc"));
-onSnapshot(sentQ, (snap)=>{
-  sentList = snap.docs.map(d=>({id:d.id,...d.data()}));
-  if(document.getElementById("page-sent").classList.contains("active")) {
-    renderSentList(sentList);
-  }
-  const today = new Date(); today.setHours(0,0,0,0);
-  const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate()-7);
-  document.getElementById("statTotal").textContent = sentList.length;
-  document.getElementById("statToday").textContent = sentList.filter(s=>s.sentAt>=today.getTime()).length;
-  document.getElementById("statWeek").textContent = sentList.filter(s=>s.sentAt>=weekAgo.getTime()).length;
-});
-let calcCurrent="0",calcExprStr="",calcOperator=null,calcPrev=null,calcJustCalc=false;
-window.calcBtn = function(btn) {
-  const display = document.getElementById("calcDisplay");
-  const expr = document.getElementById("calcExpr");
-  const result = document.getElementById("calcResult");
-  const resultVal = document.getElementById("calcResultVal");
-  if(btn==="C"){ calcCurrent="0"; calcExprStr=""; calcOperator=null; calcPrev=null; calcJustCalc=false; result.style.display="none"; }
-  else if(btn==="⌫"){ calcCurrent=calcCurrent.length>1?calcCurrent.slice(0,-1):"0"; }
-  else if(btn==="=") {
-    if(calcOperator&&calcPrev!==null) {
-      const a=parseFloat(calcPrev), b=parseFloat(calcCurrent);
-      let res=0;
-      if(calcOperator==="+") res=a+b;
-      else if(calcOperator==="−") res=a-b;
-      else if(calcOperator==="×") res=a*b;
-      else if(calcOperator==="÷") res=b!==0?a/b:0;
-      calcExprStr=calcPrev+" "+calcOperator+" "+calcCurrent+" =";
-      calcCurrent=parseFloat(res.toFixed(6)).toString();
-      calcOperator=null; calcPrev=null; calcJustCalc=true;
-      result.style.display="block";
-      resultVal.textContent="₹ "+parseFloat(calcCurrent).toLocaleString("en-IN");
-    }
-  } else if(["+","−","×","÷"].includes(btn)) {
-    calcOperator=btn; calcPrev=calcCurrent; calcExprStr=calcCurrent+" "+btn; calcJustCalc=false; calcCurrent="0"; result.style.display="none";
-  } else if(btn===".") { if(!calcCurrent.includes(".")) calcCurrent+="."; }
-  else if(btn==="00") { if(calcCurrent!=="0") calcCurrent+="00"; }
-  else { if(calcCurrent==="0"||calcJustCalc){ calcCurrent=btn; calcJustCalc=false; } else calcCurrent+=btn; }
-  display.textContent=parseFloat(calcCurrent).toLocaleString("en-IN")||calcCurrent;
-  expr.textContent=calcExprStr;
-};
-window.copyLink = function() {
-  navigator.clipboard.writeText("https://geeta-super-web.netlify.app").then(()=>{
-    const btn = document.getElementById("copyBtn");
-    btn.textContent = "✅ Copied!";
-    btn.style.background = "#6fcf97";
-    setTimeout(()=>{ btn.innerHTML = "🔗 Copy Link"; btn.style.background = "#C8932A"; }, 2000);
-  });
-};
-const qrScript = document.createElement("script");
-qrScript.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
-qrScript.onload = function() {
-  new QRCode(document.getElementById("qrcode"), {
-    text: "https://geeta-super-web.netlify.app",
-    width: 110,
-    height: 110,
-    colorDark: "#1A1208",
-    colorLight: "#ffffff",
-  });
-};
-document.head.appendChild(qrScript);
-const q = query(collection(db,"samples"), orderBy("createdAt","desc"));
-onSnapshot(q, (snap)=>{
-  document.getElementById("loading").style.display="none";
-  samples = snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderCards();
-  updateCartBadge();
-});
+}, 10000);
 </script>
 </body>
 </html>
