@@ -35,6 +35,7 @@ body[data-lang="ur"] .lang-menu{right:auto;left:0}
 .hero p{color:#F0E6C8;font-size:.9rem;max-width:600px;margin:0 auto 14px}
 .gst-badge{display:inline-block;background:rgba(200,147,42,.15);border:1px solid rgba(200,147,42,.4);padding:5px 18px;border-radius:40px;color:#E8B84B;font-size:.72rem}
 .contact-strip{margin-top:14px;color:#F0E6C8;font-size:.8rem}
+.wholesale-note{margin-top:10px;display:inline-block;background:rgba(111,207,151,.15);border:1px solid rgba(111,207,151,.4);padding:5px 16px;border-radius:30px;color:#6fcf97;font-size:.74rem;font-weight:600}
 .search-wrap{max-width:1200px;margin:0 auto;padding:20px 14px 0}
 .search-box{position:relative;max-width:600px;margin:0 auto}
 .search-box input{width:100%;background:#fff;border:2px solid #d0c4a8;border-radius:30px;padding:12px 18px 12px 44px;font-size:.95rem;color:#1A1208;outline:none;font-family:inherit}
@@ -44,7 +45,6 @@ body[data-lang="ur"] .search-box input{padding:12px 44px 12px 18px;text-align:ri
 body[data-lang="ur"] .search-box::before{left:auto;right:16px}
 .main{max-width:1200px;margin:0 auto;padding:20px 14px}
 .loading-banner{background:#FFF7E0;border:1px solid #C8932A;border-radius:8px;padding:14px;text-align:center;margin-bottom:20px;color:#3A2A10;font-size:.9rem}
-.error-banner{background:#FFEBEE;border:1px solid #c62828;border-radius:8px;padding:14px;margin-bottom:20px;color:#c62828;font-size:.85rem}
 .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center}
 .filter-btn{padding:8px 18px;border-radius:30px;border:1px solid #ccc;background:#fff;color:#3A2A10;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:500}
 .filter-btn.active{border-color:#C8932A;background:#C8932A;color:#1A1208;font-weight:700}
@@ -58,6 +58,8 @@ body[data-lang="ur"] .count{margin-left:0;margin-right:auto}
 .card-img .emoji{font-size:3.5rem;display:flex;align-items:center;justify-content:center;height:100%}
 .tag{position:absolute;top:8px;left:8px;background:#C8932A;color:#1A1208;font-size:.62rem;font-weight:700;padding:4px 10px;border-radius:20px}
 body[data-lang="ur"] .tag{left:auto;right:8px}
+.new-tag{position:absolute;top:8px;left:8px;background:#eb5757;color:#fff;font-size:.6rem;font-weight:700;padding:4px 9px;border-radius:20px}
+body[data-lang="ur"] .new-tag{left:auto;right:8px}
 .photo-count{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.65);color:#fff;font-size:.7rem;padding:3px 8px;border-radius:12px}
 .stock-badge{position:absolute;top:8px;right:8px;font-size:.6rem;font-weight:700;padding:4px 8px;border-radius:12px}
 body[data-lang="ur"] .stock-badge{right:auto;left:8px}
@@ -69,10 +71,12 @@ body[data-lang="ur"] .stock-badge{right:auto;left:8px}
 .rating-row{display:flex;align-items:center;gap:4px;margin-bottom:6px;font-size:.78rem;color:#7A6040;cursor:pointer}
 .rating-row .stars{color:#E8B84B;font-size:.85rem}
 .specs-row{display:flex;justify-content:space-between;font-size:.78rem;color:#7A6040;margin-bottom:8px}
-.price{font-size:1.15rem;font-weight:700;color:#C8932A;margin-bottom:10px}
+.price{font-size:1.15rem;font-weight:700;color:#C8932A;margin-bottom:4px}
+.set-note{font-size:.68rem;color:#7A6040;margin-bottom:10px}
 .add-cart-btn{width:100%;background:#1A1208;color:#E8B84B;border:none;padding:10px;border-radius:6px;font-family:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
 .add-cart-btn.in-cart{background:#C8932A;color:#1A1208}
 .add-cart-btn:disabled{background:#ccc;color:#666;cursor:not-allowed}
+.share-prod-btn{width:100%;background:#128C7E;color:#fff;border:none;padding:8px;border-radius:6px;font-family:inherit;font-weight:600;font-size:.78rem;cursor:pointer;margin-top:6px}
 .empty{text-align:center;padding:60px 20px;color:#7A6040}
 .empty .emoji{font-size:3.5rem;margin-bottom:12px}
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:300;display:none;align-items:flex-end;justify-content:center}
@@ -82,6 +86,8 @@ body[data-lang="ur"] .stock-badge{right:auto;left:8px}
 body[data-lang="ur"] .modal-header{flex-direction:row-reverse}
 .modal-header h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:#E8B84B}
 .modal-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}
+.modal-back{background:rgba(232,184,75,.2);border:none;color:#E8B84B;padding:7px 14px;border-radius:30px;cursor:pointer;font-size:.82rem;font-weight:700;font-family:inherit;display:flex;align-items:center;gap:5px}
+.modal-header-left{display:flex;align-items:center;gap:10px}
 .modal-body{padding:20px}
 .detail-gallery{position:relative;background:#F0E6C8;border-radius:10px;overflow:hidden;margin-bottom:16px}
 .detail-main-img{width:100%;height:300px;object-fit:cover;display:block}
@@ -93,7 +99,8 @@ body[data-lang="ur"] .modal-header{flex-direction:row-reverse}
 .gallery-thumbs img{width:60px;height:60px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent;flex-shrink:0}
 .gallery-thumbs img.active{border-color:#C8932A}
 .detail-title{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px}
-.detail-price{font-size:1.4rem;font-weight:700;color:#C8932A;margin-bottom:12px}
+.detail-price{font-size:1.4rem;font-weight:700;color:#C8932A;margin-bottom:4px}
+.detail-set-note{font-size:.78rem;color:#7A6040;margin-bottom:12px}
 .detail-specs{background:#fff;border-radius:8px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
 .detail-spec{font-size:.82rem}
 .detail-spec strong{display:block;color:#7A6040;font-size:.7rem;text-transform:uppercase;margin-bottom:3px}
@@ -118,8 +125,8 @@ body[data-lang="ur"] .cart-item{flex-direction:row-reverse}
 .cart-item-meta{font-size:.72rem;color:#7A6040}
 .cart-item-price{font-weight:700;color:#C8932A;font-size:.92rem;margin-top:3px}
 .qty-controls{display:flex;align-items:center;gap:6px}
-.qty-btn{background:#1A1208;color:#E8B84B;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-weight:700}
-.qty-num{font-weight:700;min-width:20px;text-align:center;font-size:.9rem}
+.qty-btn{background:#1A1208;color:#E8B84B;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-weight:700;font-size:1rem}
+.qty-num{font-weight:700;min-width:44px;text-align:center;font-size:.85rem}
 .cart-summary{background:#1A1208;color:#E8B84B;padding:16px;border-radius:8px;margin-top:14px}
 .cart-summary-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.88rem}
 .cart-summary-row.total{font-size:1.15rem;font-weight:700;border-top:1px solid rgba(200,147,42,.3);padding-top:8px;margin-top:8px}
@@ -200,7 +207,7 @@ footer a{color:#E8B84B;text-decoration:none}
 <body data-lang="bn">
 <div class="header">
   <div class="header-inner">
-    <div class="logo">GEETA <span>SUPER</span></div>
+    <div class="logo">M GEETA <span>SUPER</span></div>
     <div class="header-actions">
       <div class="lang-dropdown">
         <button class="lang-btn" onclick="toggleLangMenu(event)">🌐 <span id="currentLangLabel">বাংলা</span></button>
@@ -213,6 +220,8 @@ footer a{color:#E8B84B;text-decoration:none}
           <div class="lang-option" onclick="setLang('te')">🇮🇳 తెలుగు</div>
         </div>
       </div>
+      <button class="lang-btn" onclick="togglePrice()" id="priceToggleBtn">💰 <span data-t="priceOn">দাম দেখানো</span></button>
+      <button class="lang-btn" onclick="shareSite()" style="background:rgba(37,211,102,.2);border-color:rgba(37,211,102,.5);color:#25D366">📲 <span data-t="shareSite">শেয়ার</span></button>
       <button class="cart-btn" onclick="openCart()">🛒 <span data-t="cart">কার্ট</span> <span class="cart-count" id="cartCount">0</span></button>
       <button class="admin-btn" onclick="openAdmin()">⚙️</button>
     </div>
@@ -223,6 +232,7 @@ footer a{color:#E8B84B;text-decoration:none}
   <p data-t="heroSub"></p>
   <div class="gst-badge">GST: 19AKKPK2513L1ZY</div>
   <div class="contact-strip">📍 U 111 Karbala Road, Kolkata-700018 · 📞 9830127586</div>
+  <div class="wholesale-note" data-t="wholesaleNote">📦 হোলসেল — ৬ পিস করে অর্ডার (৬, ১২, ১৮...)</div>
 </div>
 <div class="search-wrap">
   <div class="search-box">
@@ -246,19 +256,19 @@ footer a{color:#E8B84B;text-decoration:none}
 </div>
 <div class="modal-overlay" id="detailModal">
   <div class="modal">
-    <div class="modal-header"><h2 data-t="productDetail">প্রোডাক্ট বিবরণ</h2><button class="modal-close" onclick="closeModal('detailModal')">✕</button></div>
+    <div class="modal-header"><div class="modal-header-left"><button class="modal-back" onclick="closeModal('detailModal')">← <span data-t="backBtn">ফিরুন</span></button><h2 data-t="productDetail">প্রোডাক্ট বিবরণ</h2></div><button class="modal-close" onclick="closeModal('detailModal')">✕</button></div>
     <div class="modal-body" id="detailBody"></div>
   </div>
 </div>
 <div class="modal-overlay" id="cartModal">
   <div class="modal">
-    <div class="modal-header"><h2 data-t="yourCart">🛒 আপনার কার্ট</h2><button class="modal-close" onclick="closeModal('cartModal')">✕</button></div>
+    <div class="modal-header"><div class="modal-header-left"><button class="modal-back" onclick="closeModal('cartModal')">← <span data-t="backShop">কেনাকাটায় ফিরুন</span></button><h2 data-t="yourCart">🛒 আপনার কার্ট</h2></div><button class="modal-close" onclick="closeModal('cartModal')">✕</button></div>
     <div class="modal-body" id="cartBody"></div>
   </div>
 </div>
 <div class="modal-overlay" id="checkoutModal">
   <div class="modal">
-    <div class="modal-header"><h2 data-t="completeOrder">📦 অর্ডার সম্পূর্ণ করুন</h2><button class="modal-close" onclick="closeModal('checkoutModal')">✕</button></div>
+    <div class="modal-header"><div class="modal-header-left"><button class="modal-back" onclick="backToCart()">← <span data-t="backCart">কার্টে ফিরুন</span></button><h2 data-t="completeOrder">📦 অর্ডার সম্পূর্ণ করুন</h2></div><button class="modal-close" onclick="closeModal('checkoutModal')">✕</button></div>
     <div class="modal-body">
       <div class="form-section">
         <h3 data-t="yourInfo">👤 আপনার তথ্য</h3>
@@ -286,12 +296,12 @@ footer a{color:#E8B84B;text-decoration:none}
 </div>
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
-    <div class="modal-header"><h2 data-t="adminPanel">⚙️ অ্যাডমিন প্যানেল</h2><button class="modal-close" onclick="closeModal('adminModal')">✕</button></div>
+    <div class="modal-header"><div class="modal-header-left"><button class="modal-back" onclick="closeModal('adminModal')">← <span data-t="backBtn">ফিরুন</span></button><h2 data-t="adminPanel">⚙️ অ্যাডমিন প্যানেল</h2></div><button class="modal-close" onclick="closeModal('adminModal')">✕</button></div>
     <div class="modal-body" id="adminBody"></div>
   </div>
 </div>
 <footer>
-  <div class="ft">GEETA SUPER</div>
+  <div class="ft">M GEETA SUPER</div>
   <div>U 111 Karbala Road, Kolkata-700018</div>
   <div style="margin-top:3px">📞 <a href="tel:9830127586">9830127586</a> · GST: 19AKKPK2513L1ZY</div>
   <div style="margin-top:8px" data-t="copyright">© ২০২৬ · সর্বস্বত্ব সংরক্ষিত</div>
@@ -322,22 +332,26 @@ try {
 </script>
 
 <script>
+// ===== WHOLESALE SETTING: orders go up in steps of 6 =====
+const STEP = 6;
+
 // ===== TRANSLATIONS =====
-const T={bn:{langName:"বাংলা",cart:"কার্ট",heroTitle:'রেডিমেড <em>গার্মেন্টস</em><br/>হোলসেল কালেকশন',heroSub:"সরাসরি কোম্পানি থেকে অর্ডার করুন · ঘরে বসে ডেলিভারি পান",searchPh:"Design no, ধরন বা সাইজ দিয়ে খুঁজুন...",all:"সব",shirt:"শার্ট",babaSuit:"বাবা স্যুট",other:"অন্যান্য",totalCount:"মোট: {n}টি",noProducts:"কোনো প্রোডাক্ট পাওয়া যায়নি",productDetail:"প্রোডাক্ট বিবরণ",yourCart:"🛒 আপনার কার্ট",cartEmpty:"আপনার কার্ট খালি",completeOrder:"📦 অর্ডার সম্পূর্ণ করুন",yourInfo:"👤 আপনার তথ্য",fullName:"পুরো নাম *",namePh:"যেমন: রহিম শেখ",mobileNum:"মোবাইল নম্বর *",fullAddress:"সম্পূর্ণ ঠিকানা *",addressPh:"বাড়ি/দোকান নং, রাস্তা, এলাকা, শহর, পিন কোড",extraNote:"অতিরিক্ত নোট (ঐচ্ছিক)",notePh:"যেমন: রঙ পছন্দ, ডেলিভারি সময়",paymentMethod:"💳 পেমেন্ট পদ্ধতি",cod:"ক্যাশ অন ডেলিভারি",upiAdvance:"UPI / অগ্রিম",payUpiBelow:"নিচের UPI ID-তে পেমেন্ট করুন:",sendScreenshot:"পেমেন্ট হলে স্ক্রিনশট WhatsApp-এ পাঠাবেন",sendOrderBtn:"WhatsApp-এ অর্ডার পাঠান",confirmCall:"অর্ডার confirmation এর জন্য আমরা ফোন করব",adminPanel:"⚙️ অ্যাডমিন প্যানেল",copyright:"© ২০২৬ · সর্বস্বত্ব সংরক্ষিত",inCart:"✓ কার্টে আছে",outOfStock:"❌ স্টক শেষ",addToCart:"🛒 কার্টে যোগ করুন",askPrice:"দাম জিজ্ঞেস করুন",sizeLabel:"সাইজ",stockLabel:"স্টক",pieces:"পিস",inStock:"স্টকে",lowStock:"মাত্র {n}টি",stockOut:"স্টক শেষ",reviewsTitle:"⭐ গ্রাহকদের রিভিউ",noReviews:"এখনো কোনো রিভিউ নেই।",addReview:"✏️ রিভিউ দিন",yourNamePh:"আপনার নাম",yourReviewPh:"আপনার মতামত লিখুন...",submitReview:"পাঠান",needNamePhone:"নাম, মোবাইল ও ঠিকানা পূরণ করুন",invalidPhone:"সঠিক ১০ ডিজিটের মোবাইল নম্বর দিন",cartEmptyAlert:"কার্ট খালি",orderSent:"✅ অর্ডার WhatsApp-এ পাঠানো হয়েছে!",onlyInStock:"শুধু {n}টি স্টকে আছে",nameAndReview:"নাম ও মতামত দিন",totalItems:"মোট আইটেম:",grandTotal:"সর্বমোট:",checkout:"চেকআউট করুন",addMore:"✓ কার্টে আছে ({n})",confirmDelete:"মুছে ফেলবেন?",loading:"প্রোডাক্ট লোড হচ্ছে...",waNewOrder:"🛍️ *নতুন অর্ডার*",waOrderId:"📋 *অর্ডার ID:*",waDate:"📅 *তারিখ:*",waCustInfo:"👤 *গ্রাহক:*",waName:"নাম:",waPhone:"ফোন:",waAddress:"ঠিকানা:",waNote:"নোট:",waProducts:"📦 *পণ্য:*",waSize:"সাইজ:",waPrice:"দাম:",waTotalItems:"🧮 *মোট:*",waTotal:"💰 *সর্বমোট:*",waPayment:"💳 *পেমেন্ট:*"},
-en:{langName:"English",cart:"Cart",heroTitle:'Readymade <em>Garments</em><br/>Wholesale Collection',heroSub:"Order directly · Home delivery",searchPh:"Search by design, type or size...",all:"All",shirt:"Shirt",babaSuit:"Baba Suit",other:"Other",totalCount:"Total: {n}",noProducts:"No products found",productDetail:"Product Details",yourCart:"🛒 Your Cart",cartEmpty:"Your cart is empty",completeOrder:"📦 Complete Order",yourInfo:"👤 Your Info",fullName:"Full Name *",namePh:"e.g., Rahim Sheikh",mobileNum:"Mobile *",fullAddress:"Full Address *",addressPh:"House, Street, Area, City, PIN",extraNote:"Extra Note",notePh:"e.g., color, delivery time",paymentMethod:"💳 Payment",cod:"Cash on Delivery",upiAdvance:"UPI / Advance",payUpiBelow:"Pay to UPI:",sendScreenshot:"Send screenshot on WhatsApp",sendOrderBtn:"Send Order via WhatsApp",confirmCall:"We'll call to confirm",adminPanel:"⚙️ Admin Panel",copyright:"© 2026",inCart:"✓ In cart",outOfStock:"❌ Out of stock",addToCart:"🛒 Add to Cart",askPrice:"Ask for price",sizeLabel:"Size",stockLabel:"Stock",pieces:"pcs",inStock:"in stock",lowStock:"Only {n}",stockOut:"Out of stock",reviewsTitle:"⭐ Reviews",noReviews:"No reviews yet.",addReview:"✏️ Write Review",yourNamePh:"Your name",yourReviewPh:"Write review...",submitReview:"Submit",needNamePhone:"Fill name, mobile, address",invalidPhone:"Enter valid 10-digit mobile",cartEmptyAlert:"Cart empty",orderSent:"✅ Order sent!",onlyInStock:"Only {n} in stock",nameAndReview:"Enter name and review",totalItems:"Items:",grandTotal:"Total:",checkout:"Checkout",addMore:"✓ In cart ({n})",confirmDelete:"Delete?",loading:"Loading products...",waNewOrder:"🛍️ *NEW ORDER*",waOrderId:"📋 *ID:*",waDate:"📅 *Date:*",waCustInfo:"👤 *Customer:*",waName:"Name:",waPhone:"Phone:",waAddress:"Address:",waNote:"Note:",waProducts:"📦 *Products:*",waSize:"Size:",waPrice:"Price:",waTotalItems:"🧮 *Items:*",waTotal:"💰 *Total:*",waPayment:"💳 *Pay:*"},
-hi:{langName:"हिन्दी",cart:"कार्ट",heroTitle:'रेडीमेड <em>गारमेंट्स</em><br/>होलसेल कलेक्शन',heroSub:"सीधे कंपनी से ऑर्डर करें",searchPh:"डिज़ाइन, प्रकार या साइज़ खोजें...",all:"सभी",shirt:"शर्ट",babaSuit:"बाबा सूट",other:"अन्य",totalCount:"कुल: {n}",noProducts:"कोई प्रोडक्ट नहीं",productDetail:"प्रोडक्ट विवरण",yourCart:"🛒 कार्ट",cartEmpty:"कार्ट खाली है",completeOrder:"📦 ऑर्डर पूरा करें",yourInfo:"👤 जानकारी",fullName:"पूरा नाम *",namePh:"जैसे: रहीम शेख",mobileNum:"मोबाइल *",fullAddress:"पूरा पता *",addressPh:"घर, सड़क, क्षेत्र, शहर, पिन",extraNote:"नोट",notePh:"जैसे: रंग, डिलीवरी समय",paymentMethod:"💳 भुगतान",cod:"कैश ऑन डिलीवरी",upiAdvance:"UPI / अग्रिम",payUpiBelow:"नीचे UPI पर भुगतान करें:",sendScreenshot:"WhatsApp पर स्क्रीनशॉट भेजें",sendOrderBtn:"WhatsApp पर ऑर्डर भेजें",confirmCall:"हम कॉल करेंगे",adminPanel:"⚙️ एडमिन",copyright:"© 2026",inCart:"✓ कार्ट में",outOfStock:"❌ स्टॉक खत्म",addToCart:"🛒 कार्ट में जोड़ें",askPrice:"कीमत पूछें",sizeLabel:"साइज़",stockLabel:"स्टॉक",pieces:"पीस",inStock:"स्टॉक में",lowStock:"केवल {n}",stockOut:"स्टॉक खत्म",reviewsTitle:"⭐ समीक्षा",noReviews:"समीक्षा नहीं।",addReview:"✏️ समीक्षा लिखें",yourNamePh:"नाम",yourReviewPh:"समीक्षा लिखें...",submitReview:"भेजें",needNamePhone:"नाम, मोबाइल, पता भरें",invalidPhone:"सही 10 अंक का नंबर दें",cartEmptyAlert:"कार्ट खाली",orderSent:"✅ ऑर्डर भेजा गया!",onlyInStock:"केवल {n} स्टॉक में",nameAndReview:"नाम और समीक्षा दें",totalItems:"आइटम:",grandTotal:"कुल:",checkout:"चेकआउट",addMore:"✓ कार्ट में ({n})",confirmDelete:"हटाएं?",loading:"लोड हो रहा है...",waNewOrder:"🛍️ *नया ऑर्डर*",waOrderId:"📋 *ID:*",waDate:"📅 *तारीख:*",waCustInfo:"👤 *ग्राहक:*",waName:"नाम:",waPhone:"फोन:",waAddress:"पता:",waNote:"नोट:",waProducts:"📦 *प्रोडक्ट:*",waSize:"साइज़:",waPrice:"कीमत:",waTotalItems:"🧮 *आइटम:*",waTotal:"💰 *कुल:*",waPayment:"💳 *भुगतान:*"},
-ur:{langName:"اردو",cart:"کارٹ",heroTitle:'ریڈی میڈ <em>گارمنٹس</em><br/>ہول سیل',heroSub:"براہ راست آرڈر کریں",searchPh:"ڈیزائن، قسم یا سائز تلاش کریں...",all:"سب",shirt:"شرٹ",babaSuit:"بابا سوٹ",other:"دیگر",totalCount:"کل: {n}",noProducts:"کوئی پروڈکٹ نہیں",productDetail:"تفصیلات",yourCart:"🛒 کارٹ",cartEmpty:"کارٹ خالی ہے",completeOrder:"📦 آرڈر مکمل کریں",yourInfo:"👤 معلومات",fullName:"پورا نام *",namePh:"مثلاً: رحیم شیخ",mobileNum:"موبائل *",fullAddress:"پتہ *",addressPh:"گھر، گلی، علاقہ، شہر، پن",extraNote:"نوٹ",notePh:"مثلاً: رنگ، وقت",paymentMethod:"💳 ادائیگی",cod:"کیش آن ڈیلیوری",upiAdvance:"UPI / پیشگی",payUpiBelow:"UPI پر ادائیگی:",sendScreenshot:"اسکرین شاٹ بھیجیں",sendOrderBtn:"WhatsApp پر بھیجیں",confirmCall:"ہم کال کریں گے",adminPanel:"⚙️ ایڈمن",copyright:"© 2026",inCart:"✓ کارٹ میں",outOfStock:"❌ اسٹاک ختم",addToCart:"🛒 کارٹ میں شامل کریں",askPrice:"قیمت پوچھیں",sizeLabel:"سائز",stockLabel:"اسٹاک",pieces:"پیس",inStock:"اسٹاک میں",lowStock:"صرف {n}",stockOut:"ختم",reviewsTitle:"⭐ رائے",noReviews:"کوئی رائے نہیں۔",addReview:"✏️ رائے لکھیں",yourNamePh:"نام",yourReviewPh:"رائے لکھیں...",submitReview:"بھیجیں",needNamePhone:"نام، موبائل، پتہ بھریں",invalidPhone:"درست 10 ہندسوں کا نمبر",cartEmptyAlert:"کارٹ خالی",orderSent:"✅ آرڈر بھیج دیا!",onlyInStock:"صرف {n} اسٹاک",nameAndReview:"نام اور رائے",totalItems:"اشیاء:",grandTotal:"کل:",checkout:"چیک آؤٹ",addMore:"✓ کارٹ میں ({n})",confirmDelete:"حذف کریں؟",loading:"لوڈ ہو رہا ہے...",waNewOrder:"🛍️ *نیا آرڈر*",waOrderId:"📋 *ID:*",waDate:"📅 *تاریخ:*",waCustInfo:"👤 *گاہک:*",waName:"نام:",waPhone:"فون:",waAddress:"پتہ:",waNote:"نوٹ:",waProducts:"📦 *پروڈکٹس:*",waSize:"سائز:",waPrice:"قیمت:",waTotalItems:"🧮 *اشیاء:*",waTotal:"💰 *کل:*",waPayment:"💳 *ادائیگی:*"},
-ta:{langName:"தமிழ்",cart:"கார்ட்",heroTitle:'ரெடிமேட் <em>ஆடைகள்</em><br/>மொத்த விற்பனை',heroSub:"நேரடி ஆர்டர்",searchPh:"டிசைன், வகை, சைஸ் தேடுங்கள்...",all:"அனைத்தும்",shirt:"சட்டை",babaSuit:"பாபா சூட்",other:"மற்றவை",totalCount:"மொத்தம்: {n}",noProducts:"பொருட்கள் இல்லை",productDetail:"விவரங்கள்",yourCart:"🛒 கார்ட்",cartEmpty:"கார்ட் காலியாக",completeOrder:"📦 ஆர்டர் முடிக்க",yourInfo:"👤 தகவல்",fullName:"முழு பெயர் *",namePh:"உதா: ரஹீம்",mobileNum:"மொபைல் *",fullAddress:"முகவரி *",addressPh:"வீடு, தெரு, பகுதி, நகரம், பின்",extraNote:"குறிப்பு",notePh:"உதா: நிறம், நேரம்",paymentMethod:"💳 கட்டணம்",cod:"டெலிவரியில் பணம்",upiAdvance:"UPI / முன்பணம்",payUpiBelow:"UPI-க்கு பணம்:",sendScreenshot:"ஸ்கிரீன்ஷாட் அனுப்பு",sendOrderBtn:"WhatsApp அனுப்பு",confirmCall:"நாங்கள் கால் செய்வோம்",adminPanel:"⚙️ நிர்வாகம்",copyright:"© 2026",inCart:"✓ கார்ட்டில்",outOfStock:"❌ ஸ்டாக் இல்லை",addToCart:"🛒 கார்ட்டில் சேர்",askPrice:"விலை கேள்",sizeLabel:"சைஸ்",stockLabel:"ஸ்டாக்",pieces:"துண்டு",inStock:"உள்ளது",lowStock:"மீதம் {n}",stockOut:"இல்லை",reviewsTitle:"⭐ மதிப்புரை",noReviews:"மதிப்புரை இல்லை.",addReview:"✏️ எழுது",yourNamePh:"பெயர்",yourReviewPh:"எழுதுங்கள்...",submitReview:"அனுப்பு",needNamePhone:"பெயர், மொபைல், முகவரி",invalidPhone:"சரியான 10 இலக்க எண்",cartEmptyAlert:"கார்ட் காலி",orderSent:"✅ அனுப்பப்பட்டது!",onlyInStock:"மீதம் {n}",nameAndReview:"பெயர் மற்றும் மதிப்புரை",totalItems:"பொருட்கள்:",grandTotal:"மொத்தம்:",checkout:"செக்அவுட்",addMore:"✓ கார்ட்டில் ({n})",confirmDelete:"நீக்கு?",loading:"ஏற்றுகிறது...",waNewOrder:"🛍️ *புதிய ஆர்டர்*",waOrderId:"📋 *ID:*",waDate:"📅 *தேதி:*",waCustInfo:"👤 *வாடிக்கையாளர்:*",waName:"பெயர்:",waPhone:"ஃபோன்:",waAddress:"முகவரி:",waNote:"குறிப்பு:",waProducts:"📦 *பொருட்கள்:*",waSize:"சைஸ்:",waPrice:"விலை:",waTotalItems:"🧮 *பொருட்கள்:*",waTotal:"💰 *மொத்தம்:*",waPayment:"💳 *கட்டணம்:*"},
-te:{langName:"తెలుగు",cart:"కార్ట్",heroTitle:'రెడీమేడ్ <em>గార్మెంట్స్</em><br/>హోల్‌సేల్',heroSub:"నేరుగా ఆర్డర్",searchPh:"డిజైన్, రకం, సైజ్ వెతకండి...",all:"అన్నీ",shirt:"షర్ట్",babaSuit:"బాబా సూట్",other:"ఇతరులు",totalCount:"మొత్తం: {n}",noProducts:"ఉత్పత్తులు లేవు",productDetail:"వివరాలు",yourCart:"🛒 కార్ట్",cartEmpty:"కార్ట్ ఖాళీగా",completeOrder:"📦 ఆర్డర్ పూర్తి",yourInfo:"👤 సమాచారం",fullName:"పూర్తి పేరు *",namePh:"ఉదా: రహీం",mobileNum:"మొబైల్ *",fullAddress:"చిరునామా *",addressPh:"ఇల్లు, వీధి, నగరం, పిన్",extraNote:"గమనిక",notePh:"ఉదా: రంగు, సమయం",paymentMethod:"💳 చెల్లింపు",cod:"డెలివరీలో నగదు",upiAdvance:"UPI / అడ్వాన్స్",payUpiBelow:"UPIకి చెల్లించండి:",sendScreenshot:"స్క్రీన్‌షాట్ పంపండి",sendOrderBtn:"WhatsApp పంపండి",confirmCall:"మేము కాల్ చేస్తాము",adminPanel:"⚙️ అడ్మిన్",copyright:"© 2026",inCart:"✓ కార్ట్‌లో",outOfStock:"❌ స్టాక్ లేదు",addToCart:"🛒 కార్ట్‌కి జోడించు",askPrice:"ధర అడగండి",sizeLabel:"సైజ్",stockLabel:"స్టాక్",pieces:"ముక్కలు",inStock:"స్టాక్‌లో",lowStock:"కేవలం {n}",stockOut:"లేదు",reviewsTitle:"⭐ సమీక్షలు",noReviews:"సమీక్షలు లేవు.",addReview:"✏️ రాయండి",yourNamePh:"పేరు",yourReviewPh:"రాయండి...",submitReview:"పంపండి",needNamePhone:"పేరు, మొబైల్, చిరునామా",invalidPhone:"సరైన 10 అంకెల నంబర్",cartEmptyAlert:"కార్ట్ ఖాళీ",orderSent:"✅ పంపబడింది!",onlyInStock:"కేవలం {n}",nameAndReview:"పేరు మరియు సమీక్ష",totalItems:"వస్తువులు:",grandTotal:"మొత్తం:",checkout:"చెక్‌అవుట్",addMore:"✓ కార్ట్‌లో ({n})",confirmDelete:"తొలగించు?",loading:"లోడ్ అవుతోంది...",waNewOrder:"🛍️ *కొత్త ఆర్డర్*",waOrderId:"📋 *ID:*",waDate:"📅 *తేదీ:*",waCustInfo:"👤 *కస్టమర్:*",waName:"పేరు:",waPhone:"ఫోన్:",waAddress:"చిరునామా:",waNote:"గమనిక:",waProducts:"📦 *ఉత్పత్తులు:*",waSize:"సైజ్:",waPrice:"ధర:",waTotalItems:"🧮 *వస్తువులు:*",waTotal:"💰 *మొత్తం:*",waPayment:"💳 *చెల్లింపు:*"}};
+const T={bn:{langName:"বাংলা",cart:"কার্ট",priceOn:"দাম দেখানো",priceOff:"দাম লুকানো",backBtn:"ফিরুন",backShop:"কেনাকাটায় ফিরুন",backCart:"কার্টে ফিরুন",shareSite:"শেয়ার",wholesaleNote:"📦 হোলসেল — ৬ পিস করে অর্ডার (৬, ১২, ১৮...)",heroTitle:'রেডিমেড <em>গার্মেন্টস</em><br/>হোলসেল কালেকশন',heroSub:"সরাসরি কোম্পানি থেকে অর্ডার করুন",searchPh:"Design no, ধরন বা সাইজ দিয়ে খুঁজুন...",all:"সব",shirt:"শার্ট",babaSuit:"বাবা স্যুট",other:"অন্যান্য",totalCount:"মোট: {n}টি",noProducts:"কোনো প্রোডাক্ট পাওয়া যায়নি",productDetail:"প্রোডাক্ট বিবরণ",yourCart:"🛒 আপনার কার্ট",cartEmpty:"আপনার কার্ট খালি",completeOrder:"📦 অর্ডার সম্পূর্ণ করুন",yourInfo:"👤 আপনার তথ্য",fullName:"পুরো নাম *",namePh:"যেমন: রহিম শেখ",mobileNum:"মোবাইল নম্বর *",fullAddress:"সম্পূর্ণ ঠিকানা *",addressPh:"বাড়ি/দোকান নং, রাস্তা, এলাকা, শহর, পিন কোড",extraNote:"অতিরিক্ত নোট (ঐচ্ছিক)",notePh:"যেমন: রঙ পছন্দ, ডেলিভারি সময়",paymentMethod:"💳 পেমেন্ট পদ্ধতি",cod:"ক্যাশ অন ডেলিভারি",upiAdvance:"UPI / অগ্রিম",payUpiBelow:"নিচের UPI ID-তে পেমেন্ট করুন:",sendScreenshot:"পেমেন্ট হলে স্ক্রিনশট WhatsApp-এ পাঠাবেন",sendOrderBtn:"WhatsApp-এ অর্ডার পাঠান",confirmCall:"অর্ডার confirmation এর জন্য আমরা ফোন করব",adminPanel:"⚙️ অ্যাডমিন প্যানেল",copyright:"© ২০২৬ · সর্বস্বত্ব সংরক্ষিত",inCart:"✓ কার্টে আছে",outOfStock:"❌ স্টক শেষ",addToCart:"🛒 কার্টে যোগ করুন",askPrice:"দাম জিজ্ঞেস করুন",sizeLabel:"সাইজ",stockLabel:"স্টক",pieces:"পিস",inStock:"স্টকে",lowStock:"মাত্র {n}টি",stockOut:"স্টক শেষ",setNote:"১ সেট = ৬ পিস",priceHidden:"🙈 দাম লুকানো",shareProduct:"📤 এই প্রোডাক্ট শেয়ার",reviewsTitle:"⭐ গ্রাহকদের রিভিউ",noReviews:"এখনো কোনো রিভিউ নেই।",addReview:"✏️ রিভিউ দিন",yourNamePh:"আপনার নাম",yourReviewPh:"আপনার মতামত লিখুন...",submitReview:"পাঠান",needNamePhone:"নাম, মোবাইল ও ঠিকানা পূরণ করুন",invalidPhone:"সঠিক ১০ ডিজিটের মোবাইল নম্বর দিন",cartEmptyAlert:"কার্ট খালি",orderSent:"✅ অর্ডার WhatsApp-এ পাঠানো হয়েছে!",onlyInStock:"শুধু {n}টি স্টকে আছে",nameAndReview:"নাম ও মতামত দিন",totalItems:"মোট পিস:",grandTotal:"সর্বমোট:",checkout:"চেকআউট করুন",addMore:"✓ কার্টে আছে ({n} পিস)",confirmDelete:"মুছে ফেলবেন?",loading:"প্রোডাক্ট লোড হচ্ছে...",waNewOrder:"🛍️ *নতুন অর্ডার*",waOrderId:"📋 *অর্ডার ID:*",waDate:"📅 *তারিখ:*",waCustInfo:"👤 *গ্রাহক:*",waName:"নাম:",waPhone:"ফোন:",waAddress:"ঠিকানা:",waNote:"নোট:",waProducts:"📦 *পণ্য:*",waSize:"সাইজ:",waPrice:"দাম:",waTotalItems:"🧮 *মোট পিস:*",waTotal:"💰 *সর্বমোট:*",waPayment:"💳 *পেমেন্ট:*"},
+en:{langName:"English",cart:"Cart",priceOn:"Price ON",priceOff:"Price OFF",backBtn:"Back",backShop:"Back to Shop",backCart:"Back to Cart",shareSite:"Share",wholesaleNote:"📦 Wholesale — order in sets of 6 (6, 12, 18...)",heroTitle:'Readymade <em>Garments</em><br/>Wholesale Collection',heroSub:"Order directly from company",searchPh:"Search by design, type or size...",all:"All",shirt:"Shirt",babaSuit:"Baba Suit",other:"Other",totalCount:"Total: {n}",noProducts:"No products found",productDetail:"Product Details",yourCart:"🛒 Your Cart",cartEmpty:"Your cart is empty",completeOrder:"📦 Complete Order",yourInfo:"👤 Your Info",fullName:"Full Name *",namePh:"e.g., Rahim Sheikh",mobileNum:"Mobile *",fullAddress:"Full Address *",addressPh:"House, Street, Area, City, PIN",extraNote:"Extra Note",notePh:"e.g., color, delivery time",paymentMethod:"💳 Payment",cod:"Cash on Delivery",upiAdvance:"UPI / Advance",payUpiBelow:"Pay to UPI:",sendScreenshot:"Send screenshot on WhatsApp",sendOrderBtn:"Send Order via WhatsApp",confirmCall:"We'll call to confirm",adminPanel:"⚙️ Admin Panel",copyright:"© 2026",inCart:"✓ In cart",outOfStock:"❌ Out of stock",addToCart:"🛒 Add to Cart",askPrice:"Ask for price",sizeLabel:"Size",stockLabel:"Stock",pieces:"pcs",inStock:"in stock",lowStock:"Only {n}",stockOut:"Out of stock",setNote:"1 set = 6 pcs",priceHidden:"🙈 Price hidden",shareProduct:"📤 Share this product",reviewsTitle:"⭐ Reviews",noReviews:"No reviews yet.",addReview:"✏️ Write Review",yourNamePh:"Your name",yourReviewPh:"Write review...",submitReview:"Submit",needNamePhone:"Fill name, mobile, address",invalidPhone:"Enter valid 10-digit mobile",cartEmptyAlert:"Cart empty",orderSent:"✅ Order sent!",onlyInStock:"Only {n} in stock",nameAndReview:"Enter name and review",totalItems:"Total pcs:",grandTotal:"Total:",checkout:"Checkout",addMore:"✓ In cart ({n} pcs)",confirmDelete:"Delete?",loading:"Loading products...",waNewOrder:"🛍️ *NEW ORDER*",waOrderId:"📋 *ID:*",waDate:"📅 *Date:*",waCustInfo:"👤 *Customer:*",waName:"Name:",waPhone:"Phone:",waAddress:"Address:",waNote:"Note:",waProducts:"📦 *Products:*",waSize:"Size:",waPrice:"Price:",waTotalItems:"🧮 *Total pcs:*",waTotal:"💰 *Total:*",waPayment:"💳 *Pay:*"},
+hi:{langName:"हिन्दी",cart:"कार्ट",priceOn:"दाम दिखाएं",priceOff:"दाम छुपाएं",backBtn:"वापस",backShop:"शॉप पर वापस",backCart:"कार्ट पर वापस",shareSite:"शेयर",wholesaleNote:"📦 होलसेल — 6 पीस के सेट में ऑर्डर (6, 12, 18...)",heroTitle:'रेडीमेड <em>गारमेंट्स</em><br/>होलसेल कलेक्शन',heroSub:"सीधे कंपनी से ऑर्डर करें",searchPh:"डिज़ाइन, प्रकार या साइज़ खोजें...",all:"सभी",shirt:"शर्ट",babaSuit:"बाबा सूट",other:"अन्य",totalCount:"कुल: {n}",noProducts:"कोई प्रोडक्ट नहीं",productDetail:"प्रोडक्ट विवरण",yourCart:"🛒 कार्ट",cartEmpty:"कार्ट खाली है",completeOrder:"📦 ऑर्डर पूरा करें",yourInfo:"👤 जानकारी",fullName:"पूरा नाम *",namePh:"जैसे: रहीम शेख",mobileNum:"मोबाइल *",fullAddress:"पूरा पता *",addressPh:"घर, सड़क, क्षेत्र, शहर, पिन",extraNote:"नोट",notePh:"जैसे: रंग, डिलीवरी समय",paymentMethod:"💳 भुगतान",cod:"कैश ऑन डिलीवरी",upiAdvance:"UPI / अग्रिम",payUpiBelow:"नीचे UPI पर भुगतान करें:",sendScreenshot:"WhatsApp पर स्क्रीनशॉट भेजें",sendOrderBtn:"WhatsApp पर ऑर्डर भेजें",confirmCall:"हम कॉल करेंगे",adminPanel:"⚙️ एडमिन",copyright:"© 2026",inCart:"✓ कार्ट में",outOfStock:"❌ स्टॉक खत्म",addToCart:"🛒 कार्ट में जोड़ें",askPrice:"कीमत पूछें",sizeLabel:"साइज़",stockLabel:"स्टॉक",pieces:"पीस",inStock:"स्टॉक में",lowStock:"केवल {n}",stockOut:"स्टॉक खत्म",setNote:"1 सेट = 6 पीस",priceHidden:"🙈 दाम छुपा है",shareProduct:"📤 यह प्रोडक्ट शेयर करें",reviewsTitle:"⭐ समीक्षा",noReviews:"समीक्षा नहीं।",addReview:"✏️ समीक्षा लिखें",yourNamePh:"नाम",yourReviewPh:"समीक्षा लिखें...",submitReview:"भेजें",needNamePhone:"नाम, मोबाइल, पता भरें",invalidPhone:"सही 10 अंक का नंबर दें",cartEmptyAlert:"कार्ट खाली",orderSent:"✅ ऑर्डर भेजा गया!",onlyInStock:"केवल {n} स्टॉक में",nameAndReview:"नाम और समीक्षा दें",totalItems:"कुल पीस:",grandTotal:"कुल:",checkout:"चेकआउट",addMore:"✓ कार्ट में ({n} पीस)",confirmDelete:"हटाएं?",loading:"लोड हो रहा है...",waNewOrder:"🛍️ *नया ऑर्डर*",waOrderId:"📋 *ID:*",waDate:"📅 *तारीख:*",waCustInfo:"👤 *ग्राहक:*",waName:"नाम:",waPhone:"फोन:",waAddress:"पता:",waNote:"नोट:",waProducts:"📦 *प्रोडक्ट:*",waSize:"साइज़:",waPrice:"कीमत:",waTotalItems:"🧮 *कुल पीस:*",waTotal:"💰 *कुल:*",waPayment:"💳 *भुगतान:*"},
+ur:{langName:"اردو",cart:"کارٹ",priceOn:"قیمت دکھائیں",priceOff:"قیمت چھپائیں",backBtn:"واپس",backShop:"شاپ پر واپس",backCart:"کارٹ پر واپس",shareSite:"شیئر",wholesaleNote:"📦 ہول سیل — 6 پیس کے سیٹ میں آرڈر (6، 12، 18...)",heroTitle:'ریڈی میڈ <em>گارمنٹس</em><br/>ہول سیل',heroSub:"براہ راست کمپنی سے آرڈر کریں",searchPh:"ڈیزائن، قسم یا سائز تلاش کریں...",all:"سب",shirt:"شرٹ",babaSuit:"بابا سوٹ",other:"دیگر",totalCount:"کل: {n}",noProducts:"کوئی پروڈکٹ نہیں",productDetail:"تفصیلات",yourCart:"🛒 کارٹ",cartEmpty:"کارٹ خالی ہے",completeOrder:"📦 آرڈر مکمل کریں",yourInfo:"👤 معلومات",fullName:"پورا نام *",namePh:"مثلاً: رحیم شیخ",mobileNum:"موبائل *",fullAddress:"پتہ *",addressPh:"گھر، گلی، علاقہ، شہر، پن",extraNote:"نوٹ",notePh:"مثلاً: رنگ، وقت",paymentMethod:"💳 ادائیگی",cod:"کیش آن ڈیلیوری",upiAdvance:"UPI / پیشگی",payUpiBelow:"UPI پر ادائیگی:",sendScreenshot:"اسکرین شاٹ بھیجیں",sendOrderBtn:"WhatsApp پر بھیجیں",confirmCall:"ہم کال کریں گے",adminPanel:"⚙️ ایڈمن",copyright:"© 2026",inCart:"✓ کارٹ میں",outOfStock:"❌ اسٹاک ختم",addToCart:"🛒 کارٹ میں شامل کریں",askPrice:"قیمت پوچھیں",sizeLabel:"سائز",stockLabel:"اسٹاک",pieces:"پیس",inStock:"اسٹاک میں",lowStock:"صرف {n}",stockOut:"ختم",setNote:"1 سیٹ = 6 پیس",priceHidden:"🙈 قیمت چھپی ہے",shareProduct:"📤 یہ پروڈکٹ شیئر کریں",reviewsTitle:"⭐ رائے",noReviews:"کوئی رائے نہیں۔",addReview:"✏️ رائے لکھیں",yourNamePh:"نام",yourReviewPh:"رائے لکھیں...",submitReview:"بھیجیں",needNamePhone:"نام، موبائل، پتہ بھریں",invalidPhone:"درست 10 ہندسوں کا نمبر",cartEmptyAlert:"کارٹ خالی",orderSent:"✅ آرڈر بھیج دیا!",onlyInStock:"صرف {n} اسٹاک",nameAndReview:"نام اور رائے",totalItems:"کل پیس:",grandTotal:"کل:",checkout:"چیک آؤٹ",addMore:"✓ کارٹ میں ({n} پیس)",confirmDelete:"حذف کریں؟",loading:"لوڈ ہو رہا ہے...",waNewOrder:"🛍️ *نیا آرڈر*",waOrderId:"📋 *ID:*",waDate:"📅 *تاریخ:*",waCustInfo:"👤 *گاہک:*",waName:"نام:",waPhone:"فون:",waAddress:"پتہ:",waNote:"نوٹ:",waProducts:"📦 *پروڈکٹس:*",waSize:"سائز:",waPrice:"قیمت:",waTotalItems:"🧮 *کل پیس:*",waTotal:"💰 *کل:*",waPayment:"💳 *ادائیگی:*"},
+ta:{langName:"தமிழ்",cart:"கார்ட்",priceOn:"விலை காட்டு",priceOff:"விலை மறை",backBtn:"பின்",backShop:"கடைக்கு திரும்பு",backCart:"கார்ட்டுக்கு திரும்பு",shareSite:"பகிர்",wholesaleNote:"📦 மொத்த விற்பனை — 6 துண்டு செட்டாக ஆர்டர் (6, 12, 18...)",heroTitle:'ரெடிமேட் <em>ஆடைகள்</em><br/>மொத்த விற்பனை',heroSub:"நிறுவனத்திலிருந்து நேரடி ஆர்டர்",searchPh:"டிசைன், வகை, சைஸ் தேடுங்கள்...",all:"அனைத்தும்",shirt:"சட்டை",babaSuit:"பாபா சூட்",other:"மற்றவை",totalCount:"மொத்தம்: {n}",noProducts:"பொருட்கள் இல்லை",productDetail:"விவரங்கள்",yourCart:"🛒 கார்ட்",cartEmpty:"கார்ட் காலியாக",completeOrder:"📦 ஆர்டர் முடிக்க",yourInfo:"👤 தகவல்",fullName:"முழு பெயர் *",namePh:"உதா: ரஹீம்",mobileNum:"மொபைல் *",fullAddress:"முகவரி *",addressPh:"வீடு, தெரு, பகுதி, நகரம், பின்",extraNote:"குறிப்பு",notePh:"உதா: நிறம், நேரம்",paymentMethod:"💳 கட்டணம்",cod:"டெலிவரியில் பணம்",upiAdvance:"UPI / முன்பணம்",payUpiBelow:"UPI-க்கு பணம்:",sendScreenshot:"ஸ்கிரீன்ஷாட் அனுப்பு",sendOrderBtn:"WhatsApp அனுப்பு",confirmCall:"நாங்கள் கால் செய்வோம்",adminPanel:"⚙️ நிர்வாகம்",copyright:"© 2026",inCart:"✓ கார்ட்டில்",outOfStock:"❌ ஸ்டாக் இல்லை",addToCart:"🛒 கார்ட்டில் சேர்",askPrice:"விலை கேள்",sizeLabel:"சைஸ்",stockLabel:"ஸ்டாக்",pieces:"துண்டு",inStock:"உள்ளது",lowStock:"மீதம் {n}",stockOut:"இல்லை",setNote:"1 செட் = 6 துண்டு",priceHidden:"🙈 விலை மறைக்கப்பட்டது",shareProduct:"📤 இந்த பொருளை பகிர்",reviewsTitle:"⭐ மதிப்புரை",noReviews:"மதிப்புரை இல்லை.",addReview:"✏️ எழுது",yourNamePh:"பெயர்",yourReviewPh:"எழுதுங்கள்...",submitReview:"அனுப்பு",needNamePhone:"பெயர், மொபைல், முகவரி",invalidPhone:"சரியான 10 இலக்க எண்",cartEmptyAlert:"கார்ட் காலி",orderSent:"✅ அனுப்பப்பட்டது!",onlyInStock:"மீதம் {n}",nameAndReview:"பெயர் மற்றும் மதிப்புரை",totalItems:"மொத்த துண்டு:",grandTotal:"மொத்தம்:",checkout:"செக்அவுட்",addMore:"✓ கார்ட்டில் ({n} துண்டு)",confirmDelete:"நீக்கு?",loading:"ஏற்றுகிறது...",waNewOrder:"🛍️ *புதிய ஆர்டர்*",waOrderId:"📋 *ID:*",waDate:"📅 *தேதி:*",waCustInfo:"👤 *வாடிக்கையாளர்:*",waName:"பெயர்:",waPhone:"ஃபோன்:",waAddress:"முகவரி:",waNote:"குறிப்பு:",waProducts:"📦 *பொருட்கள்:*",waSize:"சைஸ்:",waPrice:"விலை:",waTotalItems:"🧮 *மொத்த துண்டு:*",waTotal:"💰 *மொத்தம்:*",waPayment:"💳 *கட்டணம்:*"},
+te:{langName:"తెలుగు",cart:"కార్ట్",priceOn:"ధర చూపించు",priceOff:"ధర దాచు",backBtn:"వెనుకకు",backShop:"షాప్‌కు తిరిగి",backCart:"కార్ట్‌కు తిరిగి",shareSite:"షేర్",wholesaleNote:"📦 హోల్‌సేల్ — 6 ముక్కల సెట్‌గా ఆర్డర్ (6, 12, 18...)",heroTitle:'రెడీమేడ్ <em>గార్మెంట్స్</em><br/>హోల్‌సేల్',heroSub:"కంపెనీ నుండి నేరుగా ఆర్డర్",searchPh:"డిజైన్, రకం, సైజ్ వెతకండి...",all:"అన్నీ",shirt:"షర్ట్",babaSuit:"బాబా సూట్",other:"ఇతరులు",totalCount:"మొత్తం: {n}",noProducts:"ఉత్పత్తులు లేవు",productDetail:"వివరాలు",yourCart:"🛒 కార్ట్",cartEmpty:"కార్ట్ ఖాళీగా",completeOrder:"📦 ఆర్డర్ పూర్తి",yourInfo:"👤 సమాచారం",fullName:"పూర్తి పేరు *",namePh:"ఉదా: రహీం",mobileNum:"మొబైల్ *",fullAddress:"చిరునామా *",addressPh:"ఇల్లు, వీధి, నగరం, పిన్",extraNote:"గమనిక",notePh:"ఉదా: రంగు, సమయం",paymentMethod:"💳 చెల్లింపు",cod:"డెలివరీలో నగదు",upiAdvance:"UPI / అడ్వాన్స్",payUpiBelow:"UPIకి చెల్లించండి:",sendScreenshot:"స్క్రీన్‌షాట్ పంపండి",sendOrderBtn:"WhatsApp పంపండి",confirmCall:"మేము కాల్ చేస్తాము",adminPanel:"⚙️ అడ్మిన్",copyright:"© 2026",inCart:"✓ కార్ట్‌లో",outOfStock:"❌ స్టాక్ లేదు",addToCart:"🛒 కార్ట్‌కి జోడించు",askPrice:"ధర అడగండి",sizeLabel:"సైజ్",stockLabel:"స్టాక్",pieces:"ముక్కలు",inStock:"స్టాక్‌లో",lowStock:"కేవలం {n}",stockOut:"లేదు",setNote:"1 సెట్ = 6 ముక్కలు",priceHidden:"🙈 ధర దాచబడింది",shareProduct:"📤 ఈ ఉత్పత్తిని షేర్ చేయి",reviewsTitle:"⭐ సమీక్షలు",noReviews:"సమీక్షలు లేవు.",addReview:"✏️ రాయండి",yourNamePh:"పేరు",yourReviewPh:"రాయండి...",submitReview:"పంపండి",needNamePhone:"పేరు, మొబైల్, చిరునామా",invalidPhone:"సరైన 10 అంకెల నంబర్",cartEmptyAlert:"కార్ట్ ఖాళీ",orderSent:"✅ పంపబడింది!",onlyInStock:"కేవలం {n}",nameAndReview:"పేరు మరియు సమీక్ష",totalItems:"మొత్తం ముక్కలు:",grandTotal:"మొత్తం:",checkout:"చెక్‌అవుట్",addMore:"✓ కార్ట్‌లో ({n} ముక్కలు)",confirmDelete:"తొలగించు?",loading:"లోడ్ అవుతోంది...",waNewOrder:"🛍️ *కొత్త ఆర్డర్*",waOrderId:"📋 *ID:*",waDate:"📅 *తేదీ:*",waCustInfo:"👤 *కస్టమర్:*",waName:"పేరు:",waPhone:"ఫోన్:",waAddress:"చిరునామా:",waNote:"గమనిక:",waProducts:"📦 *ఉత్పత్తులు:*",waSize:"సైజ్:",waPrice:"ధర:",waTotalItems:"🧮 *మొత్తం ముక్కలు:*",waTotal:"💰 *మొత్తం:*",waPayment:"💳 *చెల్లింపు:*"}};
 
 // ===== CONFIG =====
 const CLOUD = "dzteaiyod";
 const PRESET = "Aarick";
 const SHOP_PHONE = "919830127586";
 const ADMIN_PASS = "geeta@2026";
-const SHOP_NAME = "GEETA SUPER";
+const SHOP_NAME = "M GEETA SUPER";
 const SHOP_ADDR = "U 111 Karbala Road, Kolkata-700018";
 const SHOP_GST = "19AKKPK2513L1ZY";
+const SITE_URL = "https://jkazi388.github.io/geeta-super/";
 
 // ===== STATE =====
 let samples = [];
@@ -354,6 +368,7 @@ let editingId = null;
 let adminTab = "products";
 let reviewRating = 5;
 let dataLoaded = false;
+let showPrice = true;
 
 function t(key, vars) {
   let s = (T[currentLang] && T[currentLang][key]) || T.bn[key] || key;
@@ -365,7 +380,9 @@ function applyTranslations() {
   document.body.setAttribute("data-lang", currentLang);
   document.documentElement.setAttribute("dir", currentLang === "ur" ? "rtl" : "ltr");
   document.querySelectorAll("[data-t]").forEach(el => {
-    el.innerHTML = t(el.getAttribute("data-t"));
+    const key = el.getAttribute("data-t");
+    if (key === "priceOn") { el.innerHTML = showPrice ? t("priceOn") : t("priceOff"); }
+    else el.innerHTML = t(key);
   });
   document.querySelectorAll("[data-tp]").forEach(el => {
     el.setAttribute("placeholder", t(el.getAttribute("data-tp")));
@@ -388,6 +405,12 @@ function setLang(lang) {
   document.getElementById("langMenu").classList.remove("open");
 }
 
+function togglePrice() {
+  showPrice = !showPrice;
+  applyTranslations();
+  renderCards();
+}
+
 function getEmoji(t) { return t === "বাবা স্যুট" ? "👘" : t === "শার্ট" ? "👔" : "🧵"; }
 function getMainPhoto(s) { return s.photos && s.photos.length > 0 ? s.photos[0] : null; }
 function getTypeLabel(typeKey) {
@@ -397,7 +420,7 @@ function getTypeLabel(typeKey) {
 }
 function getStockBadge(stock) {
   if (stock === 0) return `<span class="stock-badge stock-out">${t("stockOut")}</span>`;
-  if (stock <= 3) return `<span class="stock-badge stock-low">${t("lowStock", {n: stock})}</span>`;
+  if (stock <= 6) return `<span class="stock-badge stock-low">${t("lowStock", {n: stock})}</span>`;
   return `<span class="stock-badge stock-in">${stock} ${t("inStock")}</span>`;
 }
 function getAvgRating(s) {
@@ -406,14 +429,16 @@ function getAvgRating(s) {
   return list.reduce((sum, r) => sum + r.rating, 0) / list.length;
 }
 function renderStars(rating) { const full = Math.round(rating); return "★".repeat(full) + "☆".repeat(5 - full); }
+function isNew(s) {
+  const created = s.createdAt?.toMillis ? s.createdAt.toMillis() : (s.createdAt || 0);
+  return (Date.now() - created) < 7 * 24 * 60 * 60 * 1000;
+}
 
 function startFirebaseListeners() {
   if (!window.FB) return;
   const { db, collection, doc, query, orderBy, onSnapshot } = window.FB;
-  
   const productsRef = collection(db, "products");
   const q = query(productsRef, orderBy("createdAt", "desc"));
-  
   onSnapshot(q, (snapshot) => {
     samples = [];
     snapshot.forEach(d => samples.push({ id: d.id, ...d.data() }));
@@ -426,7 +451,6 @@ function startFirebaseListeners() {
     console.error("FB listen error:", err);
     document.getElementById("loadingBanner").innerHTML = `<span style="color:#c62828">⚠️ Database error: ${err.message}</span>`;
   });
-
   onSnapshot(doc(db, "settings", "main"), (d) => {
     if (d.exists()) SHOP_UPI = d.data().upi || "";
   });
@@ -458,7 +482,7 @@ function renderCards() {
     return `<div class="card">
       <div class="card-img" onclick="openDetail('${s.id}')">
         ${mainPhoto ? `<img src="${mainPhoto}"/>` : `<span class="emoji">${getEmoji(s.type)}</span>`}
-        <span class="tag">${getTypeLabel(s.type)}</span>
+        ${isNew(s) ? `<span class="new-tag">🔥 NEW</span>` : `<span class="tag">${getTypeLabel(s.type)}</span>`}
         ${getStockBadge(stock)}
         ${photoCount > 1 ? `<span class="photo-count">📷 ${photoCount}</span>` : ""}
       </div>
@@ -466,10 +490,12 @@ function renderCards() {
         <div class="card-title">${s.design || ""} ${getTypeLabel(s.type)}</div>
         ${avgRating ? `<div class="rating-row" onclick="openDetail('${s.id}')"><span class="stars">${renderStars(avgRating)}</span><span>(${reviewCount})</span></div>` : ""}
         <div class="specs-row"><span>📐 ${t("sizeLabel")}: ${s.size || "—"}</span></div>
-        <div class="price">${s.price ? "৳ " + s.price : t("askPrice")}</div>
+        <div class="price">${!showPrice ? t("priceHidden") : (s.price ? "৳ " + s.price : t("askPrice"))}</div>
+        <div class="set-note">${t("setNote")}</div>
         <button class="add-cart-btn ${inCart ? "in-cart" : ""}" onclick="addToCart('${s.id}')" ${stock === 0 ? "disabled" : ""}>
-          ${stock === 0 ? t("outOfStock") : (inCart ? `${t("inCart")} (${inCart.qty})` : t("addToCart"))}
+          ${stock === 0 ? t("outOfStock") : (inCart ? `${t("inCart")} (${inCart.qty} ${t("pieces")})` : t("addToCart"))}
         </button>
+        <button class="share-prod-btn" onclick="shareProduct('${s.id}')">${t("shareProduct")}</button>
       </div>
     </div>`;
   }).join("");
@@ -480,6 +506,35 @@ function setFilter(f, el) {
   document.querySelectorAll(".filter-bar .filter-btn").forEach(b => b.classList.remove("active"));
   el.classList.add("active");
   renderCards();
+}
+
+function shareSite() {
+  let msg = `👕 *${SHOP_NAME}*\n`;
+  msg += `Kids Fashion · Wholesale Readymade Garments\n`;
+  msg += `━━━━━━━━━━━━━━━\n`;
+  msg += `🛍️ আমাদের পুরো কালেকশন দেখুন:\n`;
+  msg += `👉 ${SITE_URL}\n`;
+  msg += `━━━━━━━━━━━━━━━\n`;
+  msg += `📍 ${SHOP_ADDR}\n`;
+  msg += `📞 9830127586\n`;
+  msg += `GST: ${SHOP_GST}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+function shareProduct(id) {
+  const s = samples.find(x => x.id === id);
+  if (!s) return;
+  const photo = getMainPhoto(s);
+  let msg = `👕 *${SHOP_NAME}*\n━━━━━━━━━━━━━━━\n`;
+  msg += `📦 ${getTypeLabel(s.type)}\n`;
+  if (s.design) msg += `🔖 ${t("waOrderId").replace(/[:*]/g,'').trim()}: ${s.design}\n`.replace(/ID/,'Design');
+  if (s.design) msg = `👕 *${SHOP_NAME}*\n━━━━━━━━━━━━━━━\n📦 ${getTypeLabel(s.type)}\n🔖 Design: ${s.design}\n`;
+  if (s.size) msg += `📐 ${t("sizeLabel")}: ${s.size}\n`;
+  if (s.price && showPrice) msg += `💰 ৳ ${s.price} (1 pc)\n`;
+  msg += `📦 ${t("setNote")}\n━━━━━━━━━━━━━━━\n`;
+  if (photo) msg += `📸 ${photo}\n\n`;
+  msg += `🌐 ${SITE_URL}\n📞 9830127586`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
 function openDetail(id) {
@@ -507,7 +562,8 @@ function renderDetail() {
     ${photos.length > 1 ? `<div class="gallery-thumbs">${photos.map((p, i) => `<img src="${p}" class="${i === currentGalleryIndex ? 'active' : ''}" onclick="setGallery(${i})"/>`).join("")}</div>` : ""}
     <h2 class="detail-title">${s.design || ""} ${getTypeLabel(s.type)}</h2>
     ${avgRating ? `<div style="margin-bottom:8px"><span style="color:#E8B84B">${renderStars(avgRating)}</span> <span style="color:#7A6040;font-size:.85rem">(${reviewList.length})</span></div>` : ""}
-    <div class="detail-price">${s.price ? "৳ " + s.price : t("askPrice")}</div>
+    <div class="detail-price">${!showPrice ? t("priceHidden") : (s.price ? "৳ " + s.price : t("askPrice"))}</div>
+    <div class="detail-set-note">${t("setNote")}</div>
     <div class="detail-specs">
       <div class="detail-spec"><strong>Type</strong>${getTypeLabel(s.type)}</div>
       <div class="detail-spec"><strong>Design</strong>${s.design || "—"}</div>
@@ -515,6 +571,7 @@ function renderDetail() {
       <div class="detail-spec"><strong>${t("stockLabel")}</strong>${stock > 0 ? stock + " " + t("pieces") : t("stockOut")}</div>
     </div>
     <button class="whatsapp-btn" onclick="addToCart('${s.id}');closeModal('detailModal')" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? t("outOfStock") : (inCart ? t("addMore",{n:inCart.qty}) : t("addToCart"))}</button>
+    <button class="share-prod-btn" style="padding:13px;font-size:.9rem;margin-top:10px" onclick="shareProduct('${s.id}')">${t("shareProduct")}</button>
     <div class="reviews-section">
       <h4>${t("reviewsTitle")} (${reviewList.length})</h4>
       ${reviewList.length === 0 ? `<p style="font-size:.85rem;color:#7A6040">${t("noReviews")}</p>` : reviewList.map(r => `<div class="review-item"><div><span class="review-name">${r.name}</span> <span class="review-stars">${renderStars(r.rating)}</span></div><div style="color:#5A4A30;margin-top:3px">${r.text}</div></div>`).join("")}
@@ -558,28 +615,32 @@ async function submitReview(id) {
 
 function saveCart() { localStorage.setItem("gs_cart", JSON.stringify(cart)); updateCartCount(); }
 
+// ===== WHOLESALE: add 6 pcs per click =====
 function addToCart(id) {
   const s = samples.find(x => x.id === id);
   if (!s || (s.stock || 0) === 0) return;
   const existing = cart.find(c => c.id === id);
   if (existing) {
-    if (existing.qty >= s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
-    existing.qty += 1;
+    if (existing.qty + STEP > s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
+    existing.qty += STEP;
   } else {
-    cart.push({ id, qty: 1, snapshot: { type: s.type, design: s.design, size: s.size, price: s.price, photo: getMainPhoto(s) } });
+    if (STEP > s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
+    cart.push({ id, qty: STEP, snapshot: { type: s.type, design: s.design, size: s.size, price: s.price, photo: getMainPhoto(s) } });
   }
   saveCart();
   renderCards();
 }
 
+// ===== WHOLESALE: +/- in steps of 6 =====
 function changeQty(id, delta) {
   const item = cart.find(c => c.id === id);
   if (!item) return;
+  const step = delta > 0 ? STEP : -STEP;
   if (delta > 0) {
     const s = samples.find(x => x.id === id);
-    if (s && item.qty >= s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
+    if (s && item.qty + STEP > s.stock) { alert(t("onlyInStock", {n: s.stock})); return; }
   }
-  item.qty += delta;
+  item.qty += step;
   if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
   saveCart();
   renderCart();
@@ -598,9 +659,11 @@ function renderCart() {
     const s = c.snapshot;
     const lt = (parseFloat(s.price) || 0) * c.qty;
     total += lt; totalItems += c.qty;
-    return `<div class="cart-item"><div class="cart-item-img">${s.photo ? `<img src="${s.photo}"/>` : getEmoji(s.type)}</div><div class="cart-item-info"><div class="cart-item-name">${s.design || ""} ${getTypeLabel(s.type)}</div><div class="cart-item-meta">${t("sizeLabel")}: ${s.size || "—"}</div><div class="cart-item-price">৳ ${s.price || "—"} × ${c.qty}</div></div><div class="qty-controls"><button class="qty-btn" onclick="changeQty('${c.id}',-1)">−</button><span class="qty-num">${c.qty}</span><button class="qty-btn" onclick="changeQty('${c.id}',1)">+</button></div></div>`;
+    const priceDisplay = showPrice ? `৳ ${s.price || "—"} × ${c.qty} ${t("pieces")}` : `${c.qty} ${t("pieces")}`;
+    return `<div class="cart-item"><div class="cart-item-img">${s.photo ? `<img src="${s.photo}"/>` : getEmoji(s.type)}</div><div class="cart-item-info"><div class="cart-item-name">${s.design || ""} ${getTypeLabel(s.type)}</div><div class="cart-item-meta">${t("sizeLabel")}: ${s.size || "—"}</div><div class="cart-item-price">${priceDisplay}</div></div><div class="qty-controls"><button class="qty-btn" onclick="changeQty('${c.id}',-1)">−</button><span class="qty-num">${c.qty} ${t("pieces")}</span><button class="qty-btn" onclick="changeQty('${c.id}',1)">+</button></div></div>`;
   }).join("");
-  body.innerHTML = html + `<div class="cart-summary"><div class="cart-summary-row"><span>${t("totalItems")}</span><span>${totalItems}</span></div><div class="cart-summary-row total"><span>${t("grandTotal")}</span><span>৳ ${total.toFixed(2)}</span></div></div><button class="whatsapp-btn" onclick="goCheckout()">📦 ${t("checkout")}</button>`;
+  const totalRow = showPrice ? `<div class="cart-summary-row total"><span>${t("grandTotal")}</span><span>৳ ${total.toFixed(2)}</span></div>` : "";
+  body.innerHTML = html + `<div class="cart-summary"><div class="cart-summary-row"><span>${t("totalItems")}</span><span>${totalItems} ${t("pieces")}</span></div>${totalRow}</div><button class="whatsapp-btn" onclick="goCheckout()">📦 ${t("checkout")}</button>`;
 }
 
 function goCheckout() {
@@ -608,6 +671,11 @@ function goCheckout() {
   closeModal("cartModal");
   document.getElementById("upiIdDisplay").textContent = SHOP_UPI || "—";
   document.getElementById("checkoutModal").classList.add("active");
+}
+
+function backToCart() {
+  closeModal("checkoutModal");
+  openCart();
 }
 
 function selectPay(el, method) {
@@ -637,7 +705,6 @@ async function sendOrder() {
   const orderId = "GS" + Date.now().toString().slice(-6);
   const orderDate = new Date().toLocaleString("en-IN");
   const message = `${t("waNewOrder")} - ${SHOP_NAME}\n━━━━━━━━━━━━━━━━━━\n${t("waOrderId")} ${orderId}\n${t("waDate")} ${orderDate}\n\n${t("waCustInfo")}\n${t("waName")} ${name}\n${t("waPhone")} ${phone}\n${t("waAddress")} ${address}\n${note ? t("waNote") + " " + note + "\n" : ""}━━━━━━━━━━━━━━━━━━\n${t("waProducts")}\n\n${lines}\n━━━━━━━━━━━━━━━━━━\n${t("waTotalItems")} ${totalItems}\n${t("waTotal")} ৳ ${total.toFixed(2)}\n${t("waPayment")} ${payMethod === "COD" ? t("cod") : t("upiAdvance")}\n━━━━━━━━━━━━━━━━━━\nGST: ${SHOP_GST}\n${SHOP_ADDR}`;
-  
   try {
     const { db, collection, doc, addDoc, updateDoc, serverTimestamp } = window.FB;
     await addDoc(collection(db, "orders"), {
@@ -718,8 +785,8 @@ function renderProductsTab(content) {
       </select></div>
       <div class="field"><label>Design No</label><input id="ad_design" placeholder="GS-101" value="${editing?.design || ''}"/></div>
       <div class="field"><label>Size</label><input id="ad_size" placeholder="S/M/L/XL" value="${editing?.size || ''}"/></div>
-      <div class="field"><label>RS মূল্য</label><input id="ad_price" type="number" value="${editing?.price || ''}"/></div>
-      <div class="field"><label>স্টক (পিস)</label><input id="ad_stock" type="number" value="${editing?.stock !== undefined ? editing.stock : 10}"/></div>
+      <div class="field"><label>RS মূল্য (1 pc)</label><input id="ad_price" type="number" value="${editing?.price || ''}"/></div>
+      <div class="field"><label>স্টক (পিস)</label><input id="ad_stock" type="number" value="${editing?.stock !== undefined ? editing.stock : 144}"/></div>
     </div>
     <label class="upload-area">
       <input type="file" id="photoInput" accept="image/*" multiple/>
@@ -790,7 +857,7 @@ function renderSettingsTab(content) {
       📦 প্রোডাক্ট: <strong style="color:#E8B84B">${samples.length}টি</strong><br/>
       ⭐ রিভিউ: <strong style="color:#E8B84B">${totalReviews}টি</strong><br/>
       ❌ স্টক শেষ: <strong style="color:#eb5757">${samples.filter(s => (s.stock || 0) === 0).length}টি</strong><br/>
-      ⚠️ কম স্টক: <strong style="color:#f2c94c">${samples.filter(s => (s.stock || 0) > 0 && (s.stock || 0) <= 3).length}টি</strong>
+      ⚠️ কম স্টক: <strong style="color:#f2c94c">${samples.filter(s => (s.stock || 0) > 0 && (s.stock || 0) <= 6).length}টি</strong>
     </div>
   </div>
   <div class="admin-section">
@@ -964,10 +1031,8 @@ document.querySelectorAll(".modal-overlay").forEach(m => {
   m.addEventListener("click", function(e) { if (e.target === this) this.classList.remove("active"); });
 });
 
-// Expose to window
-Object.assign(window, {toggleLangMenu, setLang, setFilter, openDetail, changeGallery, setGallery, showReviewForm, setRating, submitReview, addToCart, changeQty, openCart, goCheckout, selectPay, sendOrder, openAdmin, checkAuth, switchAdminTab, saveUpi, callCustomer, whatsappCustomer, updateOrderStatus, deleteOrder, removePreview, addSample, startEdit, cancelEdit, removeSample, closeModal, renderCards});
+Object.assign(window, {toggleLangMenu, setLang, togglePrice, setFilter, openDetail, changeGallery, setGallery, showReviewForm, setRating, submitReview, addToCart, changeQty, openCart, goCheckout, backToCart, selectPay, sendOrder, openAdmin, checkAuth, switchAdminTab, saveUpi, callCustomer, whatsappCustomer, updateOrderStatus, deleteOrder, removePreview, addSample, startEdit, cancelEdit, removeSample, closeModal, renderCards, shareProduct, shareSite});
 
-// INIT
 applyTranslations();
 updateCartCount();
 
@@ -977,7 +1042,6 @@ if (window.FB) {
   window.addEventListener("fb-ready", startFirebaseListeners);
 }
 
-// Fallback: if Firebase doesn't load in 10 seconds, show error
 setTimeout(() => {
   if (!dataLoaded && !window.FB) {
     document.getElementById("loadingBanner").innerHTML = '<span style="color:#c62828">⚠️ Firebase লোড হচ্ছে না। ইন্টারনেট চেক করুন বা page refresh করুন।</span>';
