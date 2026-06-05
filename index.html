@@ -220,7 +220,6 @@ footer a{color:#E8B84B;text-decoration:none}
           <div class="lang-option" onclick="setLang('te')">🇮🇳 తెలుగు</div>
         </div>
       </div>
-      <button class="lang-btn" onclick="togglePrice()" id="priceToggleBtn">💰 <span data-t="priceOn">দাম দেখানো</span></button>
       <button class="lang-btn" onclick="shareSite()" style="background:rgba(37,211,102,.2);border-color:rgba(37,211,102,.5);color:#25D366">📲 <span data-t="shareSite">শেয়ার</span></button>
       <button class="cart-btn" onclick="openCart()">🛒 <span data-t="cart">কার্ট</span> <span class="cart-count" id="cartCount">0</span></button>
       <button class="admin-btn" onclick="openAdmin()">⚙️</button>
@@ -350,7 +349,7 @@ te:{langName:"తెలుగు",cart:"ఆర్డర్ లిస్ట్",p
 const CLOUD = "dzteaiyod";
 const PRESET = "Aarick";
 const SHOP_PHONE = "919830127586";
-const ADMIN_PASS = "geeta@2026";
+let ADMIN_PASS = localStorage.getItem("gs_admin_pass") || "geeta@2026";
 const SHOP_NAME = "M GEETA SUPER";
 const SHOP_ADDR = "U 111 Karbala Road, Kolkata-700018";
 const SHOP_GST = "19AKKPK2513L1ZY";
@@ -498,7 +497,6 @@ function renderCards() {
         ${avgRating ? `<div class="rating-row" onclick="openDetail('${s.id}')"><span class="stars">${renderStars(avgRating)}</span><span>(${reviewCount})</span></div>` : ""}
         <div class="specs-row"><span>📐 ${t("sizeLabel")}: ${s.size || "—"}</span></div>
         <div class="price">${!showPrice ? t("priceHidden") : (s.price ? "₹ " + s.price : t("askPrice"))}</div>
-        <div class="set-note">${t("setNote")}</div>
         <button class="add-cart-btn ${inCart ? "in-cart" : ""}" onclick="addToCart('${s.id}')" ${stock === 0 ? "disabled" : ""}>
           ${stock === 0 ? t("outOfStock") : (inCart ? `${t("inCart")} (${inCart.qty} ${t("pieces")})` : t("addToCart"))}
         </button>
@@ -537,7 +535,6 @@ function shareProduct(id) {
   if (s.design) msg = `👕 *${SHOP_NAME}*\n━━━━━━━━━━━━━━━\n📦 ${getTypeLabel(s.type)}\n🔖 Design: ${s.design}\n`;
   if (s.size) msg += `📐 ${t("sizeLabel")}: ${s.size}\n`;
   if (s.price && showPrice) msg += `💰 ₹ ${s.price} (1 pc)\n`;
-  msg += `📦 ${t("setNote")}\n━━━━━━━━━━━━━━━\n`;
   if (photo) msg += `📸 ${photo}\n\n`;
   msg += `🌐 ${SITE_URL}\n📞 9830127586`;
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
@@ -569,7 +566,6 @@ function renderDetail() {
     <h2 class="detail-title">${s.design || ""} ${getTypeLabel(s.type)}</h2>
     ${avgRating ? `<div style="margin-bottom:8px"><span style="color:#E8B84B">${renderStars(avgRating)}</span> <span style="color:#7A6040;font-size:.85rem">(${reviewList.length})</span></div>` : ""}
     <div class="detail-price">${!showPrice ? t("priceHidden") : (s.price ? "₹ " + s.price : t("askPrice"))}</div>
-    <div class="detail-set-note">${t("setNote")}</div>
     <div class="detail-specs">
       <div class="detail-spec"><strong>Type</strong>${getTypeLabel(s.type)}</div>
       <div class="detail-spec"><strong>Design</strong>${s.design || "—"}</div>
@@ -852,9 +848,18 @@ async function renderOrdersTab(content) {
 }
 
 function renderSettingsTab(content) {
+  // Price toggle state shown in admin
   let totalReviews = 0;
   samples.forEach(s => { totalReviews += (s.reviews || []).length; });
   content.innerHTML = `<div class="admin-section">
+    <h3>💰 দাম দেখানো / লুকানো</h3>
+    <p style="color:#F0E6C8;font-size:.85rem;margin-bottom:12px">Customer-দের কাছে দাম দেখাবেন কিনা নিয়ন্ত্রণ করুন</p>
+    <button onclick="togglePrice();renderSettingsTab(document.getElementById('adminTabContent'))" style="background:${showPrice ? '#C8932A' : '#7A6040'};color:#1A1208;border:none;padding:13px 20px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;width:100%">
+      ${showPrice ? '👁️ দাম দেখানো আছে — লুকাতে চাপুন' : '🙈 দাম লুকানো আছে — দেখাতে চাপুন'}
+    </button>
+  </div>
+  <div class="admin-section">
+    <h3>💳 UPI ID</h3>
     <h3>💳 UPI ID</h3>
     <div class="field"><label>UPI ID</label><input id="set_upi" placeholder="yourname@bank" value="${SHOP_UPI || ''}"/></div>
     <button class="btn-primary" onclick="saveUpi()">সেভ</button>
@@ -875,7 +880,36 @@ function renderSettingsTab(content) {
       ✓ Real-time sync active<br/>
       ✓ সব customer একই data দেখবে
     </div>
+  </div>
+  <div class="admin-section">
+    <h3>🔑 Password পরিবর্তন</h3>
+    <div class="field" style="margin-bottom:10px">
+      <label>বর্তমান Password</label>
+      <input type="password" id="old_pass" placeholder="পুরানো password"/>
+    </div>
+    <div class="field" style="margin-bottom:10px">
+      <label>নতুন Password</label>
+      <input type="password" id="new_pass" placeholder="নতুন password"/>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>নতুন Password নিশ্চিত করুন</label>
+      <input type="password" id="confirm_pass" placeholder="আবার লিখুন"/>
+    </div>
+    <button class="btn-primary" onclick="changeAdminPass()">🔑 Password পরিবর্তন করুন</button>
   </div>`;
+}
+
+function changeAdminPass() {
+  const oldPass = document.getElementById("old_pass").value;
+  const newPass = document.getElementById("new_pass").value;
+  const confirmPass = document.getElementById("confirm_pass").value;
+  if (oldPass !== ADMIN_PASS) { alert("❌ বর্তমান password ভুল!"); return; }
+  if (newPass.length < 4) { alert("❌ নতুন password কমপক্ষে ৪ অক্ষরের হতে হবে!"); return; }
+  if (newPass !== confirmPass) { alert("❌ নতুন password দুটো মিলছে না!"); return; }
+  ADMIN_PASS = newPass;
+  localStorage.setItem("gs_admin_pass", newPass);
+  alert("✅ Password সফলভাবে পরিবর্তন হয়েছে!");
+  renderSettingsTab(document.getElementById("adminTabContent"));
 }
 
 async function saveUpi() {
@@ -1039,7 +1073,7 @@ document.querySelectorAll(".modal-overlay").forEach(m => {
   m.addEventListener("click", function(e) { if (e.target === this) this.classList.remove("active"); });
 });
 
-Object.assign(window, {toggleLangMenu, setLang, togglePrice, setFilter, openDetail, changeGallery, setGallery, showReviewForm, setRating, submitReview, addToCart, changeQty, openCart, goCheckout, backToCart, selectPay, sendOrder, openAdmin, checkAuth, switchAdminTab, saveUpi, callCustomer, whatsappCustomer, updateOrderStatus, deleteOrder, removePreview, addSample, startEdit, cancelEdit, removeSample, closeModal, renderCards, shareProduct, shareSite});
+Object.assign(window, {toggleLangMenu, setLang, togglePrice, setFilter, openDetail, changeGallery, setGallery, showReviewForm, setRating, submitReview, addToCart, changeQty, openCart, goCheckout, backToCart, selectPay, sendOrder, openAdmin, checkAuth, switchAdminTab, saveUpi, changeAdminPass, callCustomer, whatsappCustomer, updateOrderStatus, deleteOrder, removePreview, addSample, startEdit, cancelEdit, removeSample, closeModal, renderCards, shareProduct, shareSite});
 
 applyTranslations();
 updateCartCount();
